@@ -9,7 +9,7 @@ use App\Http\Controllers\DashboardOwnerController;
 // });
 
 
-Route::post('/owner/login', [OwnerController::class, 'showLoginForm'])->name('login');
+Route::get('/owner/login', [OwnerController::class, 'showLoginForm'])->name('login');
 // Route::post('/owner/login', [OwnerController::class, 'login']);
 
 Route::get('/dashboard-owner', [DashboardOwnerController::class, 'index'])->name('dashboard.owner');

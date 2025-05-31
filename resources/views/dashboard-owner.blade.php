@@ -4,31 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard Owner</title>
-  <link href="{{asset('bootstrap-5.3.6-dist/css/bootstrap.min.css') }}" rel="stylesheet" />
+  <link href="{{ asset('bootstrap-5.3.6-dist/css/bootstrap.min.css') }}" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
   <style>
     body {
-      background-color: # ;
+      background-color: #FFF5FF;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+      margin: 0;
     }
 
     .navbar {
       background-color: #F189B8;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     .navbar-brand {
       font-weight: bold;
       color: white;
+      letter-spacing: 1px;
     }
 
     .nav-link {
       color: white !important;
       margin-right: 1rem;
-      transition: color 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     .nav-link:hover {
       color: #ffeaf6 !important;
+      text-decoration: underline;
     }
 
     .logout-icon {
@@ -39,13 +44,23 @@
 
     .card {
       background-color: #ffeaf6;
-      border: 1px solid #f5c2d8;
-      box-shadow: 2px 2px 8px rgba(255, 145, 180, 0.2);
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(241, 137, 184, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
     }
 
     .table thead {
       background-color: #fce0ef;
       color: #F189B8;
+    }
+
+    .table tbody tr:hover {
+      background-color: #f9dce7;
     }
 
     .search-box {
@@ -67,8 +82,16 @@
 
     .legend {
       display: flex;
-      flex-direction: column;
-      gap: 5px;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .legend span {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
       font-weight: 500;
     }
 
@@ -77,7 +100,7 @@
       display: inline-block;
       width: 15px;
       height: 15px;
-      margin-right: 5px;
+      margin-right: 6px;
       border-radius: 3px;
     }
 
@@ -104,7 +127,6 @@
         margin-top: 1rem;
       }
     }
-
   </style>
 </head>
 <body>
@@ -126,7 +148,6 @@
     </div>
   </nav>
 
-  <!-- Content -->
   <div class="container container-custom mt-4 text-center">
     <h2 class="section-title">Dashboard Owner!</h2>
 
@@ -138,13 +159,21 @@
           <div class="row mt-3 align-items-center justify-content-center">
             <div class="col-md-6 text-center">
               <div id="pieChart" style="min-height: 300px;" class="echart w-100"></div>
+              <div class="legend">
+                <span class="yoga">Yoga</span>
+                <span class="pilates">Pilates</span>
+                <span class="poundfit">Poundfit</span>
+                <span class="zumba">Zumba</span>
+                <span class="tabata">Tabata</span>
+                <span class="trampoline">Trampoline</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Tabel Peserta -->
+    <!-- Tabel -->
     <div class="row mt-4">
       <div class="col-12">
         <div class="card p-4">
@@ -154,7 +183,7 @@
           </div>
           <div class="table-responsive">
             <table class="table table-bordered table-dark table-striped">
-              <thead style="color: #fff5f5;">
+              <thead>
                 <tr>
                   <th>No</th>
                   <th>Nama Peserta</th>
@@ -189,14 +218,14 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <footer>
-    <p class="mb-0">@2025 Copyright: glowithus.com</p>
+    <p class="mb-0">&copy; 2025 glowithus.com</p>
     <small>Designed by glowithus</small>
   </footer>
 
-  <!-- JS -->
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const chartDom = document.querySelector("#pieChart");
@@ -206,18 +235,11 @@
           text: 'Tampilan Data',
           subtext: 'Jumlah Peserta per Kelas',
           left: 'center',
-          textStyle: {
-            color: '#8B5A2B',
-            fontSize: 16,
-            fontWeight: 'bold'
-          },
-          subtextStyle: {
-            color: '#3A6EA5',
-            fontSize: 13
-          }
+          textStyle: { color: '#8B5A2B', fontSize: 16, fontWeight: 'bold' },
+          subtextStyle: { color: '#3A6EA5', fontSize: 13 }
         },
         tooltip: { trigger: 'item' },
-        legend: { orient: 'vertical', left: 'left' },
+        legend: { show: false },
         series: [{
           name: 'Peserta',
           type: 'pie',
@@ -230,10 +252,7 @@
             { value: 2, name: 'Tabata', itemStyle: { color: '#5cc087' } },
             { value: 3, name: 'Trampoline', itemStyle: { color: '#db4a6d' } }
           ],
-          label: {
-            color: '#8B5A2B',
-            fontSize: 12
-          }
+          label: { color: '#8B5A2B', fontSize: 12 }
         }]
       };
       myChart.setOption(option);
