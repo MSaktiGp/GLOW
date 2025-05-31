@@ -131,22 +131,45 @@
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid px-4">
-      <a class="navbar-brand" href="#">GLOW</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Maintenance Jadwal dan Coach</a></li>
-        </ul>
-        <span class="logout-icon">&#x21B5;</span>
+    <nav class="navbar navbar-expand-lg shadow-sm" style="background-color: #F189B8;">
+      <div class="container-fluid px-4">
+        <!-- Brand -->
+        <a class="navbar-brand fw-bold text-white" href="#">GLOW</a>
+
+        <!-- Toggle button for mobile -->
+        <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <!-- KIRI: Menu Navigasi -->
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Maintenance Jadwal dan Coach</a>
+            </li>
+          </ul>
+
+          <!-- KANAN: Logout Button -->
+          <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="btn btn-outline-light d-flex align-items-center gap-2 px-3 py-2 rounded-pill">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M10 15a1 1 0 0 0 1-1v-2a.5.5 0 0 1 1 0v2a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v2a.5.5 0 0 1-1 0V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h7z"/>
+                <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+              </svg>
+              Logout
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+
 
   <div class="container container-custom mt-4 text-center">
     <h2 class="section-title">Dashboard Owner!</h2>

@@ -12,5 +12,17 @@ class OwnerController extends Controller
         return view('loginOwner');
     }
 
+    public function profile()
+    {
+        // Data dummy - nanti bisa diganti dari database (model Owner misalnya)
+        $owner = [
+            'nama' => 'Shakila Rama Wulandari',
+            'nomor_hp' => '08987654321',
+            'alamat' => 'Jl. Kenangan, Kota Jambi',
+        ];
+
+        return view('profileOwner', compact('owner'));
+    }
+
 }
 
