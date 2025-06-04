@@ -10,6 +10,7 @@
             background-repeat: no-repeat;
             background-position: center;
             font-family: Arial, sans-serif;
+            
         }
 
         .login-container {
@@ -91,7 +92,7 @@
         }
     </style>
 </head>
-<body>
+<body class="flex items-center justify-center min-h-screen backdrop-blur-sm bg-opacity-80">>
     <div class="login-container">
         <h2>Selamat Datang Kembali!</h2>
         <p>Masuk untuk melanjutkan</p>

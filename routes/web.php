@@ -17,7 +17,7 @@ Route::get('/owner/login', [OwnerController::class, 'showLoginForm'])->name('log
 
 Route::get('/dashboard-owner', [DashboardOwnerController::class, 'index'])->name('dashboard.owner');
 
-// Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');l
+// Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
 Route::get('/owner/profile', [OwnerController::class, 'profile'])->name('owner.profile');
 
