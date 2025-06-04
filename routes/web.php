@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardOwnerController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\YogaController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -22,6 +23,11 @@ Route::get('/dashboard-owner', [DashboardOwnerController::class, 'index'])->name
 Route::get('/owner/profile', [OwnerController::class, 'profile'])->name('owner.profile');
 
 Route::get('/yoga', [YogaController::class, 'index']);
+
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
+
+// Register
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
 
