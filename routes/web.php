@@ -21,6 +21,9 @@ Route::get('/dashboard-owner', [DashboardOwnerController::class, 'index'])->name
 // Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
 Route::get('/owner/profile', [OwnerController::class, 'profile'])->name('owner.profile');
+Route::get('/maintenance-jadwal', function () {return view('maintenanceJadwal');});
+
+
 
 Route::get('/yoga', [YogaController::class, 'index']);
 
