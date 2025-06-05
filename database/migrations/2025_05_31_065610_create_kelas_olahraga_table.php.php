@@ -11,7 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('kelas_olahragas', function (Blueprint $table) {
+            $table->id();
+            $table->string('nama_kelas');
+            $table->integer('kapasitas');
+            $table->timestamps();
+        });
     }
 
     /**

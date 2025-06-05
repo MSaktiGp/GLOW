@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pembayaran', function (Blueprint $table) {
+        Schema::create('pembayarans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->decimal('jumlah', 10, 2);
+            $table->timestamp('tanggal')->useCurrent();
+            $table->enum('status', ['pending', 'berhasil', 'gagal'])->default('pending');
             $table->timestamps();
         });
     }

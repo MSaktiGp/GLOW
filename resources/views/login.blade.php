@@ -104,7 +104,7 @@
 
         <form action="{{ route('login.submit') }}" method="POST">
             @csrf
-            <input type="email" name="email" placeholder="Enter Username or Email" value="{{ old('email') }}" required>
+            <input type="email" name="email" placeholder="Enter Username or Email" value="{{ old('email') || {{ old('username')}}}}" required>
             <input type="password" name="password" placeholder="Enter Password" required>
             <button type="submit">Lanjutkan</button>
             <button type="button" onclick="alert('Fitur lupa password belum tersedia')">Lupa Password?</button>

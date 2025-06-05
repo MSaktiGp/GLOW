@@ -11,7 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('pendaftaran_kelas', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('kelas_olahraga_id')->constrained('kelas_olahragas')->onDelete('cascade');
+            $table->timestamp('tanggal_daftar')->useCurrent();
+            $table->timestamps();
+        });
+
     }
 
     /**

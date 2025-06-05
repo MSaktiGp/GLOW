@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('jadwal_kelas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('kelas_olahraga_id')->constrained('kelas_olahragas')->onDelete('cascade');
+            $table->dateTime('waktu_mulai');
+            $table->dateTime('waktu_selesai');
             $table->timestamps();
         });
     }
