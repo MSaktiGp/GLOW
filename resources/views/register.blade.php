@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Register</title>
     <style>
         body {
             background-image: url('https://i.pinimg.com/736x/34/d5/73/34d573db558016ba3f033c8c32ede09b.jpg');
@@ -10,11 +10,10 @@
             background-repeat: no-repeat;
             background-position: center;
             font-family: Arial, sans-serif;
-            
         }
 
-        .login-container {
-            width: 360px;
+        .register-container {
+            width: 380px;
             margin: 60px auto;
             background-color: rgba(255, 245, 255, 0.95); /* transparansi */
             padding: 40px;
@@ -27,6 +26,7 @@
             color: #F189B8;
         }
 
+        input[type="text"],
         input[type="email"],
         input[type="password"] {
             width: 90%;
@@ -45,7 +45,7 @@
             color: white;
             font-weight: bold;
             border-radius: 25px;
-            margin-top: 15px;
+            margin-top: 10px;
             box-shadow: 0 5px #d4719c;
             cursor: pointer;
         }
@@ -58,31 +58,6 @@
             font-weight: bold;
         }
 
-        .google-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #aaa;
-            border-radius: 20px;
-            padding: 10px;
-            margin-top: 15px;
-            background-color: white;
-            cursor: pointer;
-        }
-
-        .google-btn img {
-            width: 20px;
-            margin-right: 10px;
-        }
-
-        hr {
-            margin: 20px 0;
-        }
-
-        small {
-            color: #555;
-        }
-
         .alert {
             background-color: #fdd;
             color: #c00;
@@ -90,33 +65,40 @@
             border-radius: 8px;
             margin-bottom: 15px;
         }
+
+        .success {
+            background-color: #dfd;
+            color: #080;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen backdrop-blur-sm bg-opacity-80">>
-    <div class="login-container">
-        <h2>Selamat Datang Kembali!</h2>
-        <p>Masuk untuk melanjutkan</p>
+<body>
+    <div class="register-container">
+        <h2>Daftar!</h2>
+        <p>Buat akun baru Anda</p>
 
         @if ($errors->any())
-            <div class="alert">
-                <strong>{{ $errors->first() }}</strong>
-            </div>
+            <div class="alert">{{ $errors->first() }}</div>
         @endif
 
-        <form action="{{ route('login.submit') }}" method="POST">
-            @csrf
-            <input type="email" name="email" placeholder="Enter Username or Email" value="{{ old('email') || {{ old('username')}}}}" required>
-            <input type="password" name="password" placeholder="Enter Password" required>
-            <button type="submit">Lanjutkan</button>
-            <button type="button" onclick="alert('Fitur lupa password belum tersedia')">Lupa Password?</button>
-        </form>
-        <a href="#" class="link">Belum punya akun?</a>
+        @if (session('success'))
+            <div class="success">{{ session('success') }}</div>
+        @endif
 
-        <hr>
-        <div class="google-btn">
-            <img src="https://www.google.com/favicon.ico" alt="Google">
-            <span>Lanjutkan dengan Google</span>
-        </div>
+        <form action="{{ route('register.submit') }}" method="POST">
+            @csrf
+            <input type="text" name="name" placeholder="Nama Lengkap" value="{{ old('name') }}" required>
+            <input type="text" name="username" placeholder="Username" value="{{ old('username') }}" required>
+            <input type="email" name="email" placeholder="Email" value="{{ old('email') }}" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="password_confirmation" placeholder="Konfirmasi Password" required>
+            <button type="submit">Buat Akun</button>
+        </form>
+
+        <a href="{{ route('login') }}" class="link">Sudah punya akun? Login di sini</a>
     </div>
 </body>
 </html>

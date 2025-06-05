@@ -24,9 +24,9 @@
     <div class="bg-[#FFF5FF] p-8 rounded-xl shadow-md w-full max-w-sm text-center">
     <h2 class="text-2xl font-bold text-[#D63384] mb-2">Selamat Datang Owner!</h2>
     <p class="mb-6 text-sm text-gray-500">Masuk untuk melanjutkan</p>
-
-    <form method="POST" action="{{ route('login') }}">
-      @csrf
+<!-- 
+    < method="POST" action="{{ route('login') }}">
+      @csrf -->
       
       <div class="mb-4">
         <input
@@ -49,9 +49,9 @@
         />
       </div>
 
-      <button type="submit" class="w-full py-3 rounded-full bg-pink-500 text-white font-semibold hover:bg-pink-600 transition duration-200">Lanjutkan</button>
-    </form>
-  </div>
+      <!-- <button type="submit" class="w-full py-3 rounded-full bg-pink-500 text-white font-semibold hover:bg-pink-600 transition duration-200">Lanjutkan</button> -->
+      <a href="{{ route('dashboard.owner') }}" class="block w-full text-center py-3 rounded-full bg-pink-500 text-white font-semibold hover:bg-pink-600 transition duration-200">Lanjutkan</a>
+    </div>
 </body>
 </html>
 

@@ -131,15 +131,12 @@
 </head>
 <body>
   <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg shadow-sm" style="background-color: #F189B8;">
-      <div class="container-fluid px-4">
-        <!-- Brand -->
-        <a class="navbar-brand fw-bold text-white" href="#">GLOW</a>
-
-        <!-- Toggle button for mobile -->
-        <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+     <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand" href="#">GLOW</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
         <div class="collapse navbar-collapse" id="navbarContent">
           <!-- KIRI: Menu Navigasi -->
@@ -156,7 +153,7 @@
           </ul>
 
           <!-- KANAN: Logout Button -->
-          {{-- <form method="POST" action="{{ route('logout') }}">
+          <form method="POST" action="{{ route('logout') }}">
             @csrf
             <button type="submit" class="btn btn-outline-light d-flex align-items-center gap-2 px-3 py-2 rounded-pill">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
@@ -165,11 +162,10 @@
               </svg>
               Logout
             </button>
-          </form> --}}
+          </form>
         </div>
       </div>
     </nav>
-
 
   <div class="container container-custom mt-4 text-center">
     <h2 class="section-title">Dashboard Owner!</h2>

@@ -7,21 +7,30 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\YogaController;
 use App\Http\Controllers\LoginController;
 
+use App\Http\Controllers\JadwalOwnerController;
+use App\Http\Controllers\RegisterController;
+
+
 // Route::get('/', function () {
-//     return view('welcome');
+//      return view('welcome');
 // });
 
-
-Route::get('/owner/login', [OwnerController::class, 'showLoginForm'])->name('login');
-// Route::post('/owner/login', [OwnerController::class, 'login']);
-
-Route::get('/dashboard-owner', [DashboardOwnerController::class, 'index'])->name('dashboard.owner');
-
-// Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');l
-
-Route::get('/owner/profile', [OwnerController::class, 'profile'])->name('owner.profile');
-
+//user
 Route::get('/yoga', [YogaController::class, 'index']);
+
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
+
+//Owner
+Route::get('/owner/login', [OwnerController::class, 'showLoginForm'])->name('login');
+// Route::post('/owner/login', [OwnerController::class, 'login']);
+Route::get('/dashboard-owner', [DashboardOwnerController::class, 'index'])->name('dashboard.owner');
+Route::get('/owner/profile', [OwnerController::class, 'profile'])->name('owner.profile');
+Route::get('/maintenance-jadwal', function () {return view('maintenanceJadwal');});
+Route::post('/logout', function () {Auth::logout();return redirect('/');})->name('logout');
+
+// Register
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
+
 
