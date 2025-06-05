@@ -6,7 +6,11 @@ use App\Http\Controllers\DashboardOwnerController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\YogaController;
 use App\Http\Controllers\LoginController;
+<<<<<<< HEAD
 use App\Http\Controllers\JadwalOwnerController;
+=======
+use App\Http\Controllers\RegisterController;
+>>>>>>> c3085e5b50ac53c09659d8382468c82f3ad6274d
 
 // Route::get('/', function () {
 //      return view('welcome');
@@ -14,9 +18,11 @@ use App\Http\Controllers\JadwalOwnerController;
 
 //user
 Route::get('/yoga', [YogaController::class, 'index']);
+
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 
+<<<<<<< HEAD
 
 //Owner
 Route::get('/owner/login', [OwnerController::class, 'showLoginForm'])->name('login');
@@ -31,3 +37,9 @@ Route::post('/jadwal/owner', [JadwalOwnerController::class, 'store'])->name('jad
 Route::get('/jadwal/owner/{id}/edit', [JadwalOwnerController::class, 'edit'])->name('jadwal.edit');
 Route::put('/jadwal/owner/{id}', [JadwalOwnerController::class, 'update'])->name('jadwal.update');
 Route::delete('/jadwal/owner/{id}', [JadwalOwnerController::class, 'destroy'])->name('jadwal.destroy');
+=======
+// Register
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
+
+>>>>>>> c3085e5b50ac53c09659d8382468c82f3ad6274d
