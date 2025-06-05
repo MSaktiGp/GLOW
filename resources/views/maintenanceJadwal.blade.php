@@ -81,6 +81,14 @@
       padding: 10px 0;
       margin-top: 3rem;
     }
+
+    .btn-logout svg {
+      transition: transform 0.2s ease;
+    }
+
+    .btn-logout:hover svg {
+      transform: translateX(4px);
+    }
   </style>
 </head>
 <body>
@@ -93,13 +101,20 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto ms-3">
-          <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
-          <li class="nav-item"><a class="nav-link active fw-bold" href="#">Maintenance Jadwal dan Coach</a></li>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
+          <li class="nav-item"><a class="nav-link text-white" href="{{ route('dashboard.owner') }}">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{{ route('owner.profile') }}">Profile</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{{ url('/maintenance-jadwal') }}">Maintenance Jadwal dan Coach</a></li>
         </ul>
-        <a href="#" class="text-white fs-4"><i class="bi bi-box-arrow-right"></i></a>
+        
+        <!-- Logout button di kanan atas -->
+        <form method="POST" action="{{ route('logout') }}">
+          @csrf
+          <button type="submit" class="btn btn-outline-light rounded-pill d-flex align-items-center gap-2 px-3 py-2 btn-logout">
+            <i class="bi bi-box-arrow-right"></i> Logout
+          </button>
+        </form>
       </div>
     </div>
   </nav>

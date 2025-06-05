@@ -21,13 +21,17 @@
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-    .navbar-brand, .nav-link {
+    .navbar-brand {
+      font-weight: bold;
+      color: white;
+    }
+
+    .nav-link {
       color: white !important;
-      font-weight: 500;
+      margin-right: 1rem;
     }
 
     .nav-link:hover {
-      text-decoration: underline;
       color: #ffeaf6 !important;
     }
 
@@ -103,19 +107,23 @@
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg">
     <div class="container-fluid px-4">
       <a class="navbar-brand" href="#">GLOW</a>
-      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarContent">
+
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
-          <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Profile</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Maintenance Jadwal dan Coach</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{{ route('dashboard.owner') }}">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{{ route('owner.profile') }}">Profile</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{{ url('/maintenance-jadwal') }}">Maintenance Jadwal dan Coach</a></li>
         </ul>
-        <form method="POST">
+        
+        <!-- Logout button di kanan atas -->
+        <form method="POST" action="{{ route('logout') }}">
+          @csrf
           <button type="submit" class="btn btn-outline-light rounded-pill d-flex align-items-center gap-2 px-3 py-2 btn-logout">
             <i class="bi bi-box-arrow-right"></i> Logout
           </button>
