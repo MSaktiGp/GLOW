@@ -28,12 +28,6 @@ Route::get('/dashboard-owner', [DashboardOwnerController::class, 'index'])->name
 Route::get('/owner/profile', [OwnerController::class, 'profile'])->name('owner.profile');
 Route::get('/maintenance-jadwal', function () {return view('maintenanceJadwal');});
 Route::post('/logout', function () {Auth::logout();return redirect('/');})->name('logout');
-Route::get('/jadwal/owner', [JadwalOwnerController::class, 'index'])->name('jadwal.index');
-Route::get('/jadwal/owner/create', [JadwalOwnerController::class, 'create'])->name('jadwal.create');
-Route::post('/jadwal/owner', [JadwalOwnerController::class, 'store'])->name('jadwal.store');
-Route::get('/jadwal/owner/{id}/edit', [JadwalOwnerController::class, 'edit'])->name('jadwal.edit');
-Route::put('/jadwal/owner/{id}', [JadwalOwnerController::class, 'update'])->name('jadwal.update');
-Route::delete('/jadwal/owner/{id}', [JadwalOwnerController::class, 'destroy'])->name('jadwal.destroy');
 
 // Register
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
