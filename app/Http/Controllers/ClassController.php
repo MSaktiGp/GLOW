@@ -20,4 +20,19 @@ class ClassController extends Controller
     {
         return view('poundfit');
     }
+
+    public function zumba()
+    {
+        return view('zumba');
+    }
+
+    public function tabata()
+    {
+        return view('tabata');
+    }
+
+    public function trampoline()
+    {
+        return view('trampoline');
+    }
 }

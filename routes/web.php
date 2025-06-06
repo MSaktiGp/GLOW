@@ -19,6 +19,9 @@ use App\Http\Controllers\RegisterController;
 Route::get('/yoga', [ClassController::class, 'yoga']);
 Route::get('/pilates', [ClassController::class, 'pilates']);
 Route::get('/poundfit', [ClassController::class, 'poundfit']);
+Route::get('/zumba', [ClassController::class, 'zumba']);
+Route::get('/tabata', [ClassController::class, 'tabata']);
+Route::get('/trampoline', [ClassController::class, 'trampoline']);
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 // Lupa password

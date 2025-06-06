@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Clases Pound Fit - GLOW</title>
+    <title>Clases Zumba - GLOW</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
     <style>
@@ -36,16 +36,16 @@
 
     <!-- Hero -->
     <section class="max-w-6xl mx-auto px-4 pb-10">
-    <img src="{{ asset('poundfitfoto.jpg') }}" alt="Pound Fit Class" class="w-full h-[500px] object-cover rounded-md">
+    <img src="{{ asset('zumbafoto.jpg') }}" alt="Zumba Class" class="w-full h-[500px] object-cover rounded-md">
     </section>
 
     <!-- About -->
     <section class="max-w-6xl mx-auto px-4 pb-10">
-        <h2 class="text-[#F189B8] font-bold text-xl mb-4">ABOUT OUR POUND FIT</h2>
+        <h2 class="text-[#F189B8] font-bold text-xl mb-4">ABOUT OUR ZUMBA</h2>
         <p>
-            Pound Fit adalah latihan kardio yang menggabungkan gerakan menabuh stik drum (Ripstix) 
-            dengan irama musik energik. Melibatkan seluruh tubuh, Pound Fit meningkatkan kekuatan otot, 
-            koordinasi, dan membakar kalori sambil tetap menyenangkan.
+            Zumba adalah latihan kebugaran yang memadukan gerakan tari Latin dan musik ritmis. 
+            Dirancang untuk membakar kalori dengan cara yang menyenangkan, Zumba meningkatkan kebugaran jantung, 
+            kelincahan, dan semangat peserta melalui suasana yang penuh energi.
         </p>
     </section>
 
@@ -54,9 +54,9 @@
         <h2 class="text-[#F189B8] font-bold text-xl mb-6">OUR BEST COACH</h2>
         <div class="grid md:grid-cols-3 gap-6">
             @foreach([
-                ['name' => 'Kayla Zahra', 'rating' => '5/5', 'img' => '../Instruktur4.jpg'],
-                ['name' => 'Alisyah Aurel', 'rating' => '4.5/5', 'img' => '../Instruktur6.jpg'],
-                ['name' => 'Rebeca Laura', 'rating' => '4.8/5', 'img' => '../Instruktur9.jpg']
+                ['name' => 'Dela Putri', 'rating' => '5/5', 'img' => '../Instruktur7.jpg'],
+                ['name' => 'Celina Angel', 'rating' => '4.5/5', 'img' => '../Instruktur8.jpg'],
+                ['name' => 'Tamara Dwi', 'rating' => '4.2/5', 'img' => '../Instruktur10.jpg']
             ] as $coach)
                 <div class="bg-white rounded-lg shadow p-4 text-center">
                     <img src="{{ $coach['img'] }}" alt="{{ $coach['name'] }}" class="w-full h-80 object-cover rounded-md mb-4">
