@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\DashboardOwnerController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\YogaController;
+use App\Http\Controllers\ClassController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LupaPwController;
 use App\Http\Controllers\JadwalOwnerController;
@@ -16,7 +16,9 @@ use App\Http\Controllers\RegisterController;
 // });
 
 //user
-Route::get('/yoga', [YogaController::class, 'index']);
+Route::get('/yoga', [ClassController::class, 'yoga']);
+Route::get('/pilates', [ClassController::class, 'pilates']);
+Route::get('/poundfit', [ClassController::class, 'poundfit']);
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 // Lupa password
