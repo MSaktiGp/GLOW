@@ -47,9 +47,8 @@
 
             <!-- LUPA PASSWORD DI BAWAH INPUT PASSWORD -->
             <div class="mb-4 text-right">
-                <a href="#" onclick="alert('Fitur lupa password belum tersedia')"
-                   class="text-sm text-[#D63384] font-medium hover:underline">
-                    Lupa Password?
+                <a href="{{ route('password.request') }}"
+                    class="text-sm text-[#D63384] font-medium hover:underline">Lupa Password?
                 </a>
             </div>
 

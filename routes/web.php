@@ -6,7 +6,7 @@ use App\Http\Controllers\DashboardOwnerController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\YogaController;
 use App\Http\Controllers\LoginController;
-
+use App\Http\Controllers\LupaPwController;
 use App\Http\Controllers\JadwalOwnerController;
 use App\Http\Controllers\RegisterController;
 
@@ -17,9 +17,11 @@ use App\Http\Controllers\RegisterController;
 
 //user
 Route::get('/yoga', [YogaController::class, 'index']);
-
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
+Route::get('/lupaPassword', [LupaPwController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('/lupaPassword', [LupaPwController::class, 'sendResetLinkEmail'])->name('password.email');
+
 
 //Owner
 Route::get('/owner/login', [OwnerController::class, 'showLoginForm'])->name('owner.login');
