@@ -19,8 +19,21 @@ use App\Http\Controllers\RegisterController;
 Route::get('/yoga', [YogaController::class, 'index']);
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
+// Lupa password
 Route::get('/lupaPassword', [LupaPwController::class, 'showLinkRequestForm'])->name('password.request');
 Route::post('/lupaPassword', [LupaPwController::class, 'sendResetLinkEmail'])->name('password.email');
+
+// Reset password
+Route::get('/reset-password/{token}', [LupaPwController::class, 'showResetForm'])->name('password.reset');
+Route::post('/reset-password', [LupaPwController::class, 'resetPassword'])->name('password.update');
+
+//tes reset tanpa data dummy
+Route::get('/test-reset', function () {
+    return view('resetPw', [
+        'token' => 'testtoken',
+        'email' => 'dummy@example.com'
+    ]);
+});
 
 
 //Owner
