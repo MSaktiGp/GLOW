@@ -91,80 +91,80 @@
     }
 
     /* Tombol Tambah lebih besar & gradien pink */
-.btn-outline-pink {
-  border: none;
-  background: linear-gradient(45deg, #db3d91, #f189b8);
-  color: white;
-  font-weight: 600;
-  border-radius: 50px;
-  padding: 0.5rem 1.5rem;
-  transition: background 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1rem;
-}
+  .btn-outline-pink {
+    border: none;
+    background: linear-gradient(45deg, #db3d91, #f189b8);
+    color: white;
+    font-weight: 600;
+    border-radius: 50px;
+    padding: 0.5rem 1.5rem;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+  }
 
-.btn-outline-pink:hover {
-  background: linear-gradient(45deg, #f189b8, #db3d91);
-  color: white;
-  box-shadow: 0 0 10px rgba(219, 61, 145, 0.6);
-}
+  .btn-outline-pink:hover {
+    background: linear-gradient(45deg, #f189b8, #db3d91);
+    color: white;
+    box-shadow: 0 0 10px rgba(219, 61, 145, 0.6);
+  }
 
-/* Tombol icon edit & delete */
-.btn-icon {
-  border: none;
-  background: transparent;
-  color: #db3d91;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
+  /* Tombol icon edit & delete */
+  .btn-icon {
+    border: none;
+    background: transparent;
+    color: #db3d91;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
 
-.btn-icon:hover {
-  color: #f189b8;
-}
+  .btn-icon:hover {
+    color: #f189b8;
+  }
 
-/* Modal header with pink gradient */
-.modal-header {
-  background: linear-gradient(90deg, #db3d91, #f189b8);
-  color: white;
-  border-bottom: none;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-}
+  /* Modal header with pink gradient */
+  .modal-header {
+    background: linear-gradient(90deg, #db3d91, #f189b8);
+    color: white;
+    border-bottom: none;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+  }
 
-.modal-title {
-  font-weight: 700;
-}
+  .modal-title {
+    font-weight: 700;
+  }
 
-/* Modal footer buttons */
-.modal-footer .btn-secondary {
-  background-color: #f5c5dc;
-  border: none;
-  color: #7a2a58;
-  transition: background-color 0.3s ease;
-}
+  /* Modal footer buttons */
+  .modal-footer .btn-secondary {
+    background-color: #f5c5dc;
+    border: none;
+    color: #7a2a58;
+    transition: background-color 0.3s ease;
+  }
 
-.modal-footer .btn-secondary:hover {
-  background-color: #db3d91;
-  color: white;
-}
+  .modal-footer .btn-secondary:hover {
+    background-color: #db3d91;
+    color: white;
+  }
 
-.modal-footer .btn-primary {
-  background-color: #db3d91;
-  border: none;
-  transition: background-color 0.3s ease;
-}
+  .modal-footer .btn-primary {
+    background-color: #db3d91;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
 
-.modal-footer .btn-primary:hover {
-  background-color: #f189b8;
-}
+  .modal-footer .btn-primary:hover {
+    background-color: #f189b8;
+  }
 
-/* Transition for buttons */
-button, .btn-icon {
-  transition: all 0.3s ease;
-}
+  /* Transition for buttons */
+  button, .btn-icon {
+    transition: all 0.3s ease;
+  }
   </style>
 </head>
 <body>
@@ -184,7 +184,7 @@ button, .btn-icon {
           <li class="nav-item"><a class="nav-link text-white" href="{{ url('/maintenance-jadwal') }}">Maintenance Jadwal dan Coach</a></li>
         </ul>
         
-        <!-- Logout button di kanan atas -->
+        <!-- Logout -->
         <form method="POST" action="{{ route('logout') }}">
           @csrf
           <button type="submit" class="btn btn-outline-light rounded-pill d-flex align-items-center gap-2 px-3 py-2 btn-logout">

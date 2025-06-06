@@ -1,104 +1,95 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Register</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
             background-image: url('https://i.pinimg.com/736x/34/d5/73/34d573db558016ba3f033c8c32ede09b.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
-        .register-container {
-            width: 380px;
-            margin: 60px auto;
-            background-color: rgba(255, 245, 255, 0.95); /* transparansi */
-            padding: 40px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 0 15px rgba(0,0,0,0.2);
-        }
-
-        h2 {
+        input::placeholder {
             color: #F189B8;
         }
 
-        input[type="text"],
-        input[type="email"],
-        input[type="password"] {
-            width: 90%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 2px solid #F189B8;
-            border-radius: 10px;
-            background-color: #fff5ff;
-        }
-
-        button {
-            width: 95%;
-            padding: 12px;
-            background-color: #f78ab3;
-            border: none;
-            color: white;
-            font-weight: bold;
-            border-radius: 25px;
-            margin-top: 10px;
-            box-shadow: 0 5px #d4719c;
-            cursor: pointer;
-        }
-
-        .link {
-            display: block;
-            margin: 10px 0;
-            color: #F189B8;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .alert {
-            background-color: #fdd;
-            color: #c00;
-            padding: 10px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
-
-        .success {
-            background-color: #dfd;
-            color: #080;
-            padding: 10px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
     </style>
 </head>
-<body>
-    <div class="register-container">
-        <h2>Daftar!</h2>
-        <p>Buat akun baru Anda</p>
+<body class="flex items-center justify-center min-h-screen backdrop-blur-sm bg-opacity-80">
+    <div class="bg-[#FFF5FF] p-8 rounded-xl shadow-md w-full max-w-sm text-center">
+        <h2 class="text-2xl font-bold text-[#D63384] mb-2">Daftar!</h2>
+        <p class="mb-6 text-sm text-gray-500">Buat akun baru Anda</p>
 
         @if ($errors->any())
-            <div class="alert">{{ $errors->first() }}</div>
+            <div class="bg-red-100 text-red-600 p-3 rounded-md mb-4 text-sm">
+                <strong>{{ $errors->first() }}</strong>
+            </div>
         @endif
 
         @if (session('success'))
-            <div class="success">{{ session('success') }}</div>
+            <div class="bg-green-100 text-green-700 p-3 rounded-md mb-4 text-sm">
+                {{ session('success') }}
+            </div>
         @endif
 
-        <form action="{{ route('register.submit') }}" method="POST">
+        <form action="{{ route('register.submit') }}" method="POST" class="space-y-4">
             @csrf
-            <input type="text" name="name" placeholder="Nama Lengkap" value="{{ old('name') }}" required>
-            <input type="text" name="username" placeholder="Username" value="{{ old('username') }}" required>
-            <input type="email" name="email" placeholder="Email" value="{{ old('email') }}" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <input type="password" name="password_confirmation" placeholder="Konfirmasi Password" required>
-            <button type="submit">Buat Akun</button>
+            <input
+                type="text"
+                name="name"
+                placeholder="Nama Lengkap"
+                value="{{ old('name') }}"
+                required
+                class="w-full px-4 py-3 rounded-xl border border-pink-300 shadow-md text-sm focus:outline-none focus:ring-2 focus:ring-pink-400"
+            />
+            <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                value="{{ old('username') }}"
+                required
+                class="w-full px-4 py-3 rounded-xl border border-pink-300 shadow-md text-sm focus:outline-none focus:ring-2 focus:ring-pink-400"
+            />
+            <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value="{{ old('email') }}"
+                required
+                class="w-full px-4 py-3 rounded-xl border border-pink-300 shadow-md text-sm focus:outline-none focus:ring-2 focus:ring-pink-400"
+            />
+            <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                required
+                class="w-full px-4 py-3 rounded-xl border border-pink-300 shadow-md text-sm focus:outline-none focus:ring-2 focus:ring-pink-400"
+            />
+            <input
+                type="password"
+                name="password_confirmation"
+                placeholder="Konfirmasi Password"
+                required
+                class="w-full px-4 py-3 rounded-xl border border-pink-300 shadow-md text-sm focus:outline-none focus:ring-2 focus:ring-pink-400"
+            />
+
+            <button
+                type="submit"
+                class="w-full py-3 rounded-full bg-[#D63384] text-white font-semibold hover:bg-[#c12778] transition duration-200"
+            >
+                Buat Akun
+            </button>
         </form>
 
-        <a href="{{ route('login') }}" class="link">Sudah punya akun? Login di sini</a>
+        <div class="text-center mt-6 text-sm">
+            <span class="text-gray-500">Sudah punya akun?</span>
+            <a href="{{ route('login') }}" class="text-[#D63384] font-semibold hover:underline">Login di sini</a>
+        </div>
     </div>
 </body>
 </html>

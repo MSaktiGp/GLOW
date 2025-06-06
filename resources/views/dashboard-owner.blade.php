@@ -138,19 +138,12 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-        <div class="collapse navbar-collapse" id="navbarContent">
-          <!-- KIRI: Menu Navigasi -->
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#">Dashboard</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#">Profile</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#">Maintenance Jadwal dan Coach</a>
-            </li>
-          </ul>
+       <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
+          <li class="nav-item"><a class="nav-link text-white" href="{{ route('dashboard.owner') }}">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{{ route('owner.profile') }}">Profile</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{{ url('/maintenance-jadwal') }}">Maintenance Jadwal dan Coach</a></li>
+        </ul>
 
           <!-- KANAN: Logout Button -->
           <form method="POST" action="{{ route('logout') }}">

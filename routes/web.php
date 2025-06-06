@@ -22,8 +22,8 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 
 //Owner
-Route::get('/owner/login', [OwnerController::class, 'showLoginForm'])->name('login');
-// Route::post('/owner/login', [OwnerController::class, 'login']);
+Route::get('/owner/login', [OwnerController::class, 'showLoginForm'])->name('owner.login');
+Route::post('/owner/login', [OwnerController::class, 'login'])->name('owner.login.submit');
 Route::get('/dashboard-owner', [DashboardOwnerController::class, 'index'])->name('dashboard.owner');
 Route::get('/owner/profile', [OwnerController::class, 'profile'])->name('owner.profile');
 Route::get('/maintenance-jadwal', function () {return view('maintenanceJadwal');});
