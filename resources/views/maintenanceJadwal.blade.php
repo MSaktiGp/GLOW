@@ -185,7 +185,7 @@
         </ul>
         
         <!-- Logout -->
-        <form method="POST" action="{{ route('logout') }}">
+        <form method="POST" action="{{ route('register') }}">
           @csrf
           <button type="submit" class="btn btn-outline-light rounded-pill d-flex align-items-center gap-2 px-3 py-2 btn-logout">
             <i class="bi bi-box-arrow-right"></i> Logout
@@ -208,9 +208,9 @@
         <button class="btn btn-outline-pink btn-tambah"> <i class="bi bi-plus-lg"></i> Tambah</button>
       </div>
       <div class="table-responsive">
-        <table class="table table-bordered text-center align-middle">
+        <table class="table table-bordered table-glow-p table-hover table-striped text-center align-middle">
           <thead>
-            <tr>
+            <tr> 
               <th>No</th>
               <th>Nama Peserta</th>
               <th>Jenis Kelas</th>
@@ -220,7 +220,7 @@
               <th>Aksi</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="table-glow-t">
             <tr>
               <td>1</td>
               <td>Ayu</td>
@@ -245,7 +245,7 @@
         <button class="btn btn-outline-pink btn-tambah"> <i class="bi bi-plus-lg"></i> Tambah</button>
       </div>
       <div class="table-responsive">
-        <table class="table table-bordered text-center align-middle">
+        <table class="table table-bordered table-glow-p table-striped table-hover text-center align-middle">
           <thead>
             <tr>
               <th>No</th>
@@ -257,7 +257,7 @@
               <th>Aksi</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="table-glow-t">
             <tr>
               <td>1</td>
               <td>Siska</td>

@@ -194,7 +194,7 @@
             <input type="text" class="form-control search-box w-25" placeholder="Search..." />
           </div>
           <div class="table-responsive">
-            <table class="table table-bordered table-dark table-striped">
+            <table class="table table-bordered table-glow-p table-hover table-striped">
               <thead>
                 <tr>
                   <th>No</th>
@@ -205,7 +205,7 @@
                   <th>Status</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class="table-glow-t">
                 <tr>
                   <td>1</td>
                   <td>Rina</td>
