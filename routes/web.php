@@ -9,6 +9,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LupaPwController;
 use App\Http\Controllers\JadwalOwnerController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
 
 
 // Route::get('/', function () {
