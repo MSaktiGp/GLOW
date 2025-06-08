@@ -55,6 +55,4 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 
 
 //dashboard guest
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+Route::get('/dashboard', function () { return view('dashboard');});
