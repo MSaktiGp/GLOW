@@ -16,6 +16,8 @@ use App\Http\Controllers\RegisterController;
 // });
 
 //user
+
+Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 Route::get('/yoga', [ClassController::class, 'yoga']);
 Route::get('/pilates', [ClassController::class, 'pilates']);
 Route::get('/poundfit', [ClassController::class, 'poundfit']);
@@ -54,5 +56,3 @@ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->na
 Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
 
 
-//dashboard guest
-Route::get('/dashboard', function () { return view('dashboard');});
