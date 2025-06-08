@@ -13,6 +13,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CoachController;
 
 
+
 // Route::get('/', function () {
 //      return view('welcome');
 // });
@@ -60,4 +61,5 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 
 
 //coach
+
 Route::get('/coach1', [CoachController::class, 'coach1']);
