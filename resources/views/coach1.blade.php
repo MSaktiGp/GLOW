@@ -25,7 +25,7 @@
 <div class="container mt-5">
   <div class="row align-items-start bg-light p-4 rounded shadow-sm">
     <div class="col-md-4 text-center">
-      <img src="{{ asset('images/coach1.jpeg') }}" alt="Instruktur Yoga" class="img-fluid rounded">
+      <img src="{{ asset('images/Instruktur3.jpg') }}" alt="Instruktur Yoga" class="img-fluid rounded">
     </div>
     <div class="col-md-8 text-custom">
       <h4 class="fw-bold mb-1">Claura Sintiya</h4>
