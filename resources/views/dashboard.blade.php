@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts')
 
 @section('content')
     <div class="container-fluid p-0">
@@ -31,7 +31,7 @@
     <div class="container">
         <h3 class="text-center mb-3 fw-bold" style="color: #79455C;">Our Classes</h3>
         <div class="row g-4">
-            <!-- Contoh 1: Yoga -->
+            {{-- yoga --}}
             <div class="col-md-4">
                 <a href="{{ route('classes.yoga') }}" class="text-decoration-none">
                     <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
@@ -44,8 +44,7 @@
                     </div>
                 </a>
             </div>
-
-            <!-- Ulangi pola di atas untuk kelas lainnya -->
+            {{-- pilates --}}
             <div class="col-md-4">
                 <a href="{{ route('classes.pilates') }}" class="text-decoration-none">
                     <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
@@ -59,8 +58,7 @@
                 </a>
             </div>
 
-            <!-- Tambahkan Poundfit, Zumba, Tabata, Trampoline dengan cara yang sama -->
-
+            {{-- poundfit --}}
             <div class="col-md-4">
                 <a href="{{ route('classes.poundfit') }}" class="text-decoration-none">
                     <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
@@ -88,7 +86,6 @@
                 </a>
             </div>
 
-            <!-- Lanjutkan untuk Tabata dan Trampoline -->
             
             <div class="col-md-4">
                 <a href="{{ route('classes.tabata') }}" class="text-decoration-none">
