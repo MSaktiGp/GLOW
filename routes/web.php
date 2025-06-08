@@ -27,6 +27,7 @@ Route::get('/tabata', [ClassController::class, 'tabata']);
 Route::get('/trampoline', [ClassController::class, 'trampoline']);
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
+
 // Lupa password
 Route::get('/lupaPassword', [LupaPwController::class, 'showLinkRequestForm'])->name('password.request');
 Route::post('/lupaPassword', [LupaPwController::class, 'sendResetLinkEmail'])->name('password.email');
