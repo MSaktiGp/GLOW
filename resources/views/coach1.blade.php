@@ -6,6 +6,19 @@
   .text-custom {
     color: #79455C;
   }
+
+  .class-card {
+    min-height: 210px; /* sesuaikan sesuai kebutuhan */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .btn-outline-secondary:hover {
+      background-color: #F189B8;
+      color: white;
+      border-color: #F189B8;
+    }
 </style>
 
 <!-- Section Instruktur -->
@@ -25,7 +38,108 @@
 </div>
 
 <div class="container mt-5">
-<h5>Cek Jadwal Kelas</h5>
+
+<!-- Section Jadwal Kelas -->
+<section class="py-5 px-5" style="background: #F189B8;">
+  <div class="container text-center text-white">
+    <h2 class="mb-3">Book a Yoga Class</h2>
+    <p class="mb-4">Bergabunglah dengan kelas yoga kami. Temukan waktu latihan yang tepat untuk Anda dan tingkatkan koneksi pikiran dan tubuh Anda.</p>
+
+
+    <!-- Class Cards -->
+    <div class="row justify-content-center g-4">
+      <!-- Card 1 -->
+      <div class="col-md-4">
+        <div class="card shadow-sm class-card">
+          <div class="card-body">
+            <span class="badge bg-success mb-2">Available</span>
+
+            <div class="d-flex justify-content-between">
+              <h5 class="card-title mb-1">Mindful Balance</h5>
+              <span class="text-muted">60 menit</span>
+            </div>
+
+            <div class="mb-2">
+              <!-- Tanggal -->
+              <div class="d-flex align-items-center mb-1">
+                <i class="bi bi-calendar-heart me-2"></i>
+                <span>Sabtu, 07 Juni 2025</span>
+              </div>
+
+              <!-- Waktu -->
+              <div class="d-flex align-items-center">
+                <i class="bi bi-clock me-2"></i>
+                <span>08:00 - 09:00 WIB</span>
+              </div>
+            </div>
+
+            <button class="btn btn-outline-secondary w-100 mt-3">Book Class</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-md-4">
+        <div class="card shadow-sm class-card">
+          <div class="card-body">
+            <span class="badge bg-success mb-2">Available</span>
+            <div class="d-flex justify-content-between">
+              <h5 class="card-title">Awakened Flow</h5>
+              <span class="text-muted">75 menit</span>
+            </div>
+              <div class="mb-2">
+              <!-- Tanggal -->
+              <div class="d-flex align-items-center mb-1">
+                <i class="bi bi-calendar-heart me-2"></i>
+                <span>Sabtu, 07 Juni 2025</span>
+              </div>
+
+              <!-- Waktu -->
+              <div class="d-flex align-items-center">
+                <i class="bi bi-clock me-2"></i>
+                <span>10:30 - 11:30 WIB</span>
+              </div>
+            </div>
+            <button class="btn btn-outline-secondary w-100 mt-3">Book Class</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-4">
+        <div class="card shadow-sm class-card">
+          <div class="card-body">
+            <span class="badge bg-danger text-dark mb-2">Fully Booked</span>
+            <div class="d-flex justify-content-between">
+              <h5 class="card-title">Inner Stillness</h5>
+              <span class="text-muted">60 Menit</span>
+            </div>
+
+           <div class="mb-2">
+              <!-- Tanggal -->
+              <div class="d-flex align-items-center mb-1">
+                <i class="bi bi-calendar-heart me-2"></i>
+                <span>Sabtu, 07 Juni 2025</span>
+              </div>
+
+              <!-- Waktu -->
+              <div class="d-flex align-items-center">
+                <i class="bi bi-clock me-2"></i>
+                <span>15:30 - 16:45 WIB</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tambahkan card lainnya sesuai kebutuhan -->
+      
+    </div>
+
+    
+  </div>
+</section>
+
 </div>
 @endsection
 
