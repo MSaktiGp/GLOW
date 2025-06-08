@@ -10,6 +10,7 @@ use App\Http\Controllers\LupaPwController;
 use App\Http\Controllers\JadwalOwnerController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CoachController;
 
 
 // Route::get('/', function () {
@@ -58,3 +59,5 @@ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->na
 Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
 
 
+//coach
+Route::get('/coach1', [CoachController::class, 'coach1']);
