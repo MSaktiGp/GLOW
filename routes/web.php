@@ -21,15 +21,14 @@ use App\Http\Controllers\CoachController;
 //user
 
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
-Route::get('/yoga', [ClassController::class, 'yoga']);
-Route::get('/pilates', [ClassController::class, 'pilates']);
-Route::get('/poundfit', [ClassController::class, 'poundfit']);
-Route::get('/zumba', [ClassController::class, 'zumba']);
-Route::get('/tabata', [ClassController::class, 'tabata']);
-Route::get('/trampoline', [ClassController::class, 'trampoline']);
+Route::get('/yoga', [ClassController::class, 'yoga'])->name('yoga');
+Route::get('/pilates', [ClassController::class, 'pilates'])->name('pilates');
+Route::get('/poundfit', [ClassController::class, 'poundfit'])->name('poundfit');
+Route::get('/zumba', [ClassController::class, 'zumba'])->name('zumba');
+Route::get('/tabata', [ClassController::class, 'tabata'])->name('tabata');
+Route::get('/trampoline', [ClassController::class, 'trampoline'])->name('trampoline');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
-
 // Lupa password
 Route::get('/lupaPassword', [LupaPwController::class, 'showLinkRequestForm'])->name('password.request');
 Route::post('/lupaPassword', [LupaPwController::class, 'sendResetLinkEmail'])->name('password.email');
@@ -58,8 +57,5 @@ Route::post('/logout', function () {Auth::logout();return redirect('/');})->name
 // Register
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
-
-
-//coach
 
 Route::get('/coach1', [CoachController::class, 'coach1']);

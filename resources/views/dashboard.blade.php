@@ -1,4 +1,5 @@
-@extends('layouts')
+@extends('layouts.dashboard-layout')
+@section('title','Girls Living on Wellness')
 
 @section('content')
     <div class="container-fluid p-0">
@@ -33,7 +34,7 @@
         <div class="row g-4">
             {{-- yoga --}}
             <div class="col-md-4">
-                <a href="{{ route('classes.yoga') }}" class="text-decoration-none">
+                <a href="{{ route('yoga') }}" class="text-decoration-none">
                     <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
                         <div class="ratio ratio-1x1 bg-light">
                             <img src="{{ asset('images/yoga.png') }}" class="w-100 h-100 object-fit-cover" alt="Yoga">
@@ -46,7 +47,7 @@
             </div>
             {{-- pilates --}}
             <div class="col-md-4">
-                <a href="{{ route('classes.pilates') }}" class="text-decoration-none">
+                <a href="{{ route('pilates') }}" class="text-decoration-none">
                     <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
                         <div class="ratio ratio-1x1 bg-light">
                             <img src="{{ asset('images/pilates.png') }}" class="w-100 h-100 object-fit-cover" alt="Pilates">
@@ -60,7 +61,7 @@
 
             {{-- poundfit --}}
             <div class="col-md-4">
-                <a href="{{ route('classes.poundfit') }}" class="text-decoration-none">
+                <a href="{{ route('poundfit') }}" class="text-decoration-none">
                     <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
                         <div class="ratio ratio-1x1 bg-light">
                             <img src="{{ asset('images/poundfit.png') }}" class="w-100 h-100 object-fit-cover" alt="Poundfit">
@@ -74,7 +75,7 @@
 
             <!-- Contoh lainnya: Zumba -->
             <div class="col-md-4">
-                <a href="{{ route('classes.zumba') }}" class="text-decoration-none">
+                <a href="{{ route('zumba') }}" class="text-decoration-none">
                     <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
                         <div class="ratio ratio-1x1 bg-light">
                             <img src="{{ asset('images/zumba.png') }}" class="w-100 h-100 object-fit-cover" alt="Zumba">
@@ -88,7 +89,7 @@
 
             
             <div class="col-md-4">
-                <a href="{{ route('classes.tabata') }}" class="text-decoration-none">
+                <a href="{{ route('tabata') }}" class="text-decoration-none">
                     <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
                         <div class="ratio ratio-1x1 bg-light">
                             <img src="{{ asset('images/tabata.png') }}" class="w-100 h-100 object-fit-cover" alt="tabata">
@@ -101,7 +102,7 @@
             </div>
 
             <div class="col-md-4">
-                <a href="{{ route('classes.trampoline') }}" class="text-decoration-none">
+                <a href="{{ route('trampoline') }}" class="text-decoration-none">
                     <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
                         <div class="ratio ratio-1x1 bg-light">
                             <img src="{{ asset('images/trampoline.png') }}" class="w-100 h-100 object-fit-cover" alt="Trampoline">
