@@ -19,12 +19,12 @@ use App\Http\Controllers\DashboardController;
 //user
 
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
-Route::get('/yoga', [ClassController::class, 'yoga']);
-Route::get('/pilates', [ClassController::class, 'pilates']);
-Route::get('/poundfit', [ClassController::class, 'poundfit']);
-Route::get('/zumba', [ClassController::class, 'zumba']);
-Route::get('/tabata', [ClassController::class, 'tabata']);
-Route::get('/trampoline', [ClassController::class, 'trampoline']);
+Route::get('/yoga', [ClassController::class, 'yoga'])->name('yoga');
+Route::get('/pilates', [ClassController::class, 'pilates'])->name('pilates');
+Route::get('/poundfit', [ClassController::class, 'poundfit'])->name('poundfit');
+Route::get('/zumba', [ClassController::class, 'zumba'])->name('zumba');
+Route::get('/tabata', [ClassController::class, 'tabata'])->name('tabata');
+Route::get('/trampoline', [ClassController::class, 'trampoline'])->name('trampoline');
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 // Lupa password

@@ -17,7 +17,7 @@
   <div class="flex items-center justify-between px-4">
 
     <!-- GLOW (kiri mentok) -->
-    <h1 class="text-xl font-abril text-white">GLOW</h1>
+    <h1 class="text-xl font-abril text-white"><a href="/dashboard">GLOW</a></h1>
 
     <!-- Menu Navigasi Tengah -->
     <nav class="hidden md:flex space-x-6 text-white absolute left-1/2 transform -translate-x-1/2">
@@ -36,7 +36,7 @@
 
     <!-- Hero -->
     <section class="max-w-6xl mx-auto px-4 pb-10">
-    <img src="{{ asset('download.jpg') }}" alt="Yoga Class" class="w-full h-[500px] object-cover rounded-md">
+    <img src="{{ asset('images/download.jpg') }}" alt="Yoga Class" class="w-full h-[500px] object-cover rounded-md">
     </section>
 
     <!-- About -->
@@ -54,9 +54,9 @@
         <h2 class="text-[#F189B8] font-bold text-xl mb-6">OUR BEST COACH</h2>
         <div class="grid md:grid-cols-3 gap-6">
             @foreach([
-                ['name' => 'Anindya Sarasvati', 'rating' => '5/5', 'img' => '../Instruktur1.jpg'],
-                ['name' => 'Ayudia Clara', 'rating' => '4.5/5', 'img' => '../Instruktur2.jpg'],
-                ['name' => 'Claura Sintiya', 'rating' => '4/5', 'img' => '../Instruktur3.jpg']
+                ['name' => 'Anindya Sarasvati', 'rating' => '5/5', 'img' => '../images/Instruktur1.jpg'],
+                ['name' => 'Ayudia Clara', 'rating' => '4.5/5', 'img' => '../images/Instruktur2.jpg'],
+                ['name' => 'Claura Sintiya', 'rating' => '4/5', 'img' => '../images/Instruktur3.jpg']
             ] as $coach)
                 <div class="bg-white rounded-lg shadow p-4 text-center">
                     <img src="{{ $coach['img'] }}" alt="{{ $coach['name'] }}" class="w-full h-80 object-cover rounded-md mb-4">
