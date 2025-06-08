@@ -119,10 +119,10 @@
     </div>
 </section>
 
-        <section id="contact-us" class="py-5" style="background-color: #F189B8; color: white;">
+<section id="contact-us" class="py-5" style="background-color: #F189B8; color: white;">
   <div class="container">
     <div class="row">
-      
+      <!-- Kolom kiri -->
       <div class="col-md-4">
         <h5 class="fw-bold">GLOW</h5>
         <p class="mb-0">
@@ -132,7 +132,7 @@
         </p>
       </div>
 
-      
+      <!-- Kolom kanan dengan offset agar lurus dengan Trampoline -->
       <div class="col-md-4 offset-md-4">
         <h6 class="fw-semibold">Contact info</h6>
         <p class="mb-1"><i class="bi bi-instagram me-2"></i>@glowithus</p>
@@ -142,6 +142,7 @@
     </div>
   </div>
 </section>
+
 
 
     </div>
