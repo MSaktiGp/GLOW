@@ -11,7 +11,7 @@ use App\Http\Controllers\JadwalOwnerController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CoachController;
-use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\CustomerPaymentController;
 
 // Route::get('/', function () {
 //      return view('welcome');
@@ -58,4 +58,7 @@ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->na
 Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
 
 Route::get('/coach1', [CoachController::class, 'coach1']);
-Route::get('/payment', [PaymentController::class, 'payment'])->name('payment');
+
+// Customer Payment
+Route::get('/payment', [CustomerPaymentController::class, 'payment'])->name('payment');
+Route::get('/paymentmethod1', [CustomerPaymentController::class, 'paymentmethod1'])->name('paymentmethod1');
