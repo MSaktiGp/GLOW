@@ -52,29 +52,6 @@
         @yield('content')
     </div>
 
-    <section id="contact-us" class="py-5" style="background-color: #F189B8; color: white;">
-  <div class="container">
-    <div class="row">
-      <!-- Kolom kiri -->
-      <div class="col-md-4">
-        <h5 class="fw-bold">GLOW</h5>
-        <p class="mb-0">
-          Platform digital All-in-One<br>
-          untuk Gaya Hidup Sehat<br>
-          Wanita.
-        </p>
-      </div>
-
-      <!-- Kolom kanan dengan offset agar lurus dengan Trampoline -->
-      <div class="col-md-4 offset-md-4">
-        <h6 class="fw-semibold">Contact info</h6>
-        <p class="mb-1"><i class="bi bi-instagram me-2"></i>@glowithus</p>
-        <p class="mb-1"><i class="bi bi-whatsapp me-2"></i>0812-3456-7890</p>
-        <p class="mb-0"><i class="bi bi-envelope me-2"></i>glowithus@gmail.com</p>
-      </div>
-    </div>
-  </div>
-</section>
 
     {{-- Footer --}}
     <footer class="text-white text-center py-3" style="background-color: #F189B8;">
