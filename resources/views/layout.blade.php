@@ -37,10 +37,13 @@
                 </ul>
             </div>
             <form class="d-flex">
-                <a href="#" class="btn btn-signin">
-                    <i class="bi bi-person-circle"></i> Sign in
+                <a href="#" title="Sign in"
+                class="btn d-flex align-items-center justify-content-center rounded-circle"
+                style="width: 40px; height: 40px; background-color: white; border: 2px solid #e59cc6; color: #e59cc6;">
+                    <i class="bi bi-person fs-5"></i>
                 </a>
             </form>
+
         </div>
     </nav>
 

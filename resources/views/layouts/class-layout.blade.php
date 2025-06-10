@@ -115,6 +115,7 @@
     {{-- Footer --}}
     <footer class="bg-primary-pink text-white text-center py-4 mt-auto">
         <p class="text-sm">&copy; 2025 Copyright: glowithus.com</p>
+        <small>Designed by glowithus</small>
     </footer>
 
     {{-- JavaScript untuk Menu Mobile (Vanilla JS) --}}
