@@ -68,5 +68,9 @@ Route::get('/booked6', [BookedController::class, 'booked6']);
 Route::get('/payment', [CustomerPaymentController::class, 'payment'])->name('payment');
 Route::get('/paymentmethod1', [CustomerPaymentController::class, 'paymentmethod1'])->name('paymentmethod1');
 Route::get('/paymentmethod2', [CustomerPaymentController::class, 'paymentmethod2'])->name('paymentmethod2');
+Route::get('/paymentmethod3', [CustomerPaymentController::class, 'paymentmethod3'])->name('paymentmethod3');
+Route::get('/paymentmethod4', [CustomerPaymentController::class, 'paymentmethod4'])->name('paymentmethod4');
+Route::get('/paymentmethod5', [CustomerPaymentController::class, 'paymentmethod5'])->name('paymentmethod5');
+Route::get('/paymentmethod6', [CustomerPaymentController::class, 'paymentmethod6'])->name('paymentmethod6');
 Route::get('/paymentconfirm', [CustomerPaymentController::class, 'paymentconfirm'])->name('paymentconfirm');
 
