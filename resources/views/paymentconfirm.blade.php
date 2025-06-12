@@ -11,7 +11,7 @@
         min-height: 210px;
         display: flex;
         flex-direction: column;
-        justify-contect: space-between;
+        justify-content: space-between;
     }
 
     .btn-outline-secondary:hover {
@@ -19,37 +19,56 @@
         color: white;
         border-color: #f189B8;
     }
-</style>
 
-<!-- Section Instruktur -->
-<div class="container mt-5">
-  <div class="row align-items-start bg-light p-4 rounded shadow-sm">
-    <div class="col-md-4 text-center">
-      <img src="{{ asset('images/Instruktur3.jpg') }}" alt="Instruktur Yoga" class="img-fluid rounded">
-    </div>
-    <div class="col-md-8 text-custom">
-      <h4 class="fw-bold mb-1">Claura Sintiya</h4>
-      <p class="mb-1"><i class="bi bi-star-fill text-warning"></i> <strong>4/5</strong></p>
-      <p class="fw-semibold mb-2"> <i class="bi bi-telephone-fill"></i> 081234567890</p>
-      <p class="fw-semibold mb-2"> <i class="bi bi-instagram"></i> claurasintiya_ </p>
-      <p>“Temukan keseimbangan tubuh dan pikiran bersama Claura, instruktur bersertifikat dengan pengalaman lebih dari 5 tahun di bidang yoga mindfulness”</p>
-    </div>
-  </div>
-</div>
+    .confirmation-message {
+        font-size: 1rem;
+        color: #666;
+    }
+
+    .confirmation-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #79455c;
+    }
+
+    .btn-selesai {
+        background-color: #f189B8;
+        border: none;
+        color: white;
+        font-weight: 600;
+        padding: 0.5rem 1.8rem;
+        border-radius: 2rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(241, 137, 184, 0.3);
+        font-size: 0.95rem;
+    }
+
+    .btn-selesai:hover {
+        background-color: #e075a5;
+        transform: translateY(-2px);
+    }
+
+    .confirmation-card {
+        max-width: 420px;
+        margin: 0 auto;
+    }
+</style>
 
 <!-- Section Konfirmasi Pesanan -->
 <div class="container my-5">
-  <div class="bg-white p-4 rounded shadow-sm text-center">
-    <h5 class="fw-bold mb-4 text-secondary">Pesanan Dikonfirmasi</h5>
-    <div class="mb-3">
-      <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="none" stroke="#00C853" stroke-width="2" class="bi bi-check-circle" viewBox="0 0 16 16">
-        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05L7.477 11.53a.75.75 0 0 1-1.08.02L4.324 9.384a.75.75 0 1 1 1.06-1.06l1.568 1.568 4.018-4.018z"/>
-        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0-1A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"/>
-      </svg>
+    <div class="bg-white p-4 rounded shadow-sm text-center confirmation-card">
+        <h5 class="confirmation-title mb-3">Pesanan Berhasil Dikonfirmasi</h5>
+        <div class="mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" fill="none" stroke="#00C853" stroke-width="2" class="bi bi-check-circle" viewBox="0 0 16 16">
+                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05L7.477 11.53a.75.75 0 0 1-1.08.02L4.324 9.384a.75.75 0 1 1 1.06-1.06l1.568 1.568 4.018-4.018z"/>
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14z"/>
+            </svg>
+        </div>
+        <p class="confirmation-message mb-4">
+            Terima kasih! Pesanan Anda telah berhasil dikonfirmasi dan sedang diproses.
+        </p>
+        <a class="btn btn-selesai">Selesai</a>
     </div>
-    <p class="mb-4 text-muted">Pesanan Anda telah dibuat :)</p>
-    <button class="btn btn-danger px-4 py-2 fw-semibold" style="background-color: #f189B8; border: none;">Selesai</button>
-  </div>
 </div>
 
 @endsection

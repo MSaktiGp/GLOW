@@ -55,9 +55,11 @@
 
 
     {{-- Footer --}}
-    <footer class="text-white text-center py-3" style="background-color: #F189B8;">
-        <p>&copy; 2025 Copyright: glowithus.com</p>
+    <footer class="text-white text-center py-4 mt-auto" style="background-color: #F189B8;">
+    <p class="mb-1 small">&copy; 2025 Copyright: glowithus.com</p>
+    <small>Designed by glowithus</small>
     </footer>
+
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" 
