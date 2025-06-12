@@ -25,7 +25,7 @@
 <div class="container mt-5">
   <div class="row align-items-start bg-light p-4 rounded shadow-sm">
     <div class="col-md-4 text-center">
-      <img src="{{ asset('images/Instruktur3.jpg') }}" alt="Instruktur Yoga" class="img-fluid rounded">
+      <img src="{{ asset('images/Instruktur1.jpg') }}" alt="Instruktur Yoga" class="img-fluid rounded">
     </div>
     <div class="col-md-8 text-custom">
       <h4 class="fw-bold mb-1">Claura Sintiya</h4>
@@ -43,7 +43,7 @@
 <section class="py-5 px-5" style="background: #F189B8;">
   <div class="container text-center text-white">
     <h2 class="mb-3">Book a Yoga Class</h2>
-    <p class="mb-4">Bergabunglah dengan kelas yoga kami. Temukan waktu latihan yang tepat untuk Anda dan tingkatkan koneksi pikiran dan tubuh Anda.</p>
+    <p class="mb-4">Bergabunglah dengan kelas pilates kami. Temukan waktu latihan yang tepat untuk Anda dan tingkatkan koneksi pikiran dan tubuh Anda.</p>
 
 
     <!-- Class Cards -->
@@ -70,6 +70,12 @@
               <div class="d-flex align-items-center">
                 <i class="bi bi-clock me-2"></i>
                 <span>08:00 - 09:00 WIB</span>
+              </div>
+
+               {{-- kapasitas --}}
+              <div class="d-flex align-items-center">
+                <i class="bi bi-people me-2"></i>
+                <span>30</span>
               </div>
                <br>
               <!-- harga -->
@@ -104,6 +110,12 @@
                 <i class="bi bi-clock me-2"></i>
                 <span>10:30 - 11:30 WIB</span>
               </div>
+
+               {{-- kapasitas --}}
+              <div class="d-flex align-items-center">
+                <i class="bi bi-people me-2"></i>
+                <span>30</span>
+              </div>
                <br>
               <!-- harga -->
               <div class="d-flex align-items-center">
@@ -137,6 +149,13 @@
                 <i class="bi bi-clock me-2"></i>
                 <span>15:30 - 16:30 WIB</span> 
               </div>
+
+               {{-- kapasitas --}}
+              <div class="d-flex align-items-center">
+                <i class="bi bi-people me-2"></i>
+                <span>30</span>
+              </div>
+
               <br>
               <!-- harga -->
               <div class="d-flex align-items-center">

@@ -68,7 +68,7 @@
                             <img src="{{ asset('images/poundfit.png') }}" class="w-100 h-100 object-fit-cover" alt="Poundfit">
                         </div>
                         <div class="text-center bg-pink text-white fw-bold py-2 fs-6">
-                            Poundfit 
+                            Pound Fit 
                         </div>
                     </div>
                 </a>

@@ -9,7 +9,7 @@
 
     <!-- About -->
     <section class="max-w-6xl mx-auto px-4 pb-10">
-        <h2 class="text-[#F189B8] font-bold text-xl mb-4">ABOUT OUR POUNDFIT</h2>
+        <h2 class="text-[#F189B8] font-bold text-xl mb-4">ABOUT OUR POUND FIT</h2>
         <p>
             Pound Fit adalah latihan kardio yang menggabungkan gerakan menabuh stik drum (Ripstix) 
             dengan irama musik energik. Melibatkan seluruh tubuh, Pound Fit meningkatkan kekuatan otot, 
@@ -22,9 +22,9 @@
         <h2 class="text-[#F189B8] font-bold text-xl mb-6">OUR BEST COACH</h2>
         <div class="grid md:grid-cols-3 gap-6">
             @foreach([
-                ['name' => 'Kayla Zahra', 'rating' => '5/5', 'img' => '../images/Instruktur4.jpg'],
+                ['name' => 'Rebeca Laura', 'rating' => '5/5', 'img' => '../images/Instruktur9.jpg'],
                 ['name' => 'Alisyah Aurel', 'rating' => '4.5/5', 'img' => '../images/Instruktur6.jpg'],
-                ['name' => 'Rebeca Laura', 'rating' => '4.8/5', 'img' => '../images/Instruktur9.jpg']
+                ['name' => 'Kayla Zahra', 'rating' => '4.8/5', 'img' => '../images/Instruktur1.jpg']
             ] as $coach)
                 <div class="bg-white rounded-lg shadow p-4 text-center">
                     <img src="{{ $coach['img'] }}" alt="{{ $coach['name'] }}" class="w-full h-80 object-cover rounded-md mb-4">
