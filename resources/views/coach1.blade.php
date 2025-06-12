@@ -71,6 +71,11 @@
                 <i class="bi bi-clock me-2"></i>
                 <span>08:00 - 09:00 WIB</span>
               </div>
+               <br>
+              <!-- harga -->
+              <div class="d-flex align-items-center">
+                <span><strong>Rp45.000</strong></span>
+              </div>
             </div>
 
             <button class="btn btn-outline-secondary w-100 mt-3">Book Class</button>
@@ -87,17 +92,22 @@
               <h5 class="card-title">Awakened Flow</h5>
               <span class="text-muted">75 menit</span>
             </div>
-              <div class="mb-2">
+            <div class="mb-2">
               <!-- Tanggal -->
               <div class="d-flex align-items-center mb-1">
                 <i class="bi bi-calendar-heart me-2"></i>
-                <span>Sabtu, 07 Juni 2025</span>
+                <span>Minggu, 07 Juni 2025</span>
               </div>
 
               <!-- Waktu -->
               <div class="d-flex align-items-center">
                 <i class="bi bi-clock me-2"></i>
                 <span>10:30 - 11:30 WIB</span>
+              </div>
+               <br>
+              <!-- harga -->
+              <div class="d-flex align-items-center">
+                <span><strong>Rp65.000</strong></span>
               </div>
             </div>
             <button class="btn btn-outline-secondary w-100 mt-3">Book Class</button>
@@ -119,15 +129,21 @@
               <!-- Tanggal -->
               <div class="d-flex align-items-center mb-1">
                 <i class="bi bi-calendar-heart me-2"></i>
-                <span>Sabtu, 07 Juni 2025</span>
+                <span>Sabtu, 14 Juni 2025</span>
               </div>
 
               <!-- Waktu -->
               <div class="d-flex align-items-center">
                 <i class="bi bi-clock me-2"></i>
-                <span>15:30 - 16:45 WIB</span>
+                <span>15:30 - 16:30 WIB</span> 
+              </div>
+              <br>
+              <!-- harga -->
+              <div class="d-flex align-items-center">
+                <span><strong>Rp50.000</strong></span>
               </div>
             </div>
+            <button disabled class="btn btn-outline-secondary w-100 mt-3">Book Class</button>
           </div>
         </div>
       </div>
