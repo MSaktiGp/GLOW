@@ -62,5 +62,6 @@ Route::get('/coach1', [CoachController::class, 'coach1']);
 // Customer Payment
 Route::get('/payment', [CustomerPaymentController::class, 'payment'])->name('payment');
 Route::get('/paymentmethod1', [CustomerPaymentController::class, 'paymentmethod1'])->name('paymentmethod1');
+Route::get('/paymentmethod2', [CustomerPaymentController::class, 'paymentmethod2'])->name('paymentmethod2');
 Route::get('/paymentconfirm', [CustomerPaymentController::class, 'paymentconfirm'])->name('paymentconfirm');
 
