@@ -9,7 +9,7 @@
 
     <!-- About -->
     <section class="max-w-6xl mx-auto px-4 pb-10">
-        <h2 class="text-[#F189B8] font-bold text-xl mb-4">ABOUT OUR TRAMPOLINE</h2>
+        <h2 class="text-[#F189B8] font-bold text-xl mb-4">ABOUT OUR TRAMPOLINE FIT</h2>
         <p>
             Trampoline workout adalah olahraga melompat di atas trampolin mini yang membakar kalori, 
             memperkuat otot inti, dan memperbaiki keseimbangan. Gerakannya rendah dampak namun tinggi intensitas, 

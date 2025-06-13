@@ -12,6 +12,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BookedController;
 use App\Http\Controllers\CustomerPaymentController;
+use App\Http\Controllers\PelangganController;
 
 // Route::get('/', function () {
 //      return view('welcome');
@@ -20,6 +21,7 @@ use App\Http\Controllers\CustomerPaymentController;
 //user
 
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+Route::get('/profile', [PelangganController::class, 'profile']);
 Route::get('/yoga', [ClassController::class, 'yoga'])->name('yoga');
 Route::get('/pilates', [ClassController::class, 'pilates'])->name('pilates');
 Route::get('/poundfit', [ClassController::class, 'poundfit'])->name('poundfit');

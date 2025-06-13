@@ -43,7 +43,7 @@
 <section class="py-5 px-5" style="background: #F189B8;">
   <div class="container text-center text-white">
     <h2 class="mb-3">Book a Yoga Class</h2>
-    <p class="mb-4">Bergabunglah dengan kelas pilates kami. Temukan waktu latihan yang tepat untuk Anda dan tingkatkan koneksi pikiran dan tubuh Anda.</p>
+    <p class="mb-4">Bergabunglah dengan kelas Yoga kami. Temukan waktu latihan yang tepat untuk Anda dan tingkatkan koneksi pikiran dan tubuh Anda.</p>
 
 
     <!-- Class Cards -->

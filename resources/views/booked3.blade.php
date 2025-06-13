@@ -25,7 +25,7 @@
 <div class="container mt-5">
   <div class="row align-items-start bg-light p-4 rounded shadow-sm">
     <div class="col-md-4 text-center">
-      <img src="{{ asset('images/Instruktur9.jpg') }}" alt="Instruktur Yoga" class="img-fluid rounded">
+      <img src="{{ asset('images/Instruktur9.jpg') }}" alt="Instruktur Pound Fit" class="img-fluid rounded">
     </div>
     <div class="col-md-8 text-custom">
       <h4 class="fw-bold mb-1">Rebeca Laura</h4>
@@ -43,7 +43,7 @@
 <section class="py-5 px-5" style="background: #F189B8;">
   <div class="container text-center text-white">
     <h2 class="mb-3">Book a Pound Fit Class</h2>
-    <p class="mb-4">Bergabunglah dengan kelas pound fit kami. Temukan waktu latihan yang tepat untuk Anda dan tingkatkan koneksi pikiran dan tubuh Anda.</p>
+    <p class="mb-4">Bergabunglah dengan kelas Pound Fit kami. Temukan waktu latihan yang tepat untuk Anda dan tingkatkan koneksi pikiran dan tubuh Anda.</p>
 
 
     <!-- Class Cards -->
