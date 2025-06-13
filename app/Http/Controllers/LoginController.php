@@ -29,7 +29,11 @@ class LoginController extends Controller
         // Coba login
         if (auth()->attempt([$fieldType => $usnemail, 'password' => $password])) {
             $request->session()->regenerate();
-            return redirect('/dashboard')->with('success', 'Login berhasil!');
+            if (auth()->user()->role == 'owner') {
+                return redirect()->route('admin.dashboard');
+            } else if (auth()->user()->role == 'user') {
+                return redirect()->route('user.dashboard');
+            }
         }
 
         return back()->withErrors([
