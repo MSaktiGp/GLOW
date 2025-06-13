@@ -12,6 +12,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\CustomerPaymentController;
+use App\Http\Controllers\ProfileCustomerController;
 
 // Route::get('/', function () {
 //      return view('welcome');
