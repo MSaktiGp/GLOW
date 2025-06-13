@@ -4,7 +4,7 @@
 
     <!-- Hero -->
     <section class="max-w-6xl mx-auto px-4 pt-7 pb-10 ">
-    <img src="{{ asset('images/download.jpg') }}" alt="Yoga Class" class="w-full h-[500px] object-cover rounded-md">
+    <img src="{{ asset('images/yogafoto.jpg') }}" alt="Yoga Class" class="w-full h-[500px] object-cover rounded-md">
     </section>
 
     <!-- About -->
@@ -22,18 +22,20 @@
         <h2 class="text-[#F189B8] font-bold text-xl mb-6">OUR BEST COACH</h2>
         <div class="grid md:grid-cols-3 gap-6">
             @foreach([
-                ['name' => 'Anindya Sarasvati', 'rating' => '5/5', 'img' => '../images/Instruktur1.jpg'],
-                ['name' => 'Ayudia Clara', 'rating' => '4.5/5', 'img' => '../images/Instruktur2.jpg'],
-                ['name' => 'Claura Sintiya', 'rating' => '4/5', 'img' => '../images/Instruktur3.jpg']
+                ['name' => 'Claura Sintiya', 'rating' => '4/5', 'img' => '../images/Instruktur1.jpg'],
+                ['name' => 'Anindya Sarasvati', 'rating' => '5/5', 'img' => '../images/Instruktur2.jpg'],
+                ['name' => 'Ayudia Clara', 'rating' => '4.5/5', 'img' => '../images/Instruktur3.jpg']
             ] as $coach)
                 <div class="bg-white rounded-lg shadow p-4 text-center">
                     <img src="{{ $coach['img'] }}" alt="{{ $coach['name'] }}" class="w-full h-80 object-cover rounded-md mb-4">
                     <h3 class="font-semibold text-lg">{{ $coach['name'] }}</h3>
                     <p class="text-sm text-yellow-500 font-semibold">{{ $coach['rating'] }}</p>
-                    <button class="mt-2 bg-[#F189B8] text-white px-4 py-2 rounded-full hover:bg-pink-600">Book Now</button>
+                    <button class="mt-2 bg-[#F189B8] text-white px-4 py-2 rounded-full hover:bg-pink-600">See Classes</button>
                 </div>
             @endforeach
         </div>
     </section>
+
+    
 
 @endsection

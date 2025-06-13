@@ -68,7 +68,7 @@
                             <img src="{{ asset('images/poundfit.png') }}" class="w-100 h-100 object-fit-cover" alt="Poundfit">
                         </div>
                         <div class="text-center bg-pink text-white fw-bold py-2 fs-6">
-                            Poundfit 
+                            Pound Fit 
                         </div>
                     </div>
                 </a>
@@ -106,10 +106,10 @@
                 <a href="{{ route('trampoline') }}" class="text-decoration-none">
                     <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
                         <div class="ratio ratio-4x3 bg-light">
-                            <img src="{{ asset('images/trampoline.png') }}" class="w-100 h-100 object-fit-cover" alt="Trampoline">
+                            <img src="{{ asset('images/trampoline.png') }}" class="w-100 h-100 object-fit-cover" alt="Trampoline Fit">
                         </div>
                         <div class="text-center bg-pink text-white fw-bold py-2 fs-6">
-                            Trampoline
+                            Trampoline Fit
                         </div>
                     </div>
                 </a>

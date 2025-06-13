@@ -10,9 +10,10 @@ use App\Http\Controllers\LupaPwController;
 use App\Http\Controllers\JadwalOwnerController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\CoachController;
+use App\Http\Controllers\BookedController;
 use App\Http\Controllers\CustomerPaymentController;
-use App\Http\Controllers\ProfileCustomerController;
+use App\Http\Controllers\PelangganController;
+
 
 // Route::get('/', function () {
 //      return view('welcome');
@@ -21,6 +22,7 @@ use App\Http\Controllers\ProfileCustomerController;
 //user
 
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+Route::get('/profile', [PelangganController::class, 'profile']);
 Route::get('/yoga', [ClassController::class, 'yoga'])->name('yoga');
 Route::get('/pilates', [ClassController::class, 'pilates'])->name('pilates');
 Route::get('/poundfit', [ClassController::class, 'poundfit'])->name('poundfit');
@@ -58,7 +60,12 @@ Route::post('/logout', function () {Auth::logout();return redirect('/');})->name
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
 
-Route::get('/coach1', [CoachController::class, 'coach1']);
+Route::get('/booked1', [BookedController::class, 'booked1']);
+Route::get('/booked2', [BookedController::class, 'booked2']);
+Route::get('/booked3', [BookedController::class, 'booked3']);
+Route::get('/booked4', [BookedController::class, 'booked4']);
+Route::get('/booked5', [BookedController::class, 'booked5']);
+Route::get('/booked6', [BookedController::class, 'booked6']);
 
 // Customer Payment
 Route::get('/payment', [CustomerPaymentController::class, 'payment'])->name('payment');

@@ -25,14 +25,14 @@
 <div class="container mt-5">
   <div class="row align-items-start bg-light p-4 rounded shadow-sm">
     <div class="col-md-4 text-center">
-      <img src="{{ asset('images/Instruktur3.jpg') }}" alt="Instruktur Yoga" class="img-fluid rounded">
+      <img src="{{ asset('images/Instruktur9.jpg') }}" alt="Instruktur Pound Fit" class="img-fluid rounded">
     </div>
     <div class="col-md-8 text-custom">
-      <h4 class="fw-bold mb-1">Claura Sintiya</h4>
+      <h4 class="fw-bold mb-1">Rebeca Laura</h4>
       <p class="mb-1"><i class="bi bi-star-fill text-warning"></i> <strong>4/5</strong></p>
       <p class="fw-semibold mb-2"> <i class="bi bi-telephone-fill"></i> 081234567890</p>
-      <p class="fw-semibold mb-2"> <i class="bi bi-instagram"></i> claurasintiya_ </p>
-      <p>“Temukan keseimbangan tubuh dan pikiran bersama Claura, instruktur bersertifikat dengan pengalaman lebih dari 5 tahun di bidang yoga mindfulness”</p>
+      <p class="fw-semibold mb-2"> <i class="bi bi-instagram"></i> larebbec4 </p>
+      <p>"Rasakan semangat rockstar dan tingkatkan kebugaran Anda bersama Rebeca, instruktur Pound Fit bersertifikat dengan pengalaman lebih dari 5 tahun dalam menciptakan pengalaman latihan yang energik dan penuh gairah."</p>
     </div>
   </div>
 </div>
@@ -42,8 +42,8 @@
 <!-- Section Jadwal Kelas -->
 <section class="py-5 px-5" style="background: #F189B8;">
   <div class="container text-center text-white">
-    <h2 class="mb-3">Book a Yoga Class</h2>
-    <p class="mb-4">Bergabunglah dengan kelas yoga kami. Temukan waktu latihan yang tepat untuk Anda dan tingkatkan koneksi pikiran dan tubuh Anda.</p>
+    <h2 class="mb-3">Book a Pound Fit Class</h2>
+    <p class="mb-4">Bergabunglah dengan kelas Pound Fit kami. Temukan waktu latihan yang tepat untuk Anda dan tingkatkan koneksi pikiran dan tubuh Anda.</p>
 
 
     <!-- Class Cards -->
@@ -55,7 +55,7 @@
             <span class="badge bg-success mb-2">Available</span>
 
             <div class="d-flex justify-content-between">
-              <h5 class="card-title mb-1">Mindful Balance</h5>
+              <h5 class="card-title mb-1">The Beat Drop</h5>
               <span class="text-muted">60 menit</span>
             </div>
 
@@ -70,6 +70,12 @@
               <div class="d-flex align-items-center">
                 <i class="bi bi-clock me-2"></i>
                 <span>08:00 - 09:00 WIB</span>
+              </div>
+
+               {{-- kapasitas --}}
+              <div class="d-flex align-items-center">
+                <i class="bi bi-people me-2"></i>
+                <span>30</span>
               </div>
                <br>
               <!-- harga -->
@@ -89,7 +95,7 @@
           <div class="card-body">
             <span class="badge bg-success mb-2">Available</span>
             <div class="d-flex justify-content-between">
-              <h5 class="card-title">Awakened Flow</h5>
+              <h5 class="card-title">Rebel Rhythm</h5>
               <span class="text-muted">75 menit</span>
             </div>
             <div class="mb-2">
@@ -103,6 +109,12 @@
               <div class="d-flex align-items-center">
                 <i class="bi bi-clock me-2"></i>
                 <span>10:30 - 11:30 WIB</span>
+              </div>
+
+               {{-- kapasitas --}}
+              <div class="d-flex align-items-center">
+                <i class="bi bi-people me-2"></i>
+                <span>30</span>
               </div>
                <br>
               <!-- harga -->
@@ -121,7 +133,7 @@
           <div class="card-body">
             <span class="badge bg-danger text-dark mb-2">Fully Booked</span>
             <div class="d-flex justify-content-between">
-              <h5 class="card-title">Inner Stillness</h5>
+              <h5 class="card-title">Sonic Sweat</h5>
               <span class="text-muted">60 Menit</span>
             </div>
 
@@ -137,6 +149,13 @@
                 <i class="bi bi-clock me-2"></i>
                 <span>15:30 - 16:30 WIB</span> 
               </div>
+
+               {{-- kapasitas --}}
+              <div class="d-flex align-items-center">
+                <i class="bi bi-people me-2"></i>
+                <span>30</span>
+              </div>
+
               <br>
               <!-- harga -->
               <div class="d-flex align-items-center">

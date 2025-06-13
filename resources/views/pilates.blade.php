@@ -25,7 +25,7 @@
         <h2 class="text-[#F189B8] font-bold text-xl mb-6">OUR BEST COACH</h2>
         <div class="grid md:grid-cols-3 gap-6">
             @foreach([
-                ['name' => 'Kayla Zahra', 'rating' => '5/5', 'img' => '../images/Instruktur3.jpg'],
+                ['name' => 'Kayla Zahra', 'rating' => '5/5', 'img' => '../images/Instruktur4.jpg'],
                 ['name' => 'Alisyah Aurel', 'rating' => '4.5/5', 'img' => '../images/Instruktur5.jpg'],
                 ['name' => 'Rebeca Laura', 'rating' => '4/5', 'img' => '../images/Instruktur6.jpg']
             ] as $coach)

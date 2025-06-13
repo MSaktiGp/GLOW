@@ -22,9 +22,9 @@
         <h2 class="text-[#F189B8] font-bold text-xl mb-6">OUR BEST COACH</h2>
         <div class="grid md:grid-cols-3 gap-6">
             @foreach([
-                ['name' => 'Rachel Salsabila', 'rating' => '5/5', 'img' => '../images/Instruktur1.jpg'],
-                ['name' => 'Chalisa Cintia', 'rating' => '4.6/5', 'img' => '../images/Instruktur5.jpg'],
-                ['name' => 'Laura Moana', 'rating' => '4.3/5', 'img' => '../images/Instruktur6.jpg']
+                ['name' => 'Rachel Salsabila', 'rating' => '5/5', 'img' => '../images/Instruktur8.jpg'],
+                ['name' => 'Chalisa Cintia', 'rating' => '4.6/5', 'img' => '../images/Instruktur9.jpg'],
+                ['name' => 'Laura Moana', 'rating' => '4.3/5', 'img' => '../images/Instruktur10.jpg']
             ] as $coach)
                 <div class="bg-white rounded-lg shadow p-4 text-center">
                     <img src="{{ $coach['img'] }}" alt="{{ $coach['name'] }}" class="w-full h-80 object-cover rounded-md mb-4">

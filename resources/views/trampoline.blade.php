@@ -9,7 +9,7 @@
 
     <!-- About -->
     <section class="max-w-6xl mx-auto px-4 pb-10">
-        <h2 class="text-[#F189B8] font-bold text-xl mb-4">ABOUT OUR TRAMPOLINE</h2>
+        <h2 class="text-[#F189B8] font-bold text-xl mb-4">ABOUT OUR TRAMPOLINE FIT</h2>
         <p>
             Trampoline workout adalah olahraga melompat di atas trampolin mini yang membakar kalori, 
             memperkuat otot inti, dan memperbaiki keseimbangan. Gerakannya rendah dampak namun tinggi intensitas, 
@@ -23,8 +23,8 @@
         <div class="grid md:grid-cols-3 gap-6">
             @foreach([
                 ['name' => 'Stevi Putri', 'rating' => '5/5', 'img' => '../images/Instruktur3.jpg'],
-                ['name' => 'Regina Tania', 'rating' => '4.5/5', 'img' => '../images/Instruktur5.jpg'],
-                ['name' => 'Jenny Venya', 'rating' => '4/5', 'img' => '../images/Instruktur6.jpg']
+                ['name' => 'Regina Tania', 'rating' => '4.5/5', 'img' => '../images/Instruktur7.jpg'],
+                ['name' => 'Jenny Venya', 'rating' => '4/5', 'img' => '../images/Instruktur4.jpg']
             ] as $coach)
                 <div class="bg-white rounded-lg shadow p-4 text-center">
                     <img src="{{ $coach['img'] }}" alt="{{ $coach['name'] }}" class="w-full h-80 object-cover rounded-md mb-4">
