@@ -39,7 +39,7 @@
                 </ul>
             </div>
             <form class="d-flex">
-                <a href="#" class="btn btn-signin">
+                <a href="{{route('login')}}" class="btn btn-signin">
                     <i class="bi bi-person-circle"></i> Sign in
                 </a>
             </form>

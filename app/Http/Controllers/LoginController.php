@@ -14,17 +14,26 @@ class LoginController extends Controller
     // Menangani submit form login
     public function login(Request $request)
     {
-        // Validasi input
+        // Validasi
         $request->validate([
-            'email' => 'required|email',
+            'usnemail' => 'required',
             'password' => 'required',
         ]);
 
-        // Cek login dummy (contoh saja, belum pakai auth bawaan Laravel)
-        if ($request->email === 'admin@example.com' && $request->password === 'password') {
+        $usnemail = $request->input('usnemail');
+        $password = $request->input('password');
+
+        // Cek apakah input berupa email
+        $fieldType = filter_var($usnemail, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+        // Coba login
+        if (auth()->attempt([$fieldType => $usnemail, 'password' => $password])) {
+            $request->session()->regenerate();
             return redirect('/dashboard')->with('success', 'Login berhasil!');
-        } else {
-            return back()->withErrors(['email' => 'Email atau password salah.'])->withInput();
         }
+
+        return back()->withErrors([
+            'usnemail' => 'Email / Username atau password salah.',
+        ])->withInput();
     }
 }

@@ -39,13 +39,13 @@
             <div class="flex md:px-4 mx-3 items-center justify-between h-[77px]">
 
                 <div class="flex-shrink-0">
-                    <a href="/dashboard" class="text-white font-bold text-2xl font-abril tracking-wider">GLOW</a>
+                    <a href="{{url('/')}}" class="text-white font-bold text-2xl font-abril tracking-wider">GLOW</a>
                 </div>
 
                 <div class="hidden md:flex md:items-center md:space-x-9">
-                    <a href="/dashboard"
+                    <a href="{{ url('/') }}"
                         class="text-white hover:underline transition-colors text-md">Home</a>
-                    <a href="#" class="text-white hover:underline transition-colors text-md">About
+                    <a href="{{url('/')}}" class="text-white hover:underline transition-colors text-md">About
                         Us</a>
                     <a href="#"
                         class="text-white hover:underline transition-colors text-md">Classes</a>

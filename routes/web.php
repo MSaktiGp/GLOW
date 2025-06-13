@@ -21,8 +21,9 @@ use App\Http\Controllers\PelangganController;
 
 //user
 
+Route::get('/', function(){return redirect('/dashboard');});
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
-Route::get('/profile', [PelangganController::class, 'profile']);
+Route::get('/profil', [PelangganController::class, 'profile']);
 Route::get('/yoga', [ClassController::class, 'yoga'])->name('yoga');
 Route::get('/pilates', [ClassController::class, 'pilates'])->name('pilates');
 Route::get('/poundfit', [ClassController::class, 'poundfit'])->name('poundfit');
@@ -77,3 +78,7 @@ Route::get('/paymentmethod5', [CustomerPaymentController::class, 'paymentmethod5
 Route::get('/paymentmethod6', [CustomerPaymentController::class, 'paymentmethod6'])->name('paymentmethod6');
 Route::get('/paymentconfirm', [CustomerPaymentController::class, 'paymentconfirm'])->name('paymentconfirm');
 
+
+// Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

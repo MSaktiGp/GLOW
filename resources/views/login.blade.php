@@ -34,8 +34,8 @@
         <form action="{{ route('login.submit') }}" method="POST">
             @csrf
             <div class="mb-4">
-                <input type="email" name="email" placeholder="Enter Username or Email"
-                    value="{{ old('email') }}" required
+                <input type="text" name="usnemail" placeholder="Enter Username or Email"
+                    value="{{ old('email'||'username') }}" required
                     class="w-full px-4 py-3 rounded-xl border border-pink-300 shadow-md text-sm focus:outline-none focus:ring-2 focus:ring-pink-400" />
             </div>
 

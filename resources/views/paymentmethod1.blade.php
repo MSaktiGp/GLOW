@@ -2,6 +2,7 @@
 
 @section('content')
 
+@push('css')
 <style>
     .text-custom {
         color: #79455c;
@@ -24,6 +25,7 @@
         color: #79455c;
     }
 </style>
+@endpush
 
 <!-- Section Pembayaran -->
 <div class="container mt-4">
@@ -66,3 +68,4 @@
     </div>
   </div>
 </div>
+@endsection
