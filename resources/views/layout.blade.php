@@ -29,14 +29,14 @@
             <a class="navbar-brand fw-bold" href="#">GLOW</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{url('/')}}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about-us">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="#classes">Classes</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact-us">Contact Us</a></li>
                 </ul>
             </div>
             <form class="d-flex">
-                <a href="#" title="Sign in"
+                <a href="{{ route('profil') }}"
                 class="btn d-flex align-items-center justify-content-center rounded-circle"
                 style="width: 40px; height: 40px; background-color: white; border: 2px solid #e59cc6; color: #e59cc6;">
                     <i class="bi bi-person fs-5"></i>

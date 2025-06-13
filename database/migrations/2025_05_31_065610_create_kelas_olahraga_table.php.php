@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('kelas_olahragas', function (Blueprint $table) {
             $table->id();
+            $foreignId('coach_id')->constrained('coach')->onDelete('cascade');
             $table->string('nama_kelas');
             $table->integer('kapasitas');
             $table->timestamps();

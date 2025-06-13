@@ -23,7 +23,7 @@ use App\Http\Controllers\PelangganController;
 
 Route::get('/', function(){return redirect('/dashboard');});
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
-Route::get('/profil', [PelangganController::class, 'profile']);
+Route::get('/profil', [PelangganController::class, 'profile'])->name('profil');
 Route::get('/yoga', [ClassController::class, 'yoga'])->name('yoga');
 Route::get('/pilates', [ClassController::class, 'pilates'])->name('pilates');
 Route::get('/poundfit', [ClassController::class, 'poundfit'])->name('poundfit');

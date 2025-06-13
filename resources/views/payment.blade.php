@@ -2,6 +2,7 @@
 
 @section('content')
 
+@push('css')
 <style>
     .text-custom {
         color: #79455c;
@@ -66,6 +67,7 @@
         }
     }
 </style>
+@endpush
 
 <!-- Section Check Out -->
 <div class="container mt-5 mb-5">
