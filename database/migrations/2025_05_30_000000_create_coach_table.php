@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('coach', function (Blueprint $table) {
+        Schema::create('coaches', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('phone');
-            $table->string('specialization');
-            $table->boolean('status')->default(true);
+            $table->string('phone')->nullable(); // Contoh atribut lain
+            // Tambahkan kolom lain yang relevan untuk coach
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('coach');
+        Schema::dropIfExists('coaches');
     }
 };

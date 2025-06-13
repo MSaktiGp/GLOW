@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="{{ asset('bootstrap-5.3.6-dist/css/bootstrap.min.css') }}" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <meta name="csrf-token" content="{{ csrf_token() }}"> {{-- Add CSRF token for Laravel forms --}}
   <style>
     body {
       background-color: #FFF5FF;
@@ -169,7 +170,6 @@
 </head>
 <body>
 
-  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid px-4">
       <a class="navbar-brand" href="#">GLOW</a>
@@ -181,11 +181,10 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
           <li class="nav-item"><a class="nav-link text-white" href="{{ route('dashboard.owner') }}">Dashboard</a></li>
           <li class="nav-item"><a class="nav-link text-white" href="{{ route('owner.profile') }}">Profile</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="{{ url('/maintenance-jadwal') }}">Maintenance Jadwal dan Coach</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{{ route('maintenance.jadwal') }}">Maintenance Jadwal dan Coach</a></li> {{-- Updated route --}}
         </ul>
         
-        <!-- Logout -->
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('logout') }}"> {{-- Corrected logout route --}}
           @csrf
           <button type="submit" class="btn btn-outline-light rounded-pill d-flex align-items-center gap-2 px-3 py-2 btn-logout">
             <i class="bi bi-box-arrow-right"></i> Logout
@@ -195,24 +194,38 @@
     </div>
   </nav>
 
-  <!-- Content -->
   <div class="container mt-4">
     <h2 class="section-title">Maintenance Jadwal dan Coach</h2>
 
-  <!-- Content -->
-  <div class="container mt-4">
-    <!-- Jadwal Kelas -->
+    {{-- Success/Error Messages --}}
+    @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+    @if ($errors->any())
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     <div class="card p-4 my-4">
       <div class="d-flex justify-content-between align-items-center mb-3">
         <h5 class="section-title fs-5 text-start mb-0">Jadwal Kelas</h5>
-        <button class="btn btn-outline-pink btn-tambah"> <i class="bi bi-plus-lg"></i> Tambah</button>
+        <button class="btn btn-outline-pink btn-tambah" data-bs-toggle="modal" data-bs-target="#jadwalModal"> <i class="bi bi-plus-lg"></i> Tambah</button>
       </div>
       <div class="table-responsive">
         <table class="table table-bordered table-glow-p table-hover table-striped text-center align-middle">
           <thead>
             <tr> 
               <th>No</th>
-              <th>Nama Peserta</th>
+              <th>Nama Coach</th> {{-- Changed from 'Nama Peserta' to 'Nama Coach' --}}
               <th>Jenis Kelas</th>
               <th>Jam Mulai</th>
               <th>Jam Selesai</th>
@@ -221,28 +234,39 @@
             </tr>
           </thead>
           <tbody class="table-glow-t">
+            @forelse ($jadwalKelas as $index => $jadwal)
             <tr>
-              <td>1</td>
-              <td>Ayu</td>
-              <td>Yoga</td>
-              <td>08:00</td>
-              <td>09:00</td>
-              <td>Aktif</td>
+              <td>{{ $index + 1 }}</td>
+              <td>{{ $jadwal->kelasOlahraga->name ?? 'N/A' }}</td> {{-- Access Coach name --}}
+              <td>{{ $jadwal->kelasOlahraga->nama_kelas ?? 'N/A' }}</td>
+              <td>{{ \Carbon\Carbon::parse($jadwal->waktu_mulai)->format('d M H:i') }}</td> {{-- Format for display --}}
+              <td>{{ \Carbon\Carbon::parse($jadwal->waktu_selesai)->format('d M H:i') }}</td> {{-- Format for display --}}
+              <td>{{ $jadwal->status ?? 'N/A' }}</td> {{-- Ensure 'status' column exists in migration --}}
               <td>
-                <button class="btn-icon btn-edit" title="Edit"><i class="bi bi-pencil-square"></i></button>
-                <button class="btn-icon btn-delete" title="Hapus"><i class="bi bi-trash3"></i></button>
+                <button class="btn-icon btn-edit" title="Edit" data-id="{{ $jadwal->id }}"><i class="bi bi-pencil-square"></i></button>
+                <form action="{{ route('jadwal_kelas.destroy', $jadwal->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin menghapus jadwal ini?');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn-icon btn-delete" title="Hapus"><i class="bi bi-trash3"></i></button>
+                </form>
               </td>
             </tr>
+            @empty
+            <tr>
+                <td colspan="7">Tidak ada jadwal kelas yang tersedia.</td>
+            </tr>
+            @endforelse
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- Jadwal Coach -->
+    {{-- This section displays which coach is assigned to which class type. --}}
     <div class="card p-4 my-4">
       <div class="d-flex justify-content-between align-items-center mb-3">
         <h5 class="section-title fs-5 text-start mb-0">Jadwal Coach</h5>
-        <button class="btn btn-outline-pink btn-tambah"> <i class="bi bi-plus-lg"></i> Tambah</button>
+        {{-- You might need a separate modal for adding/editing Coaches or KelasOlahraga --}}
+        {{-- <button class="btn btn-outline-pink btn-tambah-coach"> <i class="bi bi-plus-lg"></i> Tambah Coach</button> --}}
       </div>
       <div class="table-responsive">
         <table class="table table-bordered table-glow-p table-striped table-hover text-center align-middle">
@@ -251,60 +275,70 @@
               <th>No</th>
               <th>Nama Coach</th>
               <th>Jenis Kelas</th>
-              <th>Jam Mulai</th>
-              <th>Jam Selesai</th>
-              <th>Status</th>
-              <th>Aksi</th>
+              <th>Kapasitas</th> {{-- Added Kapasitas --}}
+              <th>Aksi</th> {{-- If you have actions for Coach/KelasOlahraga --}}
             </tr>
           </thead>
           <tbody class="table-glow-t">
+            @forelse ($kelasOlahragaList as $index => $kelas)
             <tr>
-              <td>1</td>
-              <td>Siska</td>
-              <td>Pilates</td>
-              <td>10:00</td>
-              <td>11:00</td>
-              <td>Aktif</td>
+              <td>{{ $index + 1 }}</td>
+              <td>{{ $kelas->coach->name ?? 'Tidak Ada Coach' }}</td>
+              <td>{{ $kelas->nama_kelas }}</td>
+              <td>{{ $kelas->kapasitas }}</td>
               <td>
-                <button class="btn-icon btn-edit" title="Edit"><i class="bi bi-pencil-square"></i></button>
-                <button class="btn-icon btn-delete" title="Hapus"><i class="bi bi-trash3"></i></button>
+                {{-- Add edit/delete buttons for KelasOlahraga if needed --}}
+                {{-- <button class="btn-icon btn-edit-kelas" title="Edit" data-id="{{ $kelas->id }}"><i class="bi bi-pencil-square"></i></button>
+                <form action="{{ route('kelas_olahraga.destroy', $kelas->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin menghapus kelas ini?');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn-icon btn-delete-kelas" title="Hapus"><i class="bi bi-trash3"></i></button>
+                </form> --}}
               </td>
             </tr>
+            @empty
+            <tr>
+                <td colspan="5">Tidak ada data kelas atau coach yang tersedia.</td>
+            </tr>
+            @endforelse
           </tbody>
         </table>
       </div>
     </div>
   </div>
 
-  <!-- Modal Form (Tambah/Edit) -->
-<div class="modal fade" id="jadwalModal" tabindex="-1" aria-labelledby="jadwalModalLabel" aria-hidden="true">
+  <div class="modal fade" id="jadwalModal" tabindex="-1" aria-labelledby="jadwalModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <form id="jadwalForm" class="modal-content">
+    <form id="jadwalForm" class="modal-content" method="POST" action="">
+      @csrf
+      @method('POST') {{-- Will be dynamically changed to PUT for updates --}}
+      <input type="hidden" id="jadwalId" name="jadwal_id" /> {{-- Hidden input for ID --}}
+
       <div class="modal-header">
-        <h5 class="modal-title" id="jadwalModalLabel">Tambah Jadwal</h5>
+        <h5 class="modal-title" id="jadwalModalLabel">Tambah Jadwal Kelas</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <input type="hidden" id="jadwalIndex" />
         <div class="mb-3">
-          <label for="nama" class="form-label">Nama</label>
-          <input type="text" class="form-control" id="nama" required>
+          <label for="kelas_olahraga_id" class="form-label">Jenis Kelas</label>
+          <select class="form-select" id="kelas_olahraga_id" name="kelas_olahraga_id" required>
+            <option value="">Pilih Jenis Kelas</option>
+            @foreach ($kelasOlahragaList as $kelas)
+                <option value="{{ $kelas->id }}">{{ $kelas->nama_kelas }} (Coach: {{ $kelas->coach->name ?? 'N/A' }})</option>
+            @endforeach
+          </select>
         </div>
         <div class="mb-3">
-          <label for="jenisKelas" class="form-label">Jenis Kelas</label>
-          <input type="text" class="form-control" id="jenisKelas" required>
+          <label for="waktu_mulai" class="form-label">Waktu Mulai</label>
+          <input type="datetime-local" class="form-control" id="waktu_mulai" name="waktu_mulai" required>
         </div>
         <div class="mb-3">
-          <label for="jamMulai" class="form-label">Jam Mulai</label>
-          <input type="time" class="form-control" id="jamMulai" required>
-        </div>
-        <div class="mb-3">
-          <label for="jamSelesai" class="form-label">Jam Selesai</label>
-          <input type="time" class="form-control" id="jamSelesai" required>
+          <label for="waktu_selesai" class="form-label">Waktu Selesai</label>
+          <input type="datetime-local" class="form-control" id="waktu_selesai" name="waktu_selesai" required>
         </div>
         <div class="mb-3">
           <label for="status" class="form-label">Status</label>
-          <select class="form-select" id="status" required>
+          <select class="form-select" id="status" name="status" required>
             <option value="Aktif">Aktif</option>
             <option value="Tidak Aktif">Tidak Aktif</option>
           </select>
@@ -319,109 +353,64 @@
 </div>
 
 
-  <!-- Footer -->
- <footer>
+  <footer>
     <p class="mb-0">&copy; 2025 glowithus.com</p>
     <small>Designed by glowithus</small>
   </footer>
 
-  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    const jadwalModal = new bootstrap.Modal(document.getElementById('jadwalModal'));
-    const jadwalForm = document.getElementById('jadwalForm');
-    let currentTable = null;
-    let currentEditRow = null;
+    document.addEventListener('DOMContentLoaded', function () {
+        const jadwalModal = new bootstrap.Modal(document.getElementById('jadwalModal'));
+        const jadwalForm = document.getElementById('jadwalForm');
+        const modalTitle = document.getElementById('jadwalModalLabel');
+        const jadwalIdInput = document.getElementById('jadwalId');
+        const methodInput = jadwalForm.querySelector('input[name="_method"]');
 
-    document.querySelectorAll('.btn-tambah').forEach(button => {
-      button.addEventListener('click', () => {
-        jadwalForm.reset();
-        currentEditRow = null;
-        currentTable = button.closest('.card');
-        document.getElementById('jadwalModalLabel').innerText = 'Tambah Jadwal';
-        jadwalModal.show();
-      });
-    });
-
-    document.querySelectorAll('.btn-edit').forEach(button => {
-      button.addEventListener('click', () => {
-        currentEditRow = button.closest('tr');
-        currentTable = button.closest('.card');
-        document.getElementById('jadwalModalLabel').innerText = 'Edit Jadwal';
-        document.getElementById('nama').value = currentEditRow.cells[1].innerText;
-        document.getElementById('jenisKelas').value = currentEditRow.cells[2].innerText;
-        document.getElementById('jamMulai').value = currentEditRow.cells[3].innerText;
-        document.getElementById('jamSelesai').value = currentEditRow.cells[4].innerText;
-        document.getElementById('status').value = currentEditRow.cells[5].innerText;
-        jadwalModal.show();
-      });
-    });
-
-    document.querySelectorAll('.btn-delete').forEach(button => {
-      button.addEventListener('click', () => {
-        if (confirm('Yakin ingin menghapus jadwal ini?')) {
-          const row = button.closest('tr');
-          row.remove();
-          const tbody = button.closest('tbody');
-          Array.from(tbody.rows).forEach((row, i) => row.cells[0].innerText = i + 1);
-        }
-      });
-    });
-
-    jadwalForm.addEventListener('submit', e => {
-      e.preventDefault();
-      const nama = document.getElementById('nama').value;
-      const jenisKelas = document.getElementById('jenisKelas').value;
-      const jamMulai = document.getElementById('jamMulai').value;
-      const jamSelesai = document.getElementById('jamSelesai').value;
-      const status = document.getElementById('status').value;
-
-      if (currentEditRow) {
-        currentEditRow.cells[1].innerText = nama;
-        currentEditRow.cells[2].innerText = jenisKelas;
-        currentEditRow.cells[3].innerText = jamMulai;
-        currentEditRow.cells[4].innerText = jamSelesai;
-        currentEditRow.cells[5].innerText = status;
-      } else {
-        const tbody = currentTable.querySelector('tbody');
-        const newRow = tbody.insertRow();
-        newRow.innerHTML = `
-          <td></td>
-          <td>${nama}</td>
-          <td>${jenisKelas}</td>
-          <td>${jamMulai}</td>
-          <td>${jamSelesai}</td>
-          <td>${status}</td>
-          <td>
-            <button class="btn-icon btn-edit" title="Edit"><i class="bi bi-pencil-square"></i></button>
-            <button class="btn-icon btn-delete" title="Hapus"><i class="bi bi-trash3"></i></button>
-          </td>`;
-
-        newRow.querySelector('.btn-edit').addEventListener('click', () => {
-          currentEditRow = newRow;
-          currentTable = newRow.closest('.card');
-          document.getElementById('jadwalModalLabel').innerText = 'Edit Jadwal';
-          document.getElementById('nama').value = nama;
-          document.getElementById('jenisKelas').value = jenisKelas;
-          document.getElementById('jamMulai').value = jamMulai;
-          document.getElementById('jamSelesai').value = jamSelesai;
-          document.getElementById('status').value = status;
-          jadwalModal.show();
+        document.querySelectorAll('.btn-tambah').forEach(button => {
+            button.addEventListener('click', () => {
+                jadwalForm.reset(); // Reset all form fields
+                modalTitle.innerText = 'Tambah Jadwal Kelas';
+                jadwalForm.action = "{{ route('jadwal_kelas.store') }}"; // Set action for creation
+                methodInput.value = 'POST'; // Set method to POST
+                jadwalIdInput.value = ''; // Clear hidden ID input
+                // Reset select options to default if applicable
+                document.getElementById('kelas_olahraga_id').selectedIndex = 0;
+                document.getElementById('status').value = 'Aktif'; // Default status
+            });
         });
 
-        newRow.querySelector('.btn-delete').addEventListener('click', () => {
-          if (confirm('Yakin ingin menghapus jadwal ini?')) {
-            newRow.remove();
-            Array.from(tbody.rows).forEach((row, i) => row.cells[0].innerText = i + 1);
-          }
+        document.querySelectorAll('.btn-edit').forEach(button => {
+            button.addEventListener('click', function() {
+                const jadwalId = this.dataset.id; // Get ID from data attribute
+                modalTitle.innerText = 'Edit Jadwal Kelas';
+                jadwalForm.action = `/jadwal-kelas/${jadwalId}`; // Set action for update (matches route)
+                methodInput.value = 'PUT'; // Set method to PUT
+                jadwalIdInput.value = jadwalId; // Set hidden ID input
+
+                // Fetch data for the specific JadwalKelas item
+                fetch(`/jadwal-kelas/${jadwalId}/edit`) // Matches route
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log("Fetched data for edit:", data);
+                        document.getElementById('kelas_olahraga_id').value = data.jadwal.kelas_olahraga_id;
+                        // Format datetime-local value: YYYY-MM-DDTHH:mm
+                        document.getElementById('waktu_mulai').value = data.jadwal.waktu_mulai.slice(0, 16);
+                        document.getElementById('waktu_selesai').value = data.jadwal.waktu_selesai.slice(0, 16);
+                        document.getElementById('status').value = data.jadwal.status;
+                        jadwalModal.show();
+                    })
+                    .catch(error => console.error('Error fetching jadwal data:', error));
+            });
         });
-      }
 
-      Array.from(currentTable.querySelectorAll('tbody tr')).forEach((row, i) => {
-        row.cells[0].innerText = i + 1;
-      });
-
-      jadwalModal.hide();
+        // Delete functionality is handled by the <form> with @method('DELETE')
+        // No additional JavaScript needed beyond the onsubmit confirmation.
     });
   </script>
 

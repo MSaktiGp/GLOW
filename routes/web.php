@@ -7,20 +7,20 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LupaPwController;
-use App\Http\Controllers\JadwalOwnerController;
+use App\Http\Controllers\JadwalOwnerController; // Keep if still used elsewhere
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BookedController;
 use App\Http\Controllers\CustomerPaymentController;
 use App\Http\Controllers\PelangganController;
-
+use App\Http\Controllers\JadwalKelasController; // <-- Pastikan ini ada
+use App\Http\Controllers\CoachScheduleController; // <-- Pastikan ini ada
 
 // Route::get('/', function () {
-//      return view('welcome');
+//      return view('welcome');
 // });
 
 //user
-
 Route::get('/', function(){return redirect('/dashboard');});
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 Route::get('/profil', [PelangganController::class, 'profile'])->name('profil');
@@ -54,7 +54,26 @@ Route::get('/owner/login', [OwnerController::class, 'showLoginForm'])->name('own
 Route::post('/owner/login', [OwnerController::class, 'login'])->name('owner.login.submit');
 Route::get('/dashboard-owner', [DashboardOwnerController::class, 'index'])->name('dashboard.owner');
 Route::get('/owner/profile', [OwnerController::class, 'profile'])->name('owner.profile');
-Route::get('/maintenance-jadwal', function () {return view('maintenanceJadwal');});
+
+// Grup rute yang memerlukan autentikasi dan role 'owner'
+Route::middleware(['auth', 'role:owner'])->group(function () {
+    // Rute untuk menampilkan halaman maintenance jadwal dan coach
+    Route::get('/maintenance-jadwal', [JadwalKelasController::class, 'index'])->name('maintenance.jadwal');
+
+    // Rute untuk CRUD Jadwal Kelas
+    Route::post('/jadwal-kelas', [JadwalKelasController::class, 'store'])->name('jadwal_kelas.store');
+    Route::get('/jadwal-kelas/{jadwalKela}/edit', [JadwalKelasController::class, 'edit'])->name('jadwal_kelas.edit');
+    Route::put('/jadwal-kelas/{jadwalKela}', [JadwalKelasController::class, 'update'])->name('jadwal_kelas.update');
+    Route::delete('/jadwal-kelas/{jadwalKela}', [JadwalKelasController::class, 'destroy'])->name('jadwal_kelas.destroy');
+
+    // Rute untuk CRUD Jadwal Coach
+    Route::post('/coach-schedules', [CoachScheduleController::class, 'store'])->name('coach_schedules.store');
+    Route::get('/coach-schedules/{coachSchedule}/edit', [CoachScheduleController::class, 'edit'])->name('coach_schedules.edit');
+    Route::put('/coach-schedules/{coachSchedule}', [CoachScheduleController::class, 'update'])->name('coach_schedules.update');
+    Route::delete('/coach-schedules/{coachSchedule}', [CoachScheduleController::class, 'destroy'])->name('coach_schedules.destroy');
+});
+
+
 Route::post('/logout', function () {Auth::logout();return redirect('/');})->name('logout');
 
 // Register
@@ -77,7 +96,6 @@ Route::get('/paymentmethod4', [CustomerPaymentController::class, 'paymentmethod4
 Route::get('/paymentmethod5', [CustomerPaymentController::class, 'paymentmethod5'])->name('paymentmethod5');
 Route::get('/paymentmethod6', [CustomerPaymentController::class, 'paymentmethod6'])->name('paymentmethod6');
 Route::get('/paymentconfirm', [CustomerPaymentController::class, 'paymentconfirm'])->name('paymentconfirm');
-
 
 // Auth::routes();
 

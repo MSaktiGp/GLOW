@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('jadwal_kelas', function (Blueprint $table) {
@@ -16,13 +13,10 @@ return new class extends Migration
             $table->foreignId('kelas_olahraga_id')->constrained('kelas_olahragas')->onDelete('cascade');
             $table->dateTime('waktu_mulai');
             $table->dateTime('waktu_selesai');
+            $table->string('status')->default('Aktif'); // Tambahan kolom status
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('jadwal_kelas');

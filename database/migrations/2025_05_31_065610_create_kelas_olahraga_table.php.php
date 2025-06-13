@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('kelas_olahragas', function (Blueprint $table) {
             $table->id();
-            $foreignId('coach_id')->constrained('coach')->onDelete('cascade');
+            $table->foreignId('coach_id')->nullable()->constrained('coaches')->onDelete('set null'); // Coach yang mengajar kelas ini
             $table->string('nama_kelas');
-            $table->integer('kapasitas');
+            $table->integer('kapasitas')->default(0);
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('kelas_olahragas');
     }
 };
