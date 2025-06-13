@@ -88,7 +88,7 @@
 
         <div class="text-center mt-6 text-sm">
             <span class="text-gray-500">Sudah punya akun?</span>
-            <a href="{{ route('login') }}" class="text-[#D63384] font-semibold hover:underline">Login di sini</a>
+            <a href="{{ route('login') }}" class="text-[#D63384] font-semibold hover:underline">Sign In</a>
         </div>
     </div>
 </body>

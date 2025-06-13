@@ -320,7 +320,7 @@
 
 
   <!-- Footer -->
-  <footer>
+ <footer>
     <p class="mb-0">&copy; 2025 glowithus.com</p>
     <small>Designed by glowithus</small>
   </footer>
