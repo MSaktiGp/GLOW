@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('dashboard_logs', function (Blueprint $table) {
+        Schema::create('coach', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->enum('role', ['user', 'owner']);
-            $table->timestamp('waktu_akses')->useCurrent();
+            $table->string('name');
+            $table->string('phone');
+            $table->string('specialization');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('dashboard_log');
+        Schema::dropIfExists('coach');
     }
 };
