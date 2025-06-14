@@ -9,27 +9,14 @@ class Coach extends Model
 {
     use HasFactory;
 
-    protected $table = 'coaches';
-
     protected $fillable = [
         'name',
-        'phone',
-        'address',
-        'specialization',
+        'specialty',
+        // Tambahkan field fillable lainnya sesuai tabel coaches Anda
     ];
 
-    public function kelasOlahragas()
+    public function kelasOlahraga()
     {
         return $this->hasMany(KelasOlahraga::class, 'coach_id');
-    }
-
-    public function schedules()
-    {
-        return $this->hasMany(Schedule::class, 'coach_id');
-    }
-
-    public function members()
-    {
-        return $this->belongsToMany(Member::class, 'coach_member', 'coach_id', 'member_id');
     }
 }

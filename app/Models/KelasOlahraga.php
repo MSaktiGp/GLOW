@@ -14,7 +14,11 @@ class KelasOlahraga extends Model
     protected $fillable = [
         'coach_id',
         'nama_kelas',
+        'jenis_kelas', // Ditambahkan
         'kapasitas',
+        'tanggal',     // Ditambahkan
+        'jam_mulai',   // Ditambahkan
+        'jam_selesai', // Ditambahkan
     ];
 
     public function coach()
