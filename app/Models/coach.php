@@ -13,11 +13,23 @@ class Coach extends Model
 
     protected $fillable = [
         'name',
-        'phone', // Tambahkan jika ada di migrasi coaches
+        'phone',
+        'address',
+        'specialization',
     ];
 
     public function kelasOlahragas()
     {
         return $this->hasMany(KelasOlahraga::class, 'coach_id');
+    }
+
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class, 'coach_id');
+    }
+
+    public function members()
+    {
+        return $this->belongsToMany(Member::class, 'coach_member', 'coach_id', 'member_id');
     }
 }

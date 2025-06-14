@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\JadwalKelas;
 use App\Models\KelasOlahraga;
 use App\Models\Coach;
-use App\Models\CoachSchedule; // Import CoachSchedule model
+use App\Models\CoachSchedule; 
 use Carbon\Carbon;
 
 class JadwalKelasController extends Controller
@@ -26,7 +26,7 @@ class JadwalKelasController extends Controller
         $kelasOlahragaList = KelasOlahraga::with('coach')->get(); // Load coach juga untuk tampilan di dropdown
         $coachList = Coach::all();
 
-        return view('owner.maintenance_jadwal', compact('jadwalKelas', 'coachSchedules', 'kelasOlahragaList', 'coachList'));
+        return view('maintenanceJadwal', compact('jadwalKelas', 'coachSchedules', 'kelasOlahragaList', 'coachList'));
     }
 
     /**
@@ -36,8 +36,8 @@ class JadwalKelasController extends Controller
     {
         $validatedData = $request->validate([
             'kelas_olahraga_id' => 'required|exists:kelas_olahragas,id',
-            'waktu_mulai' => 'required|date',
-            'waktu_selesai' => 'required|date|after:waktu_mulai',
+            'waktu_mulai' => 'required|datetime',
+            'waktu_selesai' => 'required|datetime|after:waktu_mulai',
             'status' => 'required|in:Aktif,Tidak Aktif',
         ]);
 
@@ -49,11 +49,11 @@ class JadwalKelasController extends Controller
     /**
      * Show the form for editing the specified Jadwal Kelas resource.
      */
-    public function edit(JadwalKelas $jadwalKela)
+    public function edit(JadwalKelas $jadwalKelas)
     {
         $kelasOlahragaList = KelasOlahraga::with('coach')->get();
         return response()->json([
-            'jadwal' => $jadwalKela,
+            'jadwal' => $jadwalKelas,
             'kelas_olahraga_list' => $kelasOlahragaList,
         ]);
     }
@@ -61,7 +61,7 @@ class JadwalKelasController extends Controller
     /**
      * Update the specified Jadwal Kelas resource in storage.
      */
-    public function update(Request $request, JadwalKelas $jadwalKela)
+    public function update(Request $request, JadwalKelas $jadwalKelas)
     {
         $validatedData = $request->validate([
             'kelas_olahraga_id' => 'required|exists:kelas_olahragas,id',
@@ -70,7 +70,7 @@ class JadwalKelasController extends Controller
             'status' => 'required|in:Aktif,Tidak Aktif',
         ]);
 
-        $jadwalKela->update($validatedData);
+        $jadwalKelas->update($validatedData);
 
         return redirect()->route('maintenance.jadwal')->with('success', 'Jadwal Kelas berhasil diperbarui!');
     }
@@ -78,9 +78,9 @@ class JadwalKelasController extends Controller
     /**
      * Remove the specified Jadwal Kelas resource from storage.
      */
-    public function destroy(JadwalKelas $jadwalKela)
+    public function destroy(JadwalKelas $jadwalKelas)
     {
-        $jadwalKela->delete();
+        $jadwalKelas->delete();
 
         return redirect()->route('maintenance.jadwal')->with('success', 'Jadwal Kelas berhasil dihapus!');
     }

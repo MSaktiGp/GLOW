@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('coaches', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('phone')->nullable(); // Contoh atribut lain
-            // Tambahkan kolom lain yang relevan untuk coach
+            $table->string('phone')->nullable(); 
+            $table->string('address')->nullable();
+            $table->string('specialization')->nullable();
             $table->timestamps();
         });
     }

@@ -131,7 +131,7 @@
 </head>
 <body>
   <!-- Navbar -->
-     <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container-fluid px-4">
       <a class="navbar-brand" href="#">GLOW</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -142,7 +142,7 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
           <li class="nav-item"><a class="nav-link text-white" href="{{ route('dashboard.owner') }}">Dashboard</a></li>
           <li class="nav-item"><a class="nav-link text-white" href="{{ route('owner.profile') }}">Profile</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="{{ url('/maintenance-jadwal') }}">Maintenance Jadwal dan Coach</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{{ route('maintenance.jadwal') }}">Maintenance Jadwal dan Coach</a></li>
         </ul>
 
           <!-- KANAN: Logout Button -->
@@ -160,7 +160,7 @@
       </div>
     </nav>
 
-  <div class="container container-custom mt-4 text-center">
+  <div class="container container-custom mt-5 pt-4 text-center">
     <h2 class="section-title">Dashboard Owner!</h2>
 
     <!-- Pie Chart Section -->

@@ -1,102 +1,105 @@
-`<?php
+    `<?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\OwnerController;
-use App\Http\Controllers\DashboardOwnerController;
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\ClassController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\LupaPwController;
-use App\Http\Controllers\JadwalOwnerController; // Keep if still used elsewhere
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\BookedController;
-use App\Http\Controllers\CustomerPaymentController;
-use App\Http\Controllers\PelangganController;
-use App\Http\Controllers\JadwalKelasController; // <-- Pastikan ini ada
-use App\Http\Controllers\CoachScheduleController; // <-- Pastikan ini ada
+    use Illuminate\Support\Facades\Route;
+    use App\Http\Controllers\OwnerController;
+    use App\Http\Controllers\DashboardOwnerController;
+    use App\Http\Controllers\Auth\AuthenticatedSessionController;
+    use App\Http\Controllers\ClassController;
+    use App\Http\Controllers\LoginController;
+    use App\Http\Controllers\LupaPwController;
+    use App\Http\Controllers\JadwalOwnerController; // Keep if still used elsewhere
+    use App\Http\Controllers\RegisterController;
+    use App\Http\Controllers\DashboardController;
+    use App\Http\Controllers\BookedController;
+    use App\Http\Controllers\CustomerPaymentController;
+    use App\Http\Controllers\PelangganController;
+    use App\Http\Controllers\JadwalKelasController; // <-- Pastikan ini ada
+    use App\Http\Controllers\CoachScheduleController; // <-- Pastikan ini ada
 
-// Route::get('/', function () {
-//      return view('welcome');
-// });
+    // Route::get('/', function () {
+    //      return view('welcome');
+    // });
 
-//user
-Route::get('/', function(){return redirect('/dashboard');});
-Route::get('/dashboard', [DashboardController::class, 'dashboard']);
-Route::get('/profil', [PelangganController::class, 'profile'])->name('profil');
-Route::get('/yoga', [ClassController::class, 'yoga'])->name('yoga');
-Route::get('/pilates', [ClassController::class, 'pilates'])->name('pilates');
-Route::get('/poundfit', [ClassController::class, 'poundfit'])->name('poundfit');
-Route::get('/zumba', [ClassController::class, 'zumba'])->name('zumba');
-Route::get('/tabata', [ClassController::class, 'tabata'])->name('tabata');
-Route::get('/trampoline', [ClassController::class, 'trampoline'])->name('trampoline');
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
-// Lupa password
-Route::get('/lupaPassword', [LupaPwController::class, 'showLinkRequestForm'])->name('password.request');
-Route::post('/lupaPassword', [LupaPwController::class, 'sendResetLinkEmail'])->name('password.email');
+    //user
+    Route::get('/', function(){return redirect('/dashboard');});
+    Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('/profil', [PelangganController::class, 'profile'])->name('profil');
+    Route::get('/yoga', [ClassController::class, 'yoga'])->name('yoga');
+    Route::get('/pilates', [ClassController::class, 'pilates'])->name('pilates');
+    Route::get('/poundfit', [ClassController::class, 'poundfit'])->name('poundfit');
+    Route::get('/zumba', [ClassController::class, 'zumba'])->name('zumba');
+    Route::get('/tabata', [ClassController::class, 'tabata'])->name('tabata');
+    Route::get('/trampoline', [ClassController::class, 'trampoline'])->name('trampoline');
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
+    // Lupa password
+    Route::get('/lupaPassword', [LupaPwController::class, 'showLinkRequestForm'])->name('password.request');
+    Route::post('/lupaPassword', [LupaPwController::class, 'sendResetLinkEmail'])->name('password.email');
 
-// Reset password
-Route::get('/reset-password/{token}', [LupaPwController::class, 'showResetForm'])->name('password.reset');
-Route::post('/reset-password', [LupaPwController::class, 'resetPassword'])->name('password.update');
+    // Reset password
+    Route::get('/reset-password/{token}', [LupaPwController::class, 'showResetForm'])->name('password.reset');
+    Route::post('/reset-password', [LupaPwController::class, 'resetPassword'])->name('password.update');
 
-//tes reset tanpa data dummy
-Route::get('/test-reset', function () {
-    return view('resetPw', [
-        'token' => 'testtoken',
-        'email' => 'dummy@example.com'
-    ]);
+    //tes reset tanpa data dummy
+    Route::get('/test-reset', function () {
+        return view('resetPw', [
+            'token' => 'testtoken',
+            'email' => 'dummy@example.com'
+        ]);
+    });
+
+
+    //Owner
+    Route::get('/owner/login', [OwnerController::class, 'showLoginForm'])->name('owner.login');
+    Route::post('/owner/login', [OwnerController::class, 'login'])->name('owner.login.submit');
+    Route::get('/dashboard-owner', [DashboardOwnerController::class, 'index'])->name('dashboard.owner');
+    Route::get('/owner/profile', [OwnerController::class, 'profile'])->name('owner.profile');
+
+    // Grup rute yang memerlukan autentikasi dan role 'owner'
+Route::middleware(['auth', 'role:owner'])->group(function () {
+    // Route khusus owner
+    Route::get('/dashboard-owner', [DashboardOwnerController::class, 'index'])->name('dashboard.owner');
+    Route::get('/maintenance-jadwal', [JadwalKelasController::class, 'index'])->name('maintenance.jadwal');
 });
 
-
-//Owner
-Route::get('/owner/login', [OwnerController::class, 'showLoginForm'])->name('owner.login');
-Route::post('/owner/login', [OwnerController::class, 'login'])->name('owner.login.submit');
-Route::get('/dashboard-owner', [DashboardOwnerController::class, 'index'])->name('dashboard.owner');
-Route::get('/owner/profile', [OwnerController::class, 'profile'])->name('owner.profile');
-
-// Grup rute yang memerlukan autentikasi dan role 'owner'
-Route::middleware(['auth', 'role:owner'])->group(function () {
-    // Rute untuk menampilkan halaman maintenance jadwal dan coach
     Route::get('/maintenance-jadwal', [JadwalKelasController::class, 'index'])->name('maintenance.jadwal');
 
-    // Rute untuk CRUD Jadwal Kelas
-    Route::post('/jadwal-kelas', [JadwalKelasController::class, 'store'])->name('jadwal_kelas.store');
-    Route::get('/jadwal-kelas/{jadwalKela}/edit', [JadwalKelasController::class, 'edit'])->name('jadwal_kelas.edit');
-    Route::put('/jadwal-kelas/{jadwalKela}', [JadwalKelasController::class, 'update'])->name('jadwal_kelas.update');
-    Route::delete('/jadwal-kelas/{jadwalKela}', [JadwalKelasController::class, 'destroy'])->name('jadwal_kelas.destroy');
+        // Rute untuk CRUD Jadwal Kelas
+        Route::post('/jadwal-kelas', [JadwalKelasController::class, 'store'])->name('jadwal_kelas.store');
+        Route::get('/jadwal-kelas/{jadwalKelas}/edit', [JadwalKelasController::class, 'edit'])->name('jadwal_kelas.edit');
+        Route::put('/jadwal-kelas/{jadwalKelas}', [JadwalKelasController::class, 'update'])->name('jadwal_kelas.update');
+        Route::delete('/jadwal-kelas/{jadwalKelas}', [JadwalKelasController::class, 'destroy'])->name('jadwal_kelas.destroy');
 
-    // Rute untuk CRUD Jadwal Coach
-    Route::post('/coach-schedules', [CoachScheduleController::class, 'store'])->name('coach_schedules.store');
-    Route::get('/coach-schedules/{coachSchedule}/edit', [CoachScheduleController::class, 'edit'])->name('coach_schedules.edit');
-    Route::put('/coach-schedules/{coachSchedule}', [CoachScheduleController::class, 'update'])->name('coach_schedules.update');
-    Route::delete('/coach-schedules/{coachSchedule}', [CoachScheduleController::class, 'destroy'])->name('coach_schedules.destroy');
-});
+        // Rute untuk CRUD Jadwal Coach
+        // Route::post('/coach-schedules', [CoachScheduleController::class, 'store'])->name('coach_schedules.store');
+        // Route::get('/coach-schedules/{coachSchedule}/edit', [CoachScheduleController::class, 'edit'])->name('coach_schedules.edit');
+        // Route::put('/coach-schedules/{coachSchedule}', [CoachScheduleController::class, 'update'])->name('coach_schedules.update');
+        // Route::delete('/coach-schedules/{coachSchedule}', [CoachScheduleController::class, 'destroy'])->name('coach_schedules.destroy');
 
 
-Route::post('/logout', function () {Auth::logout();return redirect('/');})->name('logout');
+    Route::post('/logout', function () {Auth::logout();return redirect('/');})->name('logout');
 
-// Register
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
+    // Register
+    Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+    Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
 
-Route::get('/booked1', [BookedController::class, 'booked1']);
-Route::get('/booked2', [BookedController::class, 'booked2']);
-Route::get('/booked3', [BookedController::class, 'booked3']);
-Route::get('/booked4', [BookedController::class, 'booked4']);
-Route::get('/booked5', [BookedController::class, 'booked5']);
-Route::get('/booked6', [BookedController::class, 'booked6']);
+    Route::get('/booked1', [BookedController::class, 'booked1']);
+    Route::get('/booked2', [BookedController::class, 'booked2']);
+    Route::get('/booked3', [BookedController::class, 'booked3']);
+    Route::get('/booked4', [BookedController::class, 'booked4']);
+    Route::get('/booked5', [BookedController::class, 'booked5']);
+    Route::get('/booked6', [BookedController::class, 'booked6']);
 
-// Customer Payment
-Route::get('/payment', [CustomerPaymentController::class, 'payment'])->name('payment');
-Route::get('/paymentmethod1', [CustomerPaymentController::class, 'paymentmethod1'])->name('paymentmethod1');
-Route::get('/paymentmethod2', [CustomerPaymentController::class, 'paymentmethod2'])->name('paymentmethod2');
-Route::get('/paymentmethod3', [CustomerPaymentController::class, 'paymentmethod3'])->name('paymentmethod3');
-Route::get('/paymentmethod4', [CustomerPaymentController::class, 'paymentmethod4'])->name('paymentmethod4');
-Route::get('/paymentmethod5', [CustomerPaymentController::class, 'paymentmethod5'])->name('paymentmethod5');
-Route::get('/paymentmethod6', [CustomerPaymentController::class, 'paymentmethod6'])->name('paymentmethod6');
-Route::get('/paymentconfirm', [CustomerPaymentController::class, 'paymentconfirm'])->name('paymentconfirm');
+    // Customer Payment
+    Route::get('/payment', [CustomerPaymentController::class, 'payment'])->name('payment');
+    Route::get('/paymentmethod1', [CustomerPaymentController::class, 'paymentmethod1'])->name('paymentmethod1');
+    Route::get('/paymentmethod2', [CustomerPaymentController::class, 'paymentmethod2'])->name('paymentmethod2');
+    Route::get('/paymentmethod3', [CustomerPaymentController::class, 'paymentmethod3'])->name('paymentmethod3');
+    Route::get('/paymentmethod4', [CustomerPaymentController::class, 'paymentmethod4'])->name('paymentmethod4');
+    Route::get('/paymentmethod5', [CustomerPaymentController::class, 'paymentmethod5'])->name('paymentmethod5');
+    Route::get('/paymentmethod6', [CustomerPaymentController::class, 'paymentmethod6'])->name('paymentmethod6');
+    Route::get('/paymentconfirm', [CustomerPaymentController::class, 'paymentconfirm'])->name('paymentconfirm');
 
-// Auth::routes();
+    // Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');`
+    // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');`

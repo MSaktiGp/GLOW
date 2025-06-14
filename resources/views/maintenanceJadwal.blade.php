@@ -225,7 +225,7 @@
           <thead>
             <tr> 
               <th>No</th>
-              <th>Nama Coach</th> {{-- Changed from 'Nama Peserta' to 'Nama Coach' --}}
+              <th>Nama Coach</th>
               <th>Jenis Kelas</th>
               <th>Jam Mulai</th>
               <th>Jam Selesai</th>
