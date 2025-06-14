@@ -7,16 +7,23 @@
   <link href="{{ asset('bootstrap-5.3.6-dist/css/bootstrap.min.css') }}" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
   <style>
-    body {
-      background-color: #FFF5FF;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      min-height: 100vh;
-      margin: 0;
-    }
+   body {
+    background-color: #FFF5FF;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding-top: 70px;
+  }
+
 
     .navbar {
       background-color: #F189B8;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1030;
     }
 
     .navbar-brand {

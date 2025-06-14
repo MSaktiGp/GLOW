@@ -7,32 +7,53 @@
   <link href="{{ asset('bootstrap-5.3.6-dist/css/bootstrap.min.css') }}" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <style>
-    body {
-      background-color: #FFF5FF;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    html, body {
+      height: 100%;
       margin: 0;
+      padding: 0;
+    }
+
+    body {
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
+      background-color: #FFF5FF;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding-top: 80px; /* untuk navbar fixed */
     }
 
     .navbar {
       background-color: #F189B8;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1030;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
     }
 
     .navbar-brand {
       font-weight: bold;
       color: white;
+      letter-spacing: 1px;
     }
 
     .nav-link {
       color: white !important;
       margin-right: 1rem;
+      transition: all 0.3s ease;
     }
 
     .nav-link:hover {
       color: #ffeaf6 !important;
+      text-decoration: underline;
     }
 
     .main-content {
@@ -77,16 +98,16 @@
       margin-bottom: 2rem;
       font-size: 1.8rem;
     }
-    
+
     .text-pink {
-    color: #F189B8; }
+      color: #F189B8;
+    }
 
     footer {
       background-color: #F189B8;
       color: white;
       text-align: center;
       padding: 15px 0;
-      margin-top: auto;
     }
 
     .btn-logout svg {
@@ -107,7 +128,7 @@
 <body>
 
   <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg">
     <div class="container-fluid px-4">
       <a class="navbar-brand" href="#">GLOW</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -116,12 +137,10 @@
 
       <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
-          <li class="nav-item"><a class="nav-link text-white" href="{{ route('dashboard.owner') }}">Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="{{ route('owner.profile') }}">Profile</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="{{ route('maintenance.jadwal') }}">Maintenance Jadwal dan Coach</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('dashboard.owner') }}">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('owner.profile') }}">Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('maintenance.jadwal') }}">Maintenance Jadwal dan Coach</a></li>
         </ul>
-        
-        <!-- Logout button di kanan atas -->
         <form method="POST" action="{{ route('logout') }}">
           @csrf
           <button type="submit" class="btn btn-outline-light rounded-pill d-flex align-items-center gap-2 px-3 py-2 btn-logout">
@@ -131,38 +150,41 @@
       </div>
     </div>
   </nav>
-      <!-- Main Profile Content -->
-  <div class="main-content">
-    <h2 class="text-center profile-title">Profile Owner</h2>
-    <div class="profile-card">
-      <div class="profile-avatar">
-        <i class="bi bi-person-fill"></i>
-      </div>
-      <!-- Profil detail dengan flex -->
-      <div class="text-start">
-        <div class="d-flex justify-content-between mb-2 px-2">
-          <span class="text-pink fw-semibold">Nama</span>
-          <span class="text-pink">{{$owner->name}}</span>
-        </div>
-        <div class="d-flex justify-content-between mb-2 px-2">
-          <span class="text-pink fw-semibold">Username</span>
-          <span class="text-pink">{{$owner->username}}</span>
-        </div>
-        <div class="d-flex justify-content-between mb-2 px-2">
-          <span class="text-pink fw-semibold">Email</span>
-          <span class="text-pink text-end">{{$owner->email}}</span>
-        </div>
-      </div>
-    </div>
-    </div>
-    </div>
-  </div>
 
-  <!-- Footer -->
-  <footer>
-    <p class="mb-0">&copy; 2025 glowithus.com</p>
-    <small>Designed by glowithus</small>
-  </footer>
+  <!-- Wrapper -->
+  <div class="wrapper">
+
+    <!-- Main Profile Content -->
+    <div class="main-content">
+      <h2 class="text-center profile-title">Profile Owner</h2>
+      <div class="profile-card">
+        <div class="profile-avatar">
+          <i class="bi bi-person-fill"></i>
+        </div>
+        <div class="text-start">
+          <div class="d-flex justify-content-between mb-2 px-2">
+            <span class="text-pink fw-semibold">Nama</span>
+            <span class="text-pink">{{$owner->name}}</span>
+          </div>
+          <div class="d-flex justify-content-between mb-2 px-2">
+            <span class="text-pink fw-semibold">Username</span>
+            <span class="text-pink">{{$owner->username}}</span>
+          </div>
+          <div class="d-flex justify-content-between mb-2 px-2">
+            <span class="text-pink fw-semibold">Email</span>
+            <span class="text-pink">{{$owner->email}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p class="mb-0">&copy; 2025 glowithus.com</p>
+      <small>Designed by glowithus</small>
+    </footer>
+
+  </div>
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
