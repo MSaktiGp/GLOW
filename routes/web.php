@@ -16,6 +16,7 @@ use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\MaintenanceJadwalController;
 
 
+
 // Rute untuk Pengguna (User)
 Route::get('/', function(){return redirect('/dashboard');}); // Redirect root ke dashboard
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard'); // Beri nama rute ini
@@ -60,6 +61,21 @@ Route::get('/booked3', [BookedController::class, 'booked3'])->name('booked3');
 Route::get('/booked4', [BookedController::class, 'booked4'])->name('booked4');
 Route::get('/booked5', [BookedController::class, 'booked5'])->name('booked5');
 Route::get('/booked6', [BookedController::class, 'booked6'])->name('booked6');
+
+//Owner
+    
+    // Grup rute yang memerlukan autentikasi dan role 'owner'
+    Route::middleware(['auth', 'role:owner'])->group(function () {
+        // Route khusus owner
+        Route::get('/dashboard-owner', [DashboardOwnerController::class, 'index'])->name('dashboard.owner')->middleware();
+        Route::get('/maintenance-jadwal', [JadwalKelasController::class, 'index'])->name('maintenance.jadwal');
+        Route::get('/owner/profile', [OwnerController::class, 'profile'])->name('owner.profile');
+});
+        // Rute untuk CRUD Jadwal Kelas
+        Route::post('/jadwal-kelas', [JadwalKelasController::class, 'store'])->name('jadwal_kelas.store');
+        Route::get('/jadwal-kelas/{jadwalKelas}/edit', [JadwalKelasController::class, 'edit'])->name('jadwal_kelas.edit');
+        Route::put('/jadwal-kelas/{jadwalKelas}', [JadwalKelasController::class, 'update'])->name('jadwal_kelas.update');
+        Route::delete('/jadwal-kelas/{jadwalKelas}', [JadwalKelasController::class, 'destroy'])->name('jadwal_kelas.destroy');
 
 // Rute Customer Payment
 Route::get('/payment', [CustomerPaymentController::class, 'payment'])->name('payment');

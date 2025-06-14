@@ -314,7 +314,10 @@
 <!-- Modal Tambah Jadwal Kelas -->
 <div class="modal fade" id="modalTambahKelas" tabindex="-1" aria-labelledby="modalTambahKelasLabel" aria-hidden="true">
   <div class="modal-dialog">
+
     <form action="{{ route('jadwal_kelas.store') }}" method="POST">
+
+    <form id="jadwalForm" class="modal-content" method="POST" action="{{ route('jadwal_kelas.store') }}">
       @csrf
       <div class="modal-content">
         <div class="modal-header">

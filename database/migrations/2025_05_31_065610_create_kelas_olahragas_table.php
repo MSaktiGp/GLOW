@@ -20,6 +20,10 @@ return new class extends Migration
             $table->date('tanggal'); // Ditambahkan berdasarkan tabel blade Anda
             $table->time('jam_mulai'); // Diubah menjadi time
             $table->time('jam_selesai'); // Diubah menjadi time
+            $table->integer('kapasitas')->default(0);
+            $table->text('deskripsi')->nullable();
+            $table->integer('harga');
+
             $table->timestamps();
         });
     }
