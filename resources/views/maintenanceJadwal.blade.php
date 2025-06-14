@@ -8,23 +8,41 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <meta name="csrf-token" content="{{ csrf_token() }}"> {{-- Add CSRF token for Laravel forms --}}
   <style>
-    body {
-      background-color: #FFF5FF;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   html, body {
+      height: 100%;
       margin: 0;
       padding: 0;
-      min-height: 100vh;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      background-color: #FFF5FF;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .container {
+      flex: 1;
+      padding-top: 40px;
     }
 
     .navbar {
       background-color: #F189B8;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1030;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
     }
 
     .navbar-brand {
       font-weight: bold;
       color: white;
+      letter-spacing: 1px;
     }
+
 
     .nav-link {
       color: white !important;
@@ -225,7 +243,7 @@
           <thead>
             <tr> 
               <th>No</th>
-              <th>Nama Coach</th>
+              <th>Nama Coach</th> {{-- Changed from 'Nama Peserta' to 'Nama Coach' --}}
               <th>Jenis Kelas</th>
               <th>Jam Mulai</th>
               <th>Jam Selesai</th>
