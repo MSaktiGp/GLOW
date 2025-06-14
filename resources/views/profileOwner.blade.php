@@ -118,7 +118,7 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
           <li class="nav-item"><a class="nav-link text-white" href="{{ route('dashboard.owner') }}">Dashboard</a></li>
           <li class="nav-item"><a class="nav-link text-white" href="{{ route('owner.profile') }}">Profile</a></li>
-          <li class="nav-item"><a class="nav-link text-white" href="{{ url('/maintenance-jadwal') }}">Maintenance Jadwal dan Coach</a></li>
+          <li class="nav-item"><a class="nav-link text-white" href="{{ route('maintenance.jadwal') }}">Maintenance Jadwal dan Coach</a></li>
         </ul>
         
         <!-- Logout button di kanan atas -->
@@ -142,15 +142,15 @@
       <div class="text-start">
         <div class="d-flex justify-content-between mb-2 px-2">
           <span class="text-pink fw-semibold">Nama</span>
-          <span class="text-pink">Shakila Rama Wulandari</span>
+          <span class="text-pink">{{$owner->name}}</span>
         </div>
         <div class="d-flex justify-content-between mb-2 px-2">
-          <span class="text-pink fw-semibold">Nomor HP</span>
-          <span class="text-pink">08987654321</span>
+          <span class="text-pink fw-semibold">Username</span>
+          <span class="text-pink">{{$owner->username}}</span>
         </div>
         <div class="d-flex justify-content-between mb-2 px-2">
-          <span class="text-pink fw-semibold">Alamat</span>
-          <span class="text-pink text-end">Jl. Kenangan, Kota Jambi</span>
+          <span class="text-pink fw-semibold">Email</span>
+          <span class="text-pink text-end">{{$owner->email}}</span>
         </div>
       </div>
     </div>

@@ -30,9 +30,9 @@ class LoginController extends Controller
         if (auth()->attempt([$fieldType => $usnemail, 'password' => $password])) {
             $request->session()->regenerate();
             if (auth()->user()->role == 'owner') {
-                return redirect()->route('admin.dashboard');
+                return redirect()->route('dashboard.owner');
             } else if (auth()->user()->role == 'user') {
-                return redirect()->route('user.dashboard');
+                return redirect()->route('dashboard.user');
             }
         }
 
