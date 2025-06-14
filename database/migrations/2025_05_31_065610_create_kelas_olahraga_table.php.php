@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId('coach_id')->nullable()->constrained('coaches')->onDelete('set null'); // Coach yang mengajar kelas ini
             $table->string('nama_kelas');
             $table->integer('kapasitas')->default(0);
+            $table->text('deskripsi')->nullable();
+            $table->integer('harga');
             $table->timestamps();
         });
     }

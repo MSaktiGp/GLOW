@@ -327,7 +327,7 @@
 
   <div class="modal fade" id="jadwalModal" tabindex="-1" aria-labelledby="jadwalModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <form id="jadwalForm" class="modal-content" method="POST" action="">
+    <form id="jadwalForm" class="modal-content" method="POST" action="{{ route('jadwal_kelas.store') }}">
       @csrf
       @method('POST') {{-- Will be dynamically changed to PUT for updates --}}
       <input type="hidden" id="jadwalId" name="jadwal_id" /> {{-- Hidden input for ID --}}

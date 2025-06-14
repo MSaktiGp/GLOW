@@ -50,20 +50,14 @@
 
 
     //Owner
-    Route::get('/owner/login', [OwnerController::class, 'showLoginForm'])->name('owner.login');
-    Route::post('/owner/login', [OwnerController::class, 'login'])->name('owner.login.submit');
-    Route::get('/dashboard-owner', [DashboardOwnerController::class, 'index'])->name('dashboard.owner');
-    Route::get('/owner/profile', [OwnerController::class, 'profile'])->name('owner.profile');
-
+    
     // Grup rute yang memerlukan autentikasi dan role 'owner'
-Route::middleware(['auth', 'role:owner'])->group(function () {
-    // Route khusus owner
-    Route::get('/dashboard-owner', [DashboardOwnerController::class, 'index'])->name('dashboard.owner');
-    Route::get('/maintenance-jadwal', [JadwalKelasController::class, 'index'])->name('maintenance.jadwal');
+    Route::middleware(['auth', 'role:owner'])->group(function () {
+        // Route khusus owner
+        Route::get('/dashboard-owner', [DashboardOwnerController::class, 'index'])->name('dashboard.owner')->middleware();
+        Route::get('/maintenance-jadwal', [JadwalKelasController::class, 'index'])->name('maintenance.jadwal');
+        Route::get('/owner/profile', [OwnerController::class, 'profile'])->name('owner.profile');
 });
-
-    Route::get('/maintenance-jadwal', [JadwalKelasController::class, 'index'])->name('maintenance.jadwal');
-
         // Rute untuk CRUD Jadwal Kelas
         Route::post('/jadwal-kelas', [JadwalKelasController::class, 'store'])->name('jadwal_kelas.store');
         Route::get('/jadwal-kelas/{jadwalKelas}/edit', [JadwalKelasController::class, 'edit'])->name('jadwal_kelas.edit');

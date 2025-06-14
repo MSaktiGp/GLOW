@@ -36,8 +36,8 @@ class JadwalKelasController extends Controller
     {
         $validatedData = $request->validate([
             'kelas_olahraga_id' => 'required|exists:kelas_olahragas,id',
-            'waktu_mulai' => 'required|datetime',
-            'waktu_selesai' => 'required|datetime|after:waktu_mulai',
+            'waktu_mulai' => 'required|date_format:Y-m-d\TH:i',
+            'waktu_selesai' => 'required|date_format:Y-m-d\TH:i|after:waktu_mulai',
             'status' => 'required|in:Aktif,Tidak Aktif',
         ]);
 

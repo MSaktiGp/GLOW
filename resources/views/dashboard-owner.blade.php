@@ -167,7 +167,7 @@
       </div>
     </nav>
 
-  <div class="container container-custom mt-5 pt-4 text-center">
+  <div class="container container-custom mt-4 text-center">
     <h2 class="section-title">Dashboard Owner!</h2>
 
     <!-- Pie Chart Section -->
