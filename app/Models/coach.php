@@ -11,8 +11,6 @@ class Coach extends Model
 
     protected $fillable = [
         'name',
-        'specialty',
-        // Tambahkan field fillable lainnya sesuai tabel coaches Anda
     ];
 
     public function kelasOlahraga()

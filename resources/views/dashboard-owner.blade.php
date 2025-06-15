@@ -213,23 +213,18 @@
                 </tr>
               </thead>
               <tbody class="table-glow-t">
-                <tr>
-                  <td>1</td>
-                  <td>Rina</td>
-                  <td>Zumba</td>
-                  <td>08:00</td>
-                  <td>09:00</td>
-                  <td>Aktif</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Andi</td>
-                  <td>Yoga</td>
-                  <td>10:00</td>
-                  <td>11:00</td>
-                  <td>Non-Aktif</td>
-                </tr>
+                @foreach ($jadwalKelas as $key => $jadwal)
+              <tr>
+                <td>{{ $key + 1 }}</td>
+                <td>{{ $jadwal->kelasOlahraga->nama_kelas ?? '-' }}</td>
+                <td>{{ $jadwal->kelasOlahraga->jenis_kelas ?? '-' }}</td>
+                <td>{{ $jadwal->waktu_mulai }}</td>
+                <td>{{ $jadwal->waktu_selesai }}</td>
+                <td>{{ $jadwal->status }}</td>
+              </tr>
+                @endforeach
               </tbody>
+
             </table>
           </div>
         </div>
@@ -243,39 +238,46 @@
   </footer>
 
   <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const chartDom = document.querySelector("#pieChart");
-      const myChart = echarts.init(chartDom);
-      const option = {
-        title: {
-          text: 'Tampilan Data',
-          subtext: 'Jumlah Peserta per Kelas',
-          left: 'center',
-          textStyle: { color: '#8B5A2B', fontSize: 16, fontWeight: 'bold' },
-          subtextStyle: { color: '#3A6EA5', fontSize: 13 }
-        },
-        tooltip: { trigger: 'item' },
-        legend: { show: false },
-        series: [{
-          name: 'Peserta',
-          type: 'pie',
-          radius: '50%',
-          data: [
-            { value: 4, name: 'Yoga', itemStyle: { color: '#d4cce9' } },
-            { value: 3, name: 'Pilates', itemStyle: { color: '#646fd4' } },
-            { value: 5, name: 'Poundfit', itemStyle: { color: '#f8c04e' } },
-            { value: 6, name: 'Zumba', itemStyle: { color: '#60d7e6' } },
-            { value: 2, name: 'Tabata', itemStyle: { color: '#5cc087' } },
-            { value: 3, name: 'Trampoline', itemStyle: { color: '#db4a6d' } }
-          ],
-          label: { color: '#8B5A2B', fontSize: 12 }
-        }]
-      };
-      myChart.setOption(option);
-    });
-  </script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const chartDom = document.querySelector("#pieChart"); // pastikan ada <div id="pieChart"></div>
+    const myChart = echarts.init(chartDom);
+
+    const data = @json($chartData);
+
+    const chartData = data.map(item => ({
+      value: item.total,
+      name: item.jenis_kelas,
+      itemStyle: {
+        color: {
+          Yoga: '#d4cce9',
+          Pilates: '#646fd4',
+          Poundfit: '#f8c04e',
+          Zumba: '#60d7e6',
+          Tabata: '#5cc087',
+          Trampoline: '#db4a6d'
+        }[item.jenis_kelas] || '#ccc'
+      }
+    }));
+
+    const option = {
+      title: {
+        text: 'Tampilan Data',
+        subtext: 'Jumlah Peserta per Kelas',
+        left: 'center'
+      },
+      tooltip: { trigger: 'item' },
+      legend: { show: false },
+      series: [{
+        name: 'Peserta',
+        type: 'pie',
+        radius: '50%',
+        data: chartData
+      }]
+    };
+
+    myChart.setOption(option);
+  });
+</script>
 </body>
 </html>

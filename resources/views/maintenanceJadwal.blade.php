@@ -315,8 +315,6 @@
 <div class="modal fade" id="modalTambahKelas" tabindex="-1" aria-labelledby="modalTambahKelasLabel" aria-hidden="true">
   <div class="modal-dialog">
 
-    <form action="{{ route('jadwal_kelas.store') }}" method="POST">
-
     <form id="jadwalForm" class="modal-content" method="POST" action="{{ route('jadwal_kelas.store') }}">
       @csrf
       <div class="modal-content">
@@ -359,4 +357,96 @@
   <small>Designed by glowithus</small>
 </footer>
 </body>
+<script src="{{ asset('bootstrap-5.3.6-dist/js/bootstrap.bundle.min.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    // Logika untuk Modal Edit Jadwal Kelas
+    $('.btn-edit').on('click', function() {
+        var jadwalId = $(this).data('id');
+        var url = '/jadwal-kelas/' + jadwalId + '/edit'; // Pastikan URL ini sesuai dengan rute Anda
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            success: function(response) {
+                $('#modalTambahKelasLabel').text('Edit Jadwal Kelas'); // Ganti judul modal
+                $('#jadwalForm').attr('action', '/jadwal-kelas/' + jadwalId); // Atur action form untuk update
+                $('#jadwalForm').append('<input type="hidden" name="_method" value="PUT">'); // Tambahkan method PUT
+
+                $('#kelas_olahraga_id').val(response.jadwal.kelas_olahraga_id);
+                $('#waktu_mulai').val(response.jadwal.waktu_mulai.slice(0, 16)); // Format untuk datetime-local
+                $('#waktu_selesai').val(response.jadwal.waktu_selesai.slice(0, 16)); // Format untuk datetime-local
+                $('#status').val(response.jadwal.status);
+
+                $('#modalTambahKelas').modal('show'); // Tampilkan modal
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText);
+                alert('Gagal mengambil data jadwal.');
+            }
+        });
+    });
+
+    // Reset modal ketika ditutup (untuk form tambah)
+    $('#modalTambahKelas').on('hidden.bs.modal', function() {
+        $('#modalTambahKelasLabel').text('Tambah Jadwal Kelas');
+        $('#jadwalForm').attr('action', '{{ route('jadwal_kelas.store') }}');
+        $('#jadwalForm input[name="_method"]').remove(); // Hapus method PUT jika ada
+        $('#jadwalForm')[0].reset(); // Reset form
+    });
+
+    // Logika untuk Modal Tambah Jadwal Coach
+    $('.btn-tambah').on('click', function() {
+        $('#jadwalModalLabel').text('Tambah Jadwal Coach'); // Ubah judul modal sesuai
+        $('#jadwalFormCoach').attr('action', '{{ route('kelas_olahraga.store') }}'); // Pastikan form action ke store kelas_olahraga
+        $('#jadwalFormCoach input[name="_method"]').remove();
+        $('#jadwalFormCoach')[0].reset();
+        // $('#jadwalModal').modal('show'); // Tampilkan modal, pastikan ID modal sesuai
+    });
+
+    // TODO: Logika untuk Modal Edit Jadwal Coach (mirip dengan edit Jadwal Kelas)
+    $('.btn-edit-coach').on('click', function() {
+        var kelasId = $(this).data('id');
+        var url = '/kelas-olahraga/' + kelasId + '/edit';
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            success: function(response) {
+                $('#jadwalModalLabel').text('Edit Jadwal Coach'); // Ganti judul modal
+                $('#jadwalFormCoach').attr('action', '/kelas-olahraga/' + kelasId); // Atur action form untuk update
+                $('#jadwalFormCoach').append('<input type="hidden" name="_method" value="PUT">'); // Tambahkan method PUT
+
+                // Isi form dengan data yang diterima
+                $('#coach_id').val(response.kelas.coach_id);
+                $('#nama_kelas_coach').val(response.kelas.nama_kelas); // Pastikan ada ID unik untuk input ini
+                $('#jenis_kelas_coach').val(response.kelas.jenis_kelas);
+                $('#tanggal_coach').val(response.kelas.tanggal);
+                $('#jam_mulai_coach').val(response.kelas.jam_mulai);
+                $('#jam_selesai_coach').val(response.kelas.jam_selesai);
+                $('#kapasitas_coach').val(response.kelas.kapasitas);
+                $('#deskripsi_coach').val(response.kelas.deskripsi);
+                $('#harga_coach').val(response.kelas.harga);
+
+                // Pastikan ID modal untuk Jadwal Coach sesuai
+                $('#jadwalModal').modal('show'); // Tampilkan modal
+            },
+            error: function(xhr) {
+                console.log(xhr.responseText);
+                alert('Gagal mengambil data jadwal coach.');
+            }
+        });
+    });
+
+    // Reset modal edit coach ketika ditutup
+    $('#jadwalModal').on('hidden.bs.modal', function() {
+        $('#jadwalModalLabel').text('Tambah Jadwal Coach'); // Reset judul
+        $('#jadwalFormCoach').attr('action', '{{ route('kelas_olahraga.store') }}'); // Reset action
+        $('#jadwalFormCoach input[name="_method"]').remove(); // Hapus method PUT
+        $('#jadwalFormCoach')[0].reset(); // Reset form
+    });
+});
+</script>
+
 </html>
