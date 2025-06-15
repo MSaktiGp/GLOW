@@ -95,7 +95,7 @@
                     class="text-white hover:bg-pink-500 block px-3 py-2 rounded-md text-base font-medium">Contact Us</a>
             </div>
             <div class="px-4 py-3">
-                <a href="#"
+                <a href="{{route('login')}}"
                     class="w-full text-center bg-white text-primary-pink font-semibold px-4 py-2 rounded-full hover:bg-pink-100 flex items-center justify-center space-x-2">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
