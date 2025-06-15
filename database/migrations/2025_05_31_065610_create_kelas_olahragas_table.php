@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('coach_id')->constrained('coaches')->onDelete('cascade');
             $table->string('nama_kelas');
-            $table->enum('jenis_kelas', ['pilates', 'zumba', 'tabata', 'trampoline', 'poundfit', 'yoga'])->nullable();            $table->date('tanggal'); // Ditambahkan berdasarkan tabel blade Anda
+            $table->enum('jenis_kelas', ['pilates', 'zumba', 'tabata', 'trampoline', 'poundfit', 'yoga'])->nullable();            
+            $table->date('tanggal'); // Ditambahkan berdasarkan tabel blade Anda
             $table->time('jam_mulai'); // Diubah menjadi time
             $table->time('jam_selesai'); // Diubah menjadi time
             $table->integer('kapasitas')->default(0);
             $table->text('status')->nullable();
-
             $table->timestamps();
         });
     }
