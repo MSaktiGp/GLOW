@@ -168,7 +168,7 @@
     </nav>
 
   <div class="container container-custom mt-4 text-center">
-    <h2 class="section-title">Dashboard Owner!</h2>
+    <h2 class="section-title text-start">Selamat Datang, {{ Auth::user()->name }}!</h2>
 
     <!-- Pie Chart Section -->
     <div class="row mt-4">
