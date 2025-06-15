@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-layout')
+@extends('user.layouts.dashboard-user-layout')
 @section('title','Girls Living on Wellness')
 
 @section('content')

@@ -1,4 +1,4 @@
-@extends('layouts.class-layout')
+@extends('guest.layouts.class-layout')
 @section('title','Pilates Class')
 @section('content')
 

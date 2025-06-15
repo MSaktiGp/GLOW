@@ -17,8 +17,8 @@ use App\Http\Controllers\MaintenanceJadwalController;
 
 
 // Rute untuk Pengguna (User)
-Route::get('/', function(){return redirect('/dashboard');}); // Redirect root ke dashboard
-Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard'); // Beri nama rute ini
+Route::get('/', function(){return redirect('/dashboard');}); 
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard'); 
 Route::get('/profil', [PelangganController::class, 'profile'])->name('profil');
 
 // Rute Kelas Olahraga
@@ -83,8 +83,6 @@ Route::middleware(['auth', 'role:owner'])->group(function () {
     // Rute Dashboard Owner
     Route::get('/dashboard-owner', [App\Http\Controllers\DashboardOwnerController::class, 'index'])->name('dashboard.owner');
     Route::get('/owner/profile', [App\Http\Controllers\OwnerController::class, 'profile'])->name('owner.profile');
-
-    // Rute Maintenance Jadwal (Sekarang menggunakan MaintenanceJadwalController)
     Route::get('/maintenance-jadwal', [MaintenanceJadwalController::class, 'index'])->name('maintenance.jadwal');
 
     // Rute untuk CRUD Jadwal Kelas
@@ -98,6 +96,12 @@ Route::middleware(['auth', 'role:owner'])->group(function () {
     Route::get('/kelas-olahraga/{kelasOlahraga}/edit', [MaintenanceJadwalController::class, 'editKelasOlahraga'])->name('kelas_olahraga.edit');
     Route::put('/kelas-olahraga/{kelasOlahraga}', [MaintenanceJadwalController::class, 'updateKelasOlahraga'])->name('kelas_olahraga.update');
     Route::delete('/kelas-olahraga/{kelasOlahraga}', [MaintenanceJadwalController::class, 'destroyKelasOlahraga'])->name('kelas_olahraga.destroy');
+});
+
+// Rute autentikasi role 'user'
+Route::middleware(['auth', 'role:user'])->group(function () {
+    // Rute dashboard user
+    Route::get('/dashboard-user', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.user');
 });
 
 // Rute Logout (dapat diakses oleh siapa saja yang terautentikasi)

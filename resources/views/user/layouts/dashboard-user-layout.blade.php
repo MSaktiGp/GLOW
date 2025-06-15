@@ -39,8 +39,10 @@
                 </ul>
             </div>
             <form class="d-flex">
-                <a href="{{route('profile')}}" class="btn btn-signin">
-                    <i class="bi bi-person-circle"></i> Sign in
+                <a href="{{ route('profil') }}"
+                class="btn d-flex align-items-center justify-content-center rounded-circle"
+                style="width: 40px; height: 40px; background-color: white; border: 2px solid #e59cc6; color: #e59cc6;">
+                    <i class="bi bi-person-cicle"></i>
                 </a>
             </form>
         </div>
