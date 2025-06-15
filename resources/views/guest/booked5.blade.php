@@ -84,7 +84,7 @@
               </div>
             </div>
 
-            <button class="btn btn-outline-secondary w-100 mt-3">Book Class</button>
+           <a href="{{ route('payment') }}" class="btn btn-outline-secondary w-100 mt-3">Book Class</a>
           </div>
         </div>
       </div>
@@ -122,7 +122,7 @@
                 <span><strong>Rp65.000</strong></span>
               </div>
             </div>
-            <button class="btn btn-outline-secondary w-100 mt-3">Book Class</button>
+            <a href="{{ route('payment') }}" class="btn btn-outline-secondary w-100 mt-3">Book Class</a>
           </div>
         </div>
       </div>
