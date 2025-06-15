@@ -67,7 +67,7 @@
 
 <!-- Main Profile Content -->
   <div class="main-content">
-    <h2 class="text-center profile-title">Halo, {{ $user->username }}!</h2>
+    <h2 class="text-center profile-title">Halo, {{ $user->name }}!</h2>
     <div class="profile-card">
       <div class="profile-avatar">
         <i class="bi bi-person-fill"></i>
@@ -75,8 +75,8 @@
       <!-- Profil detail dengan flex -->
       <div class="text-start">
         <div class="d-flex justify-content-between mb-2 px-2">
-          <span class="text-pink fw-semibold">Nama</span>
-          <span class="text-pink">{{ $user->name }}</span>
+          <span class="text-pink fw-semibold">Username</span>
+          <span class="text-pink">{{ $user->username }}</span>
         </div>
         <div class="d-flex justify-content-between mb-2 px-2">
           <span class="text-pink fw-semibold">Nomor HP</span>
