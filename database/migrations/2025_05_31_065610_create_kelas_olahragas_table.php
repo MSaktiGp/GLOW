@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('kelas_olahragas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('coach_id')->nullable()->constrained('coaches')->onDelete('set null'); // Coach yang mengajar kelas ini
+            $table->foreignId('coach_id')->constrained('coaches')->onDelete('cascade');
             $table->string('nama_kelas');
+            $table->string('jenis_kelas')->nullable(); // Ditambahkan berdasarkan tabel blade Anda
+            $table->date('tanggal'); // Ditambahkan berdasarkan tabel blade Anda
+            $table->time('jam_mulai'); // Diubah menjadi time
+            $table->time('jam_selesai'); // Diubah menjadi time
             $table->integer('kapasitas')->default(0);
-            $table->text('deskripsi')->nullable();
-            $table->integer('harga');
+            $table->text('status')->nullable();
+
             $table->timestamps();
         });
     }

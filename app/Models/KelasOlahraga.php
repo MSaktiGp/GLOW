@@ -9,12 +9,17 @@ class KelasOlahraga extends Model
 {
     use HasFactory;
 
-    protected $table = 'kelas_olahragas';
+    protected $table = 'kelas_olahragas'; // Pastikan nama tabel benar
 
     protected $fillable = [
         'coach_id',
         'nama_kelas',
+        'jenis_kelas',
         'kapasitas',
+        'tanggal',
+        'jam_mulai',
+        'jam_selesai',
+        'Status',
     ];
 
     public function coach()
