@@ -1,4 +1,5 @@
-@extends ('layout')
+@extends('user.layouts.dashboard-user-layout')
+@section('title','Profile')
 @section ('content')
 
 <style>
@@ -47,11 +48,26 @@
     
     .text-pink {
     color: #F189B8; }
+
+    .btn-logout {
+      background-color: #F189B8;
+      color: white;
+      border: none;
+      padding: 0.5rem 2rem;
+      border-radius: 8px;
+      margin-top: 1.5rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-logout:hover {
+      background-color: #e06a9c;
+      color: white;
+    }
 </style>
 
 <!-- Main Profile Content -->
   <div class="main-content">
-    <h2 class="text-center profile-title">Halo, Azia!</h2>
+    <h2 class="text-center profile-title">Halo, {{ $user->username }}!</h2>
     <div class="profile-card">
       <div class="profile-avatar">
         <i class="bi bi-person-fill"></i>
@@ -60,17 +76,21 @@
       <div class="text-start">
         <div class="d-flex justify-content-between mb-2 px-2">
           <span class="text-pink fw-semibold">Nama</span>
-          <span class="text-pink">Azia Naura Ramadhani</span>
+          <span class="text-pink">{{ $user->name }}</span>
         </div>
         <div class="d-flex justify-content-between mb-2 px-2">
           <span class="text-pink fw-semibold">Nomor HP</span>
-          <span class="text-pink">08987654321</span>
+          <span class="text-pink">{{ $user->phone }}</span>
         </div>
         <div class="d-flex justify-content-between mb-2 px-2">
           <span class="text-pink fw-semibold">Alamat</span>
-          <span class="text-pink text-end">Mendalo Indah, Muaro Jambi</span>
+          <span class="text-pink text-end">{{ $user->address }}</span>
         </div>
       </div>
+      <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button type="submit" class="btn btn-logout">Logout</button>
+      </form>
     </div>
     </div>
     </div>

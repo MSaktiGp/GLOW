@@ -8,6 +8,7 @@ class PelangganController extends Controller
 {
     public function profile()
     {
-        return view('profile');
+        $user = auth()->user();
+        return view('user.profile', compact('user'));
     }
 }

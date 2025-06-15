@@ -8,41 +8,41 @@ class CustomerPaymentController extends Controller
 {
     public function payment()
     {
-        return view('payment');
+        return view('user.payment');
     }
     
     public function paymentmethod1()
     {
-        return view('paymentmethod1');
+        return view('user.paymentmethod1');
     }
 
     public function paymentmethod2()
     {
-        return view('paymentmethod2');
+        return view('user.paymentmethod2');
     }
 
      public function paymentmethod3()
     {
-        return view('paymentmethod3');
+        return view('user.paymentmethod3');
     }
 
      public function paymentmethod4()
     {
-        return view('paymentmethod4');
+        return view('user.paymentmethod4');
     }
 
     public function paymentmethod5()
     {
-        return view('paymentmethod5');
+        return view('user.paymentmethod5');
     }
 
     public function paymentmethod6()
     {
-        return view('paymentmethod6');
+        return view('user.paymentmethod6');
     }
 
     public function paymentconfirm()
     {
-        return view('paymentconfirm');
+        return view('user.paymentconfirm');
     }
 }

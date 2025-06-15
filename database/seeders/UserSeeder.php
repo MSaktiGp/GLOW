@@ -21,16 +21,22 @@ class UserSeeder extends Seeder
             'username' => 'owner123',
             'email' => 'owner123@gmail.com',
             'password' => Hash::make('Owner1234'),
-            'role' => 'owner'
+            'phone' => '081234567890',
+            'address' => 'Jl. Owner No. 123',
+            'role' => 'owner',
+            'email_verified_at' => now(),
         ]);
-        
+
         DB::table('users')->insert([
             'name' => 'UserA',
             'username' => 'user123',
-            'email' => 'user123@gmail.com', 
+            'email' => 'user123@gmail.com',
             'password' => Hash::make('user1234'),
-            'role' => 'user'
+            'phone' => '081234567890',
+            'address' => 'Jl. User No. 123',
+            'role' => 'user',
+            'email_verified_at' => now(),
+
         ]);
-        
     }
 }

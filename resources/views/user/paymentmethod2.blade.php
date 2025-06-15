@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('user.layouts.dashboard-user-layout')
 
 @section('content')
 
@@ -9,7 +9,7 @@
     }
 
     .class-card {
-        min-height: 210px;
+        min-height: 200px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -68,7 +68,6 @@
 </style>
 @endpush
 
-<!-- Section Pembayaran -->
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-lg-8">
@@ -82,25 +81,24 @@
 
                 <div class="va-box d-flex justify-content-between align-items-center flex-wrap mb-4">
                     <div class="d-flex align-items-center gap-2">
-                        <img src="{{ asset('images/Dana.png') }}" alt="Logo DANA" style="height: 28px;">
-                        <span class="fw-bold text-custom">DANA</span>
+                        <img src="{{ asset('images/Bni.png') }}" alt="Logo BNI" style="height: 28px;">
+                        <span class="fw-bold text-custom">BNI</span>
                     </div>
                     <div class="d-flex align-items-center gap-2">
-                        <span class="fw-semibold text-custom">128 0856 4318 1606</span>
+                        <span class="fw-semibold text-custom">456 1234 7890</span>
                         <button class="btn btn-outline-secondary btn-copy">SALIN</button>
                     </div>
                 </div>
 
                 <div class="payment-instruction">
-                    <h6 class="text-custom fw-bold mb-3">Petunjuk Pembayaran via DANA</h6>
+                    <h6 class="text-custom fw-bold mb-3">Petunjuk Transfer BNI</h6>
                     <ol>
-                        <li>Buka aplikasi <strong>DANA</strong> dan login.</li>
-                        <li>Pilih menu <strong>Transfer</strong></li>
-                        <li>Masukkan kode pembayaran: <strong>128 0856 4318 1606</strong></li>
-                        <li>Masukkan jumlah pembayaran: <strong>Rp150.000</strong></li>
-                        <li>Konfirmasi detail pembayaran dan lanjutkan.</li>
-                        <li>Masukkan <strong>PIN DANA</strong> untuk menyelesaikan transaksi.</li>
-                        <li>Simpan <strong>bukti pembayaran</strong> jika diperlukan</li>
+                        <li>Masuk ke aplikasi <strong>BNI Mobile</strong>.</li>
+                        <li>Pilih menu <strong>Transfer</strong>.</li>
+                        <li>Masukkan nomor rekening: <strong>456 1234 7890</strong>.</li>
+                        <li>Masukkan nominal: <strong>Rp150.000</strong>.</li>
+                        <li>Konfirmasi dan masukkan PIN.</li>
+                        <li>Simpan <strong>bukti pembayaran</strong>.</li>
                     </ol>
                 </div>
             </div>

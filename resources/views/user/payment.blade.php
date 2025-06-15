@@ -1,4 +1,4 @@
-@extends ('layout')
+@extends('user.layouts.dashboard-user-layout')
 
 @section('content')
 
@@ -28,6 +28,7 @@
         justify-content: center;
         align-items: center;
         transition: all 0.3s ease-in-out;
+        text-decoration: none;
     }
 
     .payment-btn:hover {
@@ -80,45 +81,45 @@
         <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 g-3 justify-content-center">
 
             <div class="col text-center">
-                <button class="payment-btn">
+                <a class="payment-btn" href="{{ route('payment.bri') }}">
                     <img src="{{ asset('images/Brimo.png') }}" alt="BRImo">
                     <span>BRImo</span>
-                </button>
+                </a>
             </div>
 
             <div class="col text-center">
-                <button class="payment-btn">
+                <a class="payment-btn" href="{{ route('payment.bni') }}">
                     <img src="{{ asset('images/Bni.png') }}" alt="BNI Mobile">
                     <span>BNI Mobile</span>
-                </button>
+                </a>
             </div>
 
             <div class="col text-center">
-                <button class="payment-btn">
+                <a class="payment-btn" href="{{ route('payment.mandiri') }}">
                     <img src="{{ asset('images/Mandiri.png') }}" alt="Mandiri">
                     <span>Mandiri</span>
-                </button>
+                </a>
             </div>
 
             <div class="col text-center">
-                <button class="payment-btn">
+                <a class="payment-btn" href="{{ route('payment.bca') }}">
                     <img src="{{ asset('images/Bca.png') }}" alt="BCA">
                     <span>BCA</span>
-                </button>
+                </a>
             </div>
 
             <div class="col text-center">
-                <button class="payment-btn">
+                <a class="payment-btn" href="{{ route('payment.dana') }}">
                     <img src="{{ asset('images/Dana.png') }}" alt="DANA">
                     <span>DANA</span>
-                </button>
+                </a>
             </div>
 
             <div class="col text-center">
-                <button class="payment-btn">
+                <a class="payment-btn" href="{{ route('payment.ovo') }}">
                     <img src="{{ asset('images/OVO.png') }}" alt="OVO">
                     <span>OVO</span>
-                </button>
+                </a>
             </div>
 
         </div>

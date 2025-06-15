@@ -19,7 +19,7 @@ use App\Http\Controllers\MaintenanceJadwalController;
 // Rute untuk Pengguna (User)
 Route::get('/', function(){return redirect('/dashboard');}); 
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard'); 
-Route::get('/profil', [PelangganController::class, 'profile'])->name('profil');
+
 
 // Rute Kelas Olahraga
 Route::get('/yoga', [ClassController::class, 'yoga'])->name('yoga');
@@ -62,15 +62,7 @@ Route::get('/booked5', [BookedController::class, 'booked5'])->name('booked5');
 Route::get('/booked6', [BookedController::class, 'booked6'])->name('booked6');
 
 
-// Rute Customer Payment
-Route::get('/payment', [CustomerPaymentController::class, 'payment'])->name('payment');
-Route::get('/paymentmethod1', [CustomerPaymentController::class, 'paymentmethod1'])->name('paymentmethod1');
-Route::get('/paymentmethod2', [CustomerPaymentController::class, 'paymentmethod2'])->name('paymentmethod2');
-Route::get('/paymentmethod3', [CustomerPaymentController::class, 'paymentmethod3'])->name('paymentmethod3');
-Route::get('/paymentmethod4', [CustomerPaymentController::class, 'paymentmethod4'])->name('paymentmethod4');
-Route::get('/paymentmethod5', [CustomerPaymentController::class, 'paymentmethod5'])->name('paymentmethod5');
-Route::get('/paymentmethod6', [CustomerPaymentController::class, 'paymentmethod6'])->name('paymentmethod6');
-Route::get('/paymentconfirm', [CustomerPaymentController::class, 'paymentconfirm'])->name('paymentconfirm');
+
 
 
 // Rute Autentikasi Owner
@@ -102,6 +94,17 @@ Route::middleware(['auth', 'role:owner'])->group(function () {
 Route::middleware(['auth', 'role:user'])->group(function () {
     // Rute dashboard user
     Route::get('/dashboard-user', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.user');
+    Route::get('/profil', [PelangganController::class, 'profile'])->name('profil');
+
+    // Rute Customer Payment
+    Route::get('/payment', [CustomerPaymentController::class, 'payment'])->name('payment');
+    Route::get('/payment-bri', [CustomerPaymentController::class, 'paymentmethod1'])->name('payment.bri');
+    Route::get('/payment-bni', [CustomerPaymentController::class, 'paymentmethod2'])->name('payment.bni');
+    Route::get('/payment-mandiri', [CustomerPaymentController::class, 'paymentmethod3'])->name('payment.mandiri');
+    Route::get('/payment-bca', [CustomerPaymentController::class, 'paymentmethod4'])->name('payment.bca');
+    Route::get('/payment-dana', [CustomerPaymentController::class, 'paymentmethod5'])->name('payment.dana');
+    Route::get('/payment-ovo', [CustomerPaymentController::class, 'paymentmethod6'])->name('payment.ovo');
+    Route::get('/paymentconfirm', [CustomerPaymentController::class, 'paymentconfirm'])->name('paymentconfirm');
 });
 
 // Rute Logout (dapat diakses oleh siapa saja yang terautentikasi)

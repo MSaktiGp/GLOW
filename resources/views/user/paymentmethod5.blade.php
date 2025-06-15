@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('user.layouts.dashboard-user-layout')
 
 @section('content')
 
@@ -82,8 +82,8 @@
 
                 <div class="va-box d-flex justify-content-between align-items-center flex-wrap mb-4">
                     <div class="d-flex align-items-center gap-2">
-                        <img src="{{ asset('images/Bca.png') }}" alt="Logo BCA" style="height: 28px;">
-                        <span class="fw-bold text-custom">BCA Mobile</span>
+                        <img src="{{ asset('images/Dana.png') }}" alt="Logo DANA" style="height: 28px;">
+                        <span class="fw-bold text-custom">DANA</span>
                     </div>
                     <div class="d-flex align-items-center gap-2">
                         <span class="fw-semibold text-custom">128 0856 4318 1606</span>
@@ -92,14 +92,14 @@
                 </div>
 
                 <div class="payment-instruction">
-                    <h6 class="text-custom fw-bold mb-3">Petunjuk Transfer via BCA Mobile</h6>
+                    <h6 class="text-custom fw-bold mb-3">Petunjuk Pembayaran via DANA</h6>
                     <ol>
-                        <li>Buka aplikasi <strong>BCA Mobile</strong> dan login ke m-BCA</li>
-                        <li>Pilih menu <strong>m-Transfer</strong></li>
-                        <li>Pilih <strong>BCA Virtual Account</strong></li>
-                        <li>Masukkan nomor VA: <strong>128 0856 4318 1606</strong></li>
+                        <li>Buka aplikasi <strong>DANA</strong> dan login.</li>
+                        <li>Pilih menu <strong>Transfer</strong></li>
+                        <li>Masukkan kode pembayaran: <strong>128 0856 4318 1606</strong></li>
                         <li>Masukkan jumlah pembayaran: <strong>Rp150.000</strong></li>
-                        <li>Konfirmasi dan masukkan PIN m-BCA</li>
+                        <li>Konfirmasi detail pembayaran dan lanjutkan.</li>
+                        <li>Masukkan <strong>PIN DANA</strong> untuk menyelesaikan transaksi.</li>
                         <li>Simpan <strong>bukti pembayaran</strong> jika diperlukan</li>
                     </ol>
                 </div>
