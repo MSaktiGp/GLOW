@@ -17,7 +17,7 @@ class CoachSeeder extends Seeder
         $names = ['Claura Sintiya', 'Kayla Zahra', 'Rebeca Laura', 'Dela Putri', 'Rachel Salsabila', 'Stevi Putri'];
         $specializations = ['Yoga', 'Pilates', 'Zumba', 'Poundfit', 'Tabata', 'Trampoline'];
         
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 6; $i++) {
             $coaches[] = [
                 'name' => $names[$i],
                 'phone' => '08' . rand(1000000000, 9999999999),

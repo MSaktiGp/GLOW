@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('coach_id')->constrained('coaches')->onDelete('cascade');
             $table->string('nama_kelas');
-            $table->enum('jenis_kelas', ['pilates', 'zumba', 'tabata', 'trampoline', 'poundfit', 'yoga'])->nullable();
+            $table->enum('jenis_kelas', ['Pilates', 'Zumba', 'Tabata', 'Trampoline', 'Poundfit', 'Yoga'])->nullable();
             $table->integer('kapasitas')->default(0);
             $table->integer('harga')->default(0);
             $table->timestamps();

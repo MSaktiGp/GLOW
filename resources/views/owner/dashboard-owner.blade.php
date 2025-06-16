@@ -211,20 +211,20 @@
                 </tr>
               </thead>
               <tbody class="table-glow-t">
-                @forelse ($jadwalKelas as $key => $jadwal)
-              <tr>
-                <td>{{ $key + 1 }}</td>
-                <td>{{ $jadwal->kelasOlahraga->nama_kelas ?? '-' }}</td>
-                <td>{{ $jadwal->kelasOlahraga->jenis_kelas ?? '-' }}</td>
-                <td>{{ $jadwal->jam_mulai }}</td>
-                <td>{{ $jadwal->jam_selesai }}</td>
-                <td>{{ $jadwal->status }}</td>
-              </tr>
+                @forelse ($pendaftaranKelas as $key => $pendaftaran)
+                <tr>
+                  <td>{{ $key + 1 }}</td>
+                  <td>{{ $pendaftaran->user->name ?? '-' }}</td>  <!-- Ganti peserta jadi user -->
+                  <td>{{ $pendaftaran->kelasOlahraga->jenis_kelas ?? '-' }}</td>
+                  <td>{{ $pendaftaran->kelasOlahraga->jam_mulai ?? '-' }}</td>
+                  <td>{{ $pendaftaran->kelasOlahraga->jam_selesai ?? '-' }}</td>
+                  <td>{{ $pendaftaran->status ?? '-' }}</td> <!-- kalau ada field status -->
+                </tr>
                 @empty
-              <tr>
-                <td colspan="6">Tidak ada jadwal kelas yang tersedia.</td>
-              </tr>
-                @endforelse              
+                <tr>
+                  <td colspan="6">Tidak ada data pendaftaran kelas yang tersedia.</td>
+                </tr>
+                @endforelse
               </tbody>
             </table>
           </div>
@@ -239,46 +239,48 @@
   </footer>
 
   <!-- Bootstrap JS -->
-  <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const chartDom = document.querySelector("#pieChart"); // pastikan ada <div id="pieChart"></div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const chartDom = document.querySelector("#pieChart");
     const myChart = echarts.init(chartDom);
 
-    const data = @json($chartData);
+    // Data dari server (Laravel Blade → JS)
+    const data = @json($pendaftaranKelas);
 
     const chartData = data.map(item => ({
-      value: item.total,
-      name: item.jenis_kelas,
-      itemStyle: {
-        color: {
-          Yoga: '#d4cce9',
-          Pilates: '#646fd4',
-          Poundfit: '#f8c04e',
-          Zumba: '#60d7e6',
-          Tabata: '#5cc087',
-          Trampoline: '#db4a6d'
-        }[item.jenis_kelas] || '#ccc'
-      }
+        value: item.total,
+        name: item.jenis_kelas,
+        itemStyle: {
+            color: {
+                Yoga: '#d4cce9',
+                Pilates: '#646fd4',
+                Poundfit: '#f8c04e',
+                Zumba: '#60d7e6',
+                Tabata: '#5cc087',
+                Trampoline: '#db4a6d'
+            }[item.jenis_kelas] || '#ccc'
+        }
     }));
 
     const option = {
-      title: {
-        text: 'Tampilan Data',
-        subtext: 'Jumlah Peserta per Kelas',
-        left: 'center'
-      },
-      tooltip: { trigger: 'item' },
-      legend: { show: false },
-      series: [{
-        name: 'Peserta',
-        type: 'pie',
-        radius: '50%',
-        data: chartData
-      }]
+        title: {
+            text: 'Tampilan Data',
+            subtext: 'Jumlah Peserta per Kelas',
+            left: 'center'
+        },
+        tooltip: { trigger: 'item' },
+        legend: { show: false },
+        series: [{
+            name: 'Peserta',
+            type: 'pie',
+            radius: '50%',
+            data: chartData
+        }]
     };
 
     myChart.setOption(option);
-  });
+});
 </script>
+
 </body>
 </html>

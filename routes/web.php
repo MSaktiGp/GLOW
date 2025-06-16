@@ -58,12 +58,15 @@ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->na
 Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
 
 // Rute Booked (Sepertinya ini untuk status booking atau halaman booking tertentu)
-Route::get('/Claura-Sintiya', [BookedController::class, 'booked1'])->name('booked1');
-Route::get('/Kayla-Zahra', [BookedController::class, 'booked2'])->name('booked2');
-Route::get('/Rebeca-Laura', [BookedController::class, 'booked3'])->name('booked3');
-Route::get('/Dela-Putri', [BookedController::class, 'booked4'])->name('booked4');
-Route::get('/Rachel-Salsabila', [BookedController::class, 'booked5'])->name('booked5');
-Route::get('/Stevi-Putri', [BookedController::class, 'booked6'])->name('booked6');
+// Route::get('/Claura-Sintiya', [BookedController::class, 'booked1'])->name('booked1');
+// Route::get('/Kayla-Zahra', [BookedController::class, 'booked2'])->name('booked2');
+// Route::get('/Rebeca-Laura', [BookedController::class, 'booked3'])->name('booked3');
+// Route::get('/Dela-Putri', [BookedController::class, 'booked4'])->name('booked4');
+// Route::get('/Rachel-Salsabila', [BookedController::class, 'booked5'])->name('booked5');
+// Route::get('/Stevi-Putri', [BookedController::class, 'booked6'])->name('booked6');
+
+Route::get('/{jenis}/{coach}', [BookedController::class, 'show'])->name('coach.booked');
+
 
 
 // Rute Autentikasi Owner

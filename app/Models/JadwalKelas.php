@@ -20,9 +20,12 @@ class JadwalKelas extends Model
             'jam_selesai' => 'datetime'
         ];
     
-        public function kelasOlahraga()
+    public function kelasOlahraga()
         {
             return $this->belongsTo(KelasOlahraga::class);
         }
-    
+    public function coach()
+    {
+        return $this->belongsTo(Coach::class);
+    }
 }

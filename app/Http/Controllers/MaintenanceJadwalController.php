@@ -30,7 +30,7 @@ class MaintenanceJadwalController extends Controller
 
         JadwalKelas::create($validatedData);
 
-        return redirect()->route('owner.maintenance.jadwal')->with('success', 'Jadwal Kelas berhasil ditambahkan!');
+        return redirect()->route('maintenance.jadwal')->with('success', 'Jadwal Kelas berhasil ditambahkan!');
     }
 
     public function editJadwalKelas(JadwalKelas $jadwalKelas)
@@ -53,14 +53,14 @@ class MaintenanceJadwalController extends Controller
 
         $jadwalKelas->update($validatedData);
 
-        return redirect()->route('owner.maintenance.jadwal')->with('success', 'Jadwal Kelas berhasil diperbarui!');
+        return redirect()->route('maintenance.jadwal')->with('success', 'Jadwal Kelas berhasil diperbarui!');
     }
 
     public function destroyJadwalKelas(JadwalKelas $jadwalKelas)
     {
         $jadwalKelas->delete();
 
-        return redirect()->route('owner.maintenance.jadwal')->with('success', 'Jadwal Kelas berhasil dihapus!');
+        return redirect()->route('maintenance.jadwal')->with('success', 'Jadwal Kelas berhasil dihapus!');
     }
 
     public function storeKelasOlahraga(Request $request)
@@ -89,7 +89,7 @@ class MaintenanceJadwalController extends Controller
             'harga' => $request->harga,
         ]);
 
-        return redirect()->route('owner.maintenance.jadwal')->with('success', 'Jadwal Coach (Kelas Olahraga) berhasil ditambahkan!');
+        return redirect()->route('maintenance.jadwal')->with('success', 'Jadwal Coach (Kelas Olahraga) berhasil ditambahkan!');
     }
 
     public function editKelasOlahraga(KelasOlahraga $kelasOlahraga)
@@ -116,12 +116,12 @@ class MaintenanceJadwalController extends Controller
 
         $kelasOlahraga->update($request->all());
 
-        return redirect()->route('owner.maintenance.jadwal')->with('success', 'Jadwal Coach (Kelas Olahraga) berhasil diperbarui!');
+        return redirect()->route('maintenance.jadwal')->with('success', 'Jadwal Coach (Kelas Olahraga) berhasil diperbarui!');
     }
 
     public function destroyKelasOlahraga(KelasOlahraga $kelasOlahraga)
     {
         $kelasOlahraga->delete();
-        return redirect()->route('owner.maintenance.jadwal')->with('success', 'Jadwal Coach (Kelas Olahraga) berhasil dihapus!');
+        return redirect()->route('maintenance.jadwal')->with('success', 'Jadwal Coach (Kelas Olahraga) berhasil dihapus!');
     }
 }

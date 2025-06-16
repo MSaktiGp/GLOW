@@ -314,7 +314,7 @@
                                 <td>{{ \Carbon\Carbon::parse($kelas->jam_selesai)->format('H:i') }}</td>
                                 <td>{{ $kelas->kapasitas }}</td>
                                 <td>
-                                  <button class="btn-icon btn-edit-coach" title="Edit" data-id="{{ $kelas->id }}"><i
+                                  <button class="btn-icon btn-edit-coach" data-bs-target="#edit_kelas" title="Edit" data-id="{{ $kelas->id }}"><i
                                             class="bi bi-pencil-square"></i></button>
                                     <form action="{{ route('kelas_olahraga.destroy', $kelas->id) }}" method="POST"
                                         style="display:inline;"
@@ -388,6 +388,8 @@
                 </form>
             </div>
         </div>
+
+
     </div>
     <footer>
         <p class="mb-0">&copy; 2025 glowithus.com</p>
