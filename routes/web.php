@@ -1,13 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth; // Penting untuk Auth::logout()
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\DashboardOwnerController;
-// use App\Http\Controllers\Auth\AuthenticatedSessionController; // Jika ini hanya untuk logout, bisa pakai facade Auth
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\LoginController;
-// use App\Http\Controllers\LupaPwController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BookedController;
@@ -18,12 +16,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\Auth\ResetPasswordController;
 
-
-
 // Rute untuk Pengguna (User)
 Route::get('/', function(){return redirect('/dashboard');}); 
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard'); 
-
 
 // Rute Kelas Olahraga
 Route::get('/yoga', [ClassController::class, 'yoga'])->name('yoga');
@@ -37,18 +32,9 @@ Route::get('/trampoline', [ClassController::class, 'trampoline'])->name('trampol
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 
-
 // Rute Registrasi
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
-
-// Rute Booked (Sepertinya ini untuk status booking atau halaman booking tertentu)
-// Route::get('/Claura-Sintiya', [BookedController::class, 'booked1'])->name('booked1');
-// Route::get('/Kayla-Zahra', [BookedController::class, 'booked2'])->name('booked2');
-// Route::get('/Rebeca-Laura', [BookedController::class, 'booked3'])->name('booked3');
-// Route::get('/Dela-Putri', [BookedController::class, 'booked4'])->name('booked4');
-// Route::get('/Rachel-Salsabila', [BookedController::class, 'booked5'])->name('booked5');
-// Route::get('/Stevi-Putri', [BookedController::class, 'booked6'])->name('booked6');
 
 Route::get('/{jenis}/{coach}', [BookedController::class, 'show'])->name('coach.booked');
 Route::get('/booked1', [BookedController::class, 'booked1'])->name('booked1');
@@ -57,12 +43,6 @@ Route::get('/booked3', [BookedController::class, 'booked3'])->name('booked3');
 Route::get('/booked4', [BookedController::class, 'booked4'])->name('booked4');
 Route::get('/booked5', [BookedController::class, 'booked5'])->name('booked5');
 Route::get('/booked6', [BookedController::class, 'booked6'])->name('booked6');
-
-
-// Rute Autentikasi Owner
-// Route::get('/owner/login', [OwnerController::class, 'showLoginForm'])->name('owner.login');
-// Route::post('/owner/login', [OwnerController::class, 'login'])->name('owner.login.submit');
-
 
 // Grup rute yang memerlukan autentikasi dan role 'owner'
 Route::middleware(['auth', 'role:owner'])->group(function () {
@@ -109,12 +89,16 @@ Route::post('/logout', function () {
 })->name('logout');
 
 //coba reset password
-Route::get('/forgot-password', function () {
-    return view('auth.forgot-password');
-})->name('password.request');
-
+Route::get('/forgot-password', function () {return view('auth.forgot-password');})->name('password.request');
 Route::post('/forgot-password', [ResetPasswordController::class, 'passwordEmail'])->middleware('guest')->name('password.email');
-
 Route::get('/reset-password/{token}', [ResetPasswordController::class, 'passwordReset'])->name('password.reset');
-
 Route::post('/reset-password', [ResetPasswordController::class, 'passwordUpdate'])->name('password.update');
+
+
+// Rute Booked (Sepertinya ini untuk status booking atau halaman booking tertentu)
+// Route::get('/Claura-Sintiya', [BookedController::class, 'booked1'])->name('booked1');
+// Route::get('/Kayla-Zahra', [BookedController::class, 'booked2'])->name('booked2');
+// Route::get('/Rebeca-Laura', [BookedController::class, 'booked3'])->name('booked3');
+// Route::get('/Dela-Putri', [BookedController::class, 'booked4'])->name('booked4');
+// Route::get('/Rachel-Salsabila', [BookedController::class, 'booked5'])->name('booked5');
+// Route::get('/Stevi-Putri', [BookedController::class, 'booked6'])->name('booked6');
