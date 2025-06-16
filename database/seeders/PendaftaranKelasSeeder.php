@@ -13,11 +13,13 @@ class PendaftaranKelasSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 1; $i <= 60; $i++) {
+        $users = DB::table('users')->where('role', 'user')->pluck('id');
+        
+        foreach ($users as $userId) {
             try {
                 DB::table('pendaftaran_kelas')->insert([
-                    'user_id' => $i,
-                    'kelas_olahraga_id' => rand(1, 3),
+                    'user_id' => $userId,
+                    'kelas_olahraga_id' => rand(1, 6),
                     'tanggal_daftar' => now(),
                     'created_at' => now(),
                     'updated_at' => now()
@@ -26,5 +28,4 @@ class PendaftaranKelasSeeder extends Seeder
                 continue;
             }
         }        
-    }
-}
+    }}

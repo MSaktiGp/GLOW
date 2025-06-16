@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             CoachSeeder::class,
             KelasOlahragaSeeder::class,
             PendaftaranKelasSeeder::class,
+            JadwalKelasSeeder::class,
         ]);
     }
 }

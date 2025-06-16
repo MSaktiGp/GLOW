@@ -366,7 +366,7 @@
                         <input type="hidden" name="id" id="jadwal_coach_id">
                         <div class="mb-3">
                             <label for="coach_id_modal" class="form-label">Pilih Coach</label>
-                            <select name="coach_id" id="coach_id_modal" class="form-select" disabled required>
+                            <select name="coach_id" id="coach_id_modal" class="form-select" required>
                                 @foreach ($coachList as $coach)
                                     <option value="{{ $coach->id }}">{{ $coach->name }}</option>
                                 @endforeach
@@ -379,9 +379,14 @@
                         </div>
                         <div class="mb-3">
                             <label for="jenis_kelas_modal" class="form-label">Jenis Kelas</label>
-                            <input type="text" class="form-control" id="jenis_kelas_modal" name="jenis_kelas"
-                                required>
-                        </div>
+                            <select name="jenis_kelas" class="form-select" id="jenis_kelas_modal" required>
+                                <option value="Pilates">Pilates</option>
+                                <option value="Zumba">Zumba</option>
+                                <option value="Tabata">Tabata</option>
+                                <option value="Trampoline">Trampoline</option>
+                                <option value="Yoga">Yoga</option>
+                                <option value="Poundfit">Poundfit</option>
+                            </select>
                         <div class="mb-3">
                             <label for="tanggal_modal" class="form-label">Tanggal</label>
                             <input type="date" class="form-control" id="tanggal_modal" name="tanggal" required>
@@ -398,6 +403,17 @@
                         <div class="mb-3">
                             <label for="kapasitas_modal" class="form-label">Kapasitas</label>
                             <input type="number" class="form-control" id="kapasitas_modal" name="kapasitas" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="harga_modal" class="form-label">Harga</label>
+                            <input type="number" class="form-control" id="harga_modal" name="harga" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="status_modal" class="form-label">Status</label>
+                            <select name="status" class="form-select" id="status_modal" required>
+                                <option value="Aktif">Aktif</option>
+                                <option value="Tidak Aktif">Tidak Aktif</option>
+                            </select>
                         </div>
                     </div>
                     <div class="modal-footer">

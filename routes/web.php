@@ -70,15 +70,15 @@ Route::get('/{jenis}/{coach}', [BookedController::class, 'show'])->name('coach.b
 
 
 // Rute Autentikasi Owner
-Route::get('/owner/login', [OwnerController::class, 'showLoginForm'])->name('owner.login');
-Route::post('/owner/login', [OwnerController::class, 'login'])->name('owner.login.submit');
+// Route::get('/owner/login', [OwnerController::class, 'showLoginForm'])->name('owner.login');
+// Route::post('/owner/login', [OwnerController::class, 'login'])->name('owner.login.submit');
 
 
 // Grup rute yang memerlukan autentikasi dan role 'owner'
 Route::middleware(['auth', 'role:owner'])->group(function () {
     // Rute Dashboard Owner
     Route::get('/dashboard-owner', [App\Http\Controllers\DashboardOwnerController::class, 'index'])->name('dashboard.owner');
-    Route::get('/owner/profile', [App\Http\Controllers\OwnerController::class, 'profile'])->name('owner.profile');
+    Route::get('/owner-profile', [App\Http\Controllers\OwnerController::class, 'profile'])->name('owner.profile');
     Route::get('/maintenance-jadwal', [MaintenanceJadwalController::class, 'index'])->name('maintenance.jadwal');
 
     // Rute untuk CRUD Jadwal Kelas
