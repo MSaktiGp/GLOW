@@ -9,6 +9,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BookedController;
+use App\Http\Controllers\BookedControllerUser;
 use App\Http\Controllers\CustomerPaymentController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\MaintenanceJadwalController;
