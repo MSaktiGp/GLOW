@@ -211,7 +211,7 @@
                 </tr>
               </thead>
               <tbody class="table-glow-t">
-                @foreach ($jadwalKelas as $key => $jadwal)
+                @forelse ($jadwalKelas as $key => $jadwal)
               <tr>
                 <td>{{ $key + 1 }}</td>
                 <td>{{ $jadwal->kelasOlahraga->nama_kelas ?? '-' }}</td>
@@ -220,9 +220,12 @@
                 <td>{{ $jadwal->jam_selesai }}</td>
                 <td>{{ $jadwal->status }}</td>
               </tr>
-                @endforeach
+                @empty
+              <tr>
+                <td colspan="6">Tidak ada jadwal kelas yang tersedia.</td>
+              </tr>
+                @endforelse              
               </tbody>
-
             </table>
           </div>
         </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\KelasOlahraga;
 use App\Models\Coach;
+use App\Models\JadwalKelas;
 use Carbon\Carbon;
 
 class MaintenanceJadwalController extends Controller
