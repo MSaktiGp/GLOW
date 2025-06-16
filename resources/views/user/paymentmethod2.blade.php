@@ -71,7 +71,7 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-lg-8">
-            <div class="payment-box">
+            <div class="payment-box mb-4">
                 <h5 class="text-center text-custom fw-bold mb-4">Pembayaran</h5>
 
                 <div class="d-flex justify-content-between mb-3">
