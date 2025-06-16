@@ -20,7 +20,7 @@
 </head>
 <body class="flex items-center justify-center min-h-screen backdrop-blur-sm bg-opacity-80">
     <div class="bg-[#FFF5FF] p-8 rounded-xl shadow-md w-full max-w-sm text-center">
-        <h2 class="text-2xl font-bold text-[#D63384] mb-2">Lupa Password</h2>
+        <h2 class="text-2xl font-bold text-[#D63384] mb-2">Forgot Password</h2>
         <p class="mb-6 text-sm text-gray-500">Masukkan email Anda untuk mereset password</p>
 
         @if(session('status'))
