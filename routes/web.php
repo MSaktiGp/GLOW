@@ -7,13 +7,17 @@ use App\Http\Controllers\DashboardOwnerController;
 // use App\Http\Controllers\Auth\AuthenticatedSessionController; // Jika ini hanya untuk logout, bisa pakai facade Auth
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\LupaPwController;
+// use App\Http\Controllers\LupaPwController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BookedController;
 use App\Http\Controllers\CustomerPaymentController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\MaintenanceJadwalController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Password;
+use App\Http\Controllers\Auth\ResetPasswordController;
+
 
 
 // Rute untuk Pengguna (User)
@@ -34,20 +38,20 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 
 // Lupa password
-Route::get('/lupaPassword', [LupaPwController::class, 'showLinkRequestForm'])->name('password.request');
-Route::post('/lupaPassword', [LupaPwController::class, 'sendResetLinkEmail'])->name('password.email');
+// Route::get('/lupaPassword', [LupaPwController::class, 'showLinkRequestForm'])->name('password.request');
+// Route::post('/lupaPassword', [LupaPwController::class, 'sendResetLinkEmail'])->name('password.email');
 
 // Reset password
-Route::get('/reset-password/{token}', [LupaPwController::class, 'showResetForm'])->name('password.reset');
-Route::post('/reset-password', [LupaPwController::class, 'resetPassword'])->name('password.update');
+// Route::get('/reset-password/{token}', [LupaPwController::class, 'showResetForm'])->name('password.reset');
+// Route::post('/reset-password', [LupaPwController::class, 'resetPassword'])->name('password.update');
 
 // Tes reset tanpa data dummy
-Route::get('/test-reset', function () {
-    return view('resetPw', [
-        'token' => 'testtoken',
-        'email' => 'dummy@example.com'
-    ]);
-});
+// Route::get('/test-reset', function () {
+//     return view('resetPw', [
+//         'token' => 'testtoken',
+//         'email' => 'dummy@example.com'
+//     ]);
+// });
 
 // Rute Registrasi
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
@@ -60,9 +64,6 @@ Route::get('/booked3', [BookedController::class, 'booked3'])->name('booked3');
 Route::get('/booked4', [BookedController::class, 'booked4'])->name('booked4');
 Route::get('/booked5', [BookedController::class, 'booked5'])->name('booked5');
 Route::get('/booked6', [BookedController::class, 'booked6'])->name('booked6');
-
-
-
 
 
 // Rute Autentikasi Owner
@@ -115,3 +116,13 @@ Route::post('/logout', function () {
     return redirect('/');
 })->name('logout');
 
+//coba reset password
+Route::get('/forgot-password', function () {
+    return view('auth.forgot-password');
+})->name('password.request');
+
+Route::post('/forgot-password', [ResetPasswordController::class, 'passwordEmail'])->middleware('guest')->name('password.email');
+
+Route::get('/reset-password/{token}', [ResetPasswordController::class, 'passwordReset'])->name('password.reset');
+
+Route::post('/reset-password', [ResetPasswordController::class, 'passwordUpdate'])->name('password.update');
