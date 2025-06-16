@@ -81,7 +81,11 @@ Route::middleware(['auth', 'role:owner'])->group(function () {
     Route::post('/kelas-olahraga', [MaintenanceJadwalController::class, 'storeKelasOlahraga'])->name('kelas_olahraga.store');
     Route::get('/kelas-olahraga/{id}/edit', [MaintenanceJadwalController::class, 'editKelasOlahraga'])->name('kelas_olahraga.edit');
     Route::put('/kelas-olahraga/{id}', [MaintenanceJadwalController::class, 'updateKelasOlahraga'])->name('kelas_olahraga.update');
-    Route::delete('/kelas-olahraga/{id}', [MaintenanceJadwalController::class, 'destroyKelasOlahraga'])->name('kelas_olahraga.destroy');});
+
+    Route::delete('/kelas-olahraga/{id}', [MaintenanceJadwalController::class, 'destroyKelasOlahraga'])->name('kelas_olahraga.destroy');
+});
+
+
 
 // Rute autentikasi role 'user'
 Route::middleware(['auth', 'role:user'])->group(function () {
@@ -98,8 +102,8 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/payment-dana', [CustomerPaymentController::class, 'paymentmethod5'])->name('payment.dana');
     Route::get('/payment-ovo', [CustomerPaymentController::class, 'paymentmethod6'])->name('payment.ovo');
     Route::get('/paymentconfirm', [CustomerPaymentController::class, 'paymentconfirm'])->name('paymentconfirm');
+    Route::get('/invoice', [CustomerPaymentController::class, 'invoice'])->name('invoice');
 });
-
 // Rute Logout (dapat diakses oleh siapa saja yang terautentikasi)
 Route::post('/logout', function () {
     Auth::logout();
