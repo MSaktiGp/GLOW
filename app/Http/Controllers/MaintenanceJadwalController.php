@@ -30,7 +30,7 @@ class MaintenanceJadwalController extends Controller
 
         JadwalKelas::create($validatedData);
 
-        return redirect()->route('maintenance.jadwal')->with('success', 'Jadwal Kelas berhasil ditambahkan!');
+    return redirect()->route(route: 'maintenance.jadwal')->with('success', 'Jadwal Kelas berhasil ditambahkan!');
     }
 
     public function editJadwalKelas(JadwalKelas $jadwalKelas)
@@ -66,30 +66,35 @@ class MaintenanceJadwalController extends Controller
     public function storeKelasOlahraga(Request $request)
     {
         $request->validate([
-            'coach_id' => 'required|exists:coach,id',
+            'coach_id' => 'required|exists:coaches,id',
             'nama_kelas' => 'required|string|max:255',
             'jenis_kelas' => 'required|string|max:255',
             'tanggal' => 'required|date',
             'kapasitas' => 'required|integer|min:1',
             'jam_mulai' => 'required|date_format:H:i',
             'jam_selesai' => 'required|date_format:H:i|after:jam_mulai',
-            'deskripsi' => 'nullable|string',
             'harga' => 'required|integer|min:0',
         ]);
 
+        // Simpan ke kelas_olahragas
         $kelas = KelasOlahraga::create([
             'coach_id' => $request->coach_id,
             'nama_kelas' => $request->nama_kelas,
             'jenis_kelas' => $request->jenis_kelas,
-            'tanggal' => $request->tanggal,
-            'jam_mulai' => $request->jam_mulai,
-            'jam_selesai' => $request->jam_selesai,
             'kapasitas' => $request->kapasitas,
-            'deskripsi' => $request->deskripsi,
             'harga' => $request->harga,
         ]);
 
-        return redirect()->route('maintenance.jadwal')->with('success', 'Jadwal Coach (Kelas Olahraga) berhasil ditambahkan!');
+        // Simpan ke jadwal_kelas
+        JadwalKelas::create([
+            'kelas_olahraga_id' => $kelas->id,
+            'waktu_mulai' => $request->waktu_mulai,
+            'waktu_selesai' => $request->waktu_selesai,
+            'status' => $request->status,
+        ]);
+
+        return redirect()->route('maintenance.jadwal')
+                        ->with('success', 'Kelas dan Jadwal berhasil ditambahkan!');
     }
 
     public function editKelasOlahraga(KelasOlahraga $kelasOlahraga)
@@ -103,14 +108,13 @@ class MaintenanceJadwalController extends Controller
     public function updateKelasOlahraga(Request $request, KelasOlahraga $kelasOlahraga)
     {
         $request->validate([
-            'coach_id' => 'required|exists:coach,id',
+            'coach_id' => 'required|exists:coaches,id',
             'nama_kelas' => 'required|string|max:255',
             'jenis_kelas' => 'required|string|max:255',
             'tanggal' => 'required|date',
             'kapasitas' => 'required|integer|min:1',
             'jam_mulai' => 'required|date_format:H:i',
             'jam_selesai' => 'required|date_format:H:i|after:jam_mulai',
-            'deskripsi' => 'nullable|string',
             'harga' => 'required|integer|min:0',
         ]);
 

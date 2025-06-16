@@ -140,7 +140,7 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container-fluid px-4">
-      <a class="navbar-brand fw-bold" href="{{ route('dashboard.owner') }}">GLOW</a>
+      <a class="navbar-brand fw-bold" style="color: #fff" href="{{ route('dashboard.owner') }}">GLOW</a>
       </button>
 
        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">

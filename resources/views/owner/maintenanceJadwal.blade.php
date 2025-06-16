@@ -353,7 +353,7 @@
         <div class="modal fade" id="jadwalCoachModal" tabindex="-1" aria-labelledby="jadwalCoachModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
-                <form id="jadwalCoachForm" class="modal-content" method="POST" action="">
+                <form id="jadwalCoachForm" class="modal-content" method="POST" action="{{route('jadwal_kelas.store')}}">
                     @csrf
                     {{-- Hidden input for HTTP method spoofing (for PUT/PATCH) --}}
                     @method('POST') {{-- Default to POST for add, will be changed to PUT for edit --}}
@@ -366,7 +366,7 @@
                         <input type="hidden" name="id" id="jadwal_coach_id">
                         <div class="mb-3">
                             <label for="coach_id_modal" class="form-label">Pilih Coach</label>
-                            <select name="coach_id" id="coach_id_modal" class="form-select" required>
+                            <select name="coach_id" id="coach_id_modal" class="form-select" disabled required>
                                 @foreach ($coachList as $coach)
                                     <option value="{{ $coach->id }}">{{ $coach->name }}</option>
                                 @endforeach

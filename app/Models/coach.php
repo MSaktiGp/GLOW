@@ -19,6 +19,6 @@ class Coach extends Model
 
     public function kelasOlahraga()
     {
-        return $this->hasMany(KelasOlahraga::class, 'coaches_id');
+        return $this->hasMany(KelasOlahraga::class, 'coach_id');
     }
 }
