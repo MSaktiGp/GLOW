@@ -35,6 +35,29 @@ class JadwalKelasSeeder extends Seeder
                 'jam_selesai'=> '14:00:00',
                 'status' => 'Aktif',
             ],
+[
+                'kelas_olahraga_id' => 4,
+                'tanggal' => '2024-01-15',
+                'jam_mulai' => '15:00:00',
+                'jam_selesai' => '16:00:00',
+                'status' => 'Aktif',
+            ],
+            [
+                'kelas_olahraga_id' => 5,
+                'tanggal' => '2024-01-15',
+                'jam_mulai' => '16:30:00',
+                'jam_selesai' => '17:30:00',
+                'status' => 'Aktif',
+            ],
+            [
+                'kelas_olahraga_id' => 6,
+                'tanggal' => '2024-01-15',
+                'jam_mulai' => '19:00:00',
+                'jam_selesai' => '20:00:00',
+                'status' => 'Aktif',
+            ],
+
+
         ];
         
         DB::table('jadwal_kelas')->insert($jadwalKelas);

@@ -33,9 +33,18 @@ class DashboardOwnerController extends Controller
             ->groupBy('kelas_olahragas.jenis_kelas')
             ->get();
 
+        $pendaftaranKelasList = \App\Models\PendaftaranKelas::with([
+            'user',
+            'kelasOlahraga.jadwalKelas' => function ($query) {
+                $query->where('status', 'Aktif')->orderBy('tanggal')->orderBy('jam_mulai');
+            }
+        ])->get();
+
+
         return view('owner.dashboard-owner', [
             'jadwalKelas' => $jadwalKelas,
-            'pendaftaranKelas' => $pendaftaranKelas
+            'pendaftaranKelas' => $pendaftaranKelas,
+            'pendaftaranKelasList' => $pendaftaranKelasList,
         ]);
     }
 }
