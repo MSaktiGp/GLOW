@@ -1,7 +1,8 @@
-@extends('user.layouts.dashboard-user-layout')
+@extends('user.layouts.profil-layout')
 @section('title','Profile')
 @section ('content')
 
+@push('css')
 <style>
     .main-content {
       flex: 1;
@@ -48,22 +49,8 @@
     
     .text-pink {
     color: #F189B8; }
-
-    .btn-logout {
-      background-color: #F189B8;
-      color: white;
-      border: none;
-      padding: 0.5rem 2rem;
-      border-radius: 8px;
-      margin-top: 1.5rem;
-      transition: background-color 0.3s ease;
-    }
-
-    .btn-logout:hover {
-      background-color: #e06a9c;
-      color: white;
-    }
 </style>
+@endpush
 
 <!-- Main Profile Content -->
   <div class="main-content">
@@ -72,6 +59,7 @@
       <div class="profile-avatar">
         <i class="bi bi-person-fill"></i>
       </div>
+      <hr style="color: #e06a9c;">
       <!-- Profil detail dengan flex -->
       <div class="text-start">
         <div class="d-flex justify-content-between mb-2 px-2">
@@ -87,10 +75,6 @@
           <span class="text-pink text-end">{{ $user->address }}</span>
         </div>
       </div>
-      <form action="{{ route('logout') }}" method="POST">
-        @csrf
-        <button type="submit" class="btn btn-logout">Logout</button>
-      </form>
     </div>
     </div>
     </div>

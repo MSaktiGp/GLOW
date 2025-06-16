@@ -13,20 +13,19 @@ class CoachSeeder extends Seeder
      */
     public function run(): void
     {
-        $coaches = [
-            [
-                'name' => 'John Doe',
-                'phone' => '1234567890',
-                'address' => 'Jl. Contoh No. 123',
-                'specialization' => 'Yoga',
-            ],
-            [
-                'name' => 'Jane Smith',
-                'phone' => '9876543210',
-                'address' => 'Jl. Lainnya No. 456',
-                'specialization' => 'Pilates',
-            ],
-        ];
-        DB::table('coaches')->insert($coaches);
+        $coaches = [];
+        $names = ['Claura Sintiya', 'Kayla Zahra', 'Rebeca Laura', 'Dela Putri', 'Rachel Salsabila', 'Stevi Putri'];
+        $specializations = ['Yoga', 'Pilates', 'Zumba', 'Poundfit', 'Tabata', 'Trampoline'];
+        
+        for ($i = 0; $i < 5; $i++) {
+            $coaches[] = [
+                'name' => $names[$i],
+                'phone' => '08' . rand(1000000000, 9999999999),
+                'address' => 'Jl. ' . chr(rand(65, 90)) . ' No. ' . rand(1, 999),
+                'specialization' => $specializations[$i],
+                'created_at' => now(),
+                'updated_at' => now()
+            ];
+        }        DB::table('coaches')->insert($coaches);
     }
 }

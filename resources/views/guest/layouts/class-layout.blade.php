@@ -48,14 +48,14 @@
                         class="text-white hover:underline transition-colors text-md">Home</a>
                     <a href="{{url('/')}}" class="text-white hover:underline transition-colors text-md">About
                         Us</a>
-                    <a href="#"
+                    <a href="{{url('/')}}"
                         class="text-white hover:underline transition-colors text-md">Classes</a>
-                    <a href="#"
+                    <a href="{{url('/')}}"
                         class="text-white hover:underline transition-colors text-md">Contact Us</a>
                 </div>
 
                 <div class="hidden md:block">
-                    <a href="#"
+                    <a href="{{route('login')}}"
                         class="bg-white text-primary-pink font-semibold px-4 py-2 rounded-full hover:bg-pink-100 transition-colors duration-300 flex items-center space-x-2">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"

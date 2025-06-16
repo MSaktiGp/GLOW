@@ -140,9 +140,7 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container-fluid px-4">
-      <a class="navbar-brand" href="#">GLOW</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
+      <a class="navbar-brand fw-bold" href="{{ route('dashboard.owner') }}">GLOW</a>
       </button>
 
        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
@@ -218,8 +216,8 @@
                 <td>{{ $key + 1 }}</td>
                 <td>{{ $jadwal->kelasOlahraga->nama_kelas ?? '-' }}</td>
                 <td>{{ $jadwal->kelasOlahraga->jenis_kelas ?? '-' }}</td>
-                <td>{{ $jadwal->waktu_mulai }}</td>
-                <td>{{ $jadwal->waktu_selesai }}</td>
+                <td>{{ $jadwal->jam_mulai }}</td>
+                <td>{{ $jadwal->jam_selesai }}</td>
                 <td>{{ $jadwal->status }}</td>
               </tr>
                 @endforeach

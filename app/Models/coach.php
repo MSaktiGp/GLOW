@@ -11,6 +11,9 @@ class Coach extends Model
 
     protected $fillable = [
         'name',
+        'phone',
+        'adddress',
+        'specialization',
     ];
 
     public function kelasOlahraga()

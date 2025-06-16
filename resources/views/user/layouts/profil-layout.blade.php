@@ -52,8 +52,6 @@
                     <i class="bi bi-person fs-5"></i>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="{{ route('profil') }}">Profile</a></li>
-                    <li><hr class="dropdown-divider"></li>
                     <li>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf

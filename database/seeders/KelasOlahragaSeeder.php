@@ -14,30 +14,37 @@ class KelasOlahragaSeeder extends Seeder
     public function run(): void
     {
         $kelasOlahraga = [
-                    [
-                        'coach_id' => 1,
-                        'nama_kelas' => 'Yoga',
-                        'kapasitas' => 20,
-                        'deskripsi' => 'Kelas yoga yang menenangkan',
-                        'harga' => 150000,
-                    ],
-                    [
-                        'coach_id' => 2,
-                        'nama_kelas' => 'Zumba',
-                        'kapasitas' => 25,
-                        'deskripsi' => 'Kelas dance fitness yang menyenangkan',
-                        'harga' => 120000,
-                    ],
-                    [
-                        'coach_id' => 3,
-                        'nama_kelas' => 'Body Combat',
-                        'kapasitas' => 15,
-                        'deskripsi' => 'Kelas cardio dengan gerakan bela diri',
-                        'harga' => 180000,                    
-                    ],
-                ];
-        
-                DB::table('kelas_olahragas')->insert($kelasOlahraga);
-        
+            [
+                'id' => 1,
+                'coach_id' => 1,
+                'nama_kelas' => 'Yoga Pagi',
+                'jenis_kelas' => 'yoga',
+                'kapasitas' => 20,
+                'harga' => 150000,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'id' => 2,
+                'coach_id' => 2,
+                'nama_kelas' => 'Zumba Dance',
+                'jenis_kelas' => 'zumba',
+                'kapasitas' => 25,
+                'harga' => 120000,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'id' => 3,
+                'coach_id' => 3,
+                'nama_kelas' => 'Pilates Basic',
+                'jenis_kelas' => 'pilates',
+                'kapasitas' => 15,
+                'harga' => 180000,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+        ];
+        DB::table('kelas_olahragas')->insert($kelasOlahraga);
     }
 }

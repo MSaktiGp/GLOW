@@ -15,7 +15,7 @@ class OwnerController extends Controller
     public function profile()
     {
         $owner = auth()->user();
-        return view('profileOwner', compact('owner'));
+        return view('owner.profileOwner', compact('owner'));
     }
 }
 

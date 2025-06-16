@@ -27,16 +27,17 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
         ]);
 
-        DB::table('users')->insert([
-            'name' => 'UserA',
-            'username' => 'user123',
-            'email' => 'user123@gmail.com',
-            'password' => Hash::make('user1234'),
-            'phone' => '081234567890',
-            'address' => 'Jl. User No. 123',
-            'role' => 'user',
-            'email_verified_at' => now(),
-
-        ]);
+        for ($i = 1; $i <= 60; $i++) {
+            DB::table('users')->insert([
+                'name' => 'UserA',
+                'username' => 'user' . $i,
+                'email' => 'user' . $i . '@gmail.com',
+                'password' => Hash::make('user1234'),
+                'phone' => '081234567890',
+                'address' => 'Jl. User No. 123',
+                'role' => 'user',
+                'email_verified_at' => now(),
+            ]);
+        }
     }
 }

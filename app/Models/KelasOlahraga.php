@@ -19,6 +19,7 @@ class KelasOlahraga extends Model
         'tanggal',
         'jam_mulai',
         'jam_selesai',
+        'harga',
         'Status',
     ];
 
@@ -27,8 +28,8 @@ class KelasOlahraga extends Model
         return $this->belongsTo(Coach::class, 'coach_id');
     }
 
-    public function jadwalKelas()
+    public function jadwal()
     {
-        return $this->hasMany(JadwalKelas::class, 'kelas_olahraga_id');
+        return $this->hasMany(JadwalKelas::class);
     }
 }

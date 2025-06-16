@@ -54,12 +54,12 @@ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->na
 Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
 
 // Rute Booked (Sepertinya ini untuk status booking atau halaman booking tertentu)
-Route::get('/booked1', [BookedController::class, 'booked1'])->name('booked1');
-Route::get('/booked2', [BookedController::class, 'booked2'])->name('booked2');
-Route::get('/booked3', [BookedController::class, 'booked3'])->name('booked3');
-Route::get('/booked4', [BookedController::class, 'booked4'])->name('booked4');
-Route::get('/booked5', [BookedController::class, 'booked5'])->name('booked5');
-Route::get('/booked6', [BookedController::class, 'booked6'])->name('booked6');
+Route::get('/Claura-Sintiya', [BookedController::class, 'booked1'])->name('booked1');
+Route::get('/Kayla-Zahra', [BookedController::class, 'booked2'])->name('booked2');
+Route::get('/Rebeca-Laura', [BookedController::class, 'booked3'])->name('booked3');
+Route::get('/Dela-Putri', [BookedController::class, 'booked4'])->name('booked4');
+Route::get('/Rachel-Salsabila', [BookedController::class, 'booked5'])->name('booked5');
+Route::get('/Stevi-Putri', [BookedController::class, 'booked6'])->name('booked6');
 
 
 
@@ -79,16 +79,15 @@ Route::middleware(['auth', 'role:owner'])->group(function () {
 
     // Rute untuk CRUD Jadwal Kelas
     Route::post('/jadwal-kelas', [MaintenanceJadwalController::class, 'storeJadwalKelas'])->name('jadwal_kelas.store');
-    Route::get('/jadwal-kelas/{jadwalKela}/edit', [MaintenanceJadwalController::class, 'editJadwalKelas'])->name('jadwal_kelas.edit');
-    Route::put('/jadwal-kelas/{jadwalKela}', [MaintenanceJadwalController::class, 'updateJadwalKelas'])->name('jadwal_kelas.update');
-    Route::delete('/jadwal-kelas/{jadwalKela}', [MaintenanceJadwalController::class, 'destroyJadwalKelas'])->name('jadwal_kelas.destroy');
+    Route::get('/jadwal-kelas/{id}/edit', [MaintenanceJadwalController::class, 'editJadwalKelas'])->name('jadwal_kelas.edit');
+    Route::put('/jadwal-kelas/{id}', [MaintenanceJadwalController::class, 'updateJadwalKelas'])->name('jadwal_kelas.update');
+    Route::delete('/jadwal-kelas/{id}', [MaintenanceJadwalController::class, 'destroyJadwalKelas'])->name('jadwal_kelas.destroy');
 
     // Rute untuk CRUD Jadwal Coach (Kelas Olahraga)
     Route::post('/kelas-olahraga', [MaintenanceJadwalController::class, 'storeKelasOlahraga'])->name('kelas_olahraga.store');
-    Route::get('/kelas-olahraga/{kelasOlahraga}/edit', [MaintenanceJadwalController::class, 'editKelasOlahraga'])->name('kelas_olahraga.edit');
-    Route::put('/kelas-olahraga/{kelasOlahraga}', [MaintenanceJadwalController::class, 'updateKelasOlahraga'])->name('kelas_olahraga.update');
-    Route::delete('/kelas-olahraga/{kelasOlahraga}', [MaintenanceJadwalController::class, 'destroyKelasOlahraga'])->name('kelas_olahraga.destroy');
-});
+    Route::get('/kelas-olahraga/{id}/edit', [MaintenanceJadwalController::class, 'editKelasOlahraga'])->name('kelas_olahraga.edit');
+    Route::put('/kelas-olahraga/{id}', [MaintenanceJadwalController::class, 'updateKelasOlahraga'])->name('kelas_olahraga.update');
+    Route::delete('/kelas-olahraga/{id}', [MaintenanceJadwalController::class, 'destroyKelasOlahraga'])->name('kelas_olahraga.destroy');});
 
 // Rute autentikasi role 'user'
 Route::middleware(['auth', 'role:user'])->group(function () {
