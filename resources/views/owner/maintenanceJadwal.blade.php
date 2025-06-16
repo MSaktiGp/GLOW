@@ -355,7 +355,6 @@
             <div class="modal-dialog">
                 <form id="jadwalCoachForm" class="modal-content" method="POST" action="{{route('jadwal_kelas.store')}}">
                     @csrf
-                    {{-- Hidden input for HTTP method spoofing (for PUT/PATCH) --}}
                     @method('POST') {{-- Default to POST for add, will be changed to PUT for edit --}}
 
                     <div class="modal-header">
