@@ -57,7 +57,6 @@
                     </a>
                 </div>
             @endforeach
->>>>>>> cbcb3ac1045c3b52219ea96571aa570c1b8d6beb
         </div>
     </section>
 

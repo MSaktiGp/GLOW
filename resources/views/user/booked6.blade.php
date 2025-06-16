@@ -1,4 +1,4 @@
-@extends('user.layouts.dashboard-user-layout')
+@extends ('guest.layouts.layout')
 
 @section ('content')
 
@@ -40,7 +40,7 @@
 <div class="container mt-5">
 
 <!-- Section Jadwal Kelas -->
-<section class="py-5 px-5" style="background: #F189B8;">
+<section class="py-5 mb-5 px-5" style="background: #F189B8;">
   <div class="container text-center text-white">
     <h2 class="mb-3">Book a Trampoline Fit Class</h2>
     <p class="mb-4">Bergabunglah dengan kelas pound fit kami. Temukan waktu latihan yang tepat untuk Anda dan tingkatkan koneksi pikiran dan tubuh Anda.</p>

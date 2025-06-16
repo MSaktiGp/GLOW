@@ -11,6 +11,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BookedController;
+use App\Http\Controllers\BookedControllerUser;
 use App\Http\Controllers\CustomerPaymentController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\MaintenanceJadwalController;
@@ -42,14 +43,7 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.submit');
 
-// Rute Booked (Sepertinya ini untuk status booking atau halaman booking tertentu)
-// Route::get('/Claura-Sintiya', [BookedController::class, 'booked1'])->name('booked1');
-// Route::get('/Kayla-Zahra', [BookedController::class, 'booked2'])->name('booked2');
-// Route::get('/Rebeca-Laura', [BookedController::class, 'booked3'])->name('booked3');
-// Route::get('/Dela-Putri', [BookedController::class, 'booked4'])->name('booked4');
-// Route::get('/Rachel-Salsabila', [BookedController::class, 'booked5'])->name('booked5');
-// Route::get('/Stevi-Putri', [BookedController::class, 'booked6'])->name('booked6');
-
+//route guest
 Route::get('/{jenis}/{coach}', [BookedController::class, 'show'])->name('coach.booked');
 Route::get('/booked1', [BookedController::class, 'booked1'])->name('booked1');
 Route::get('/booked2', [BookedController::class, 'booked2'])->name('booked2');
@@ -57,6 +51,15 @@ Route::get('/booked3', [BookedController::class, 'booked3'])->name('booked3');
 Route::get('/booked4', [BookedController::class, 'booked4'])->name('booked4');
 Route::get('/booked5', [BookedController::class, 'booked5'])->name('booked5');
 Route::get('/booked6', [BookedController::class, 'booked6'])->name('booked6');
+
+// Route user
+Route::get('/user/{jenis}/{coach}', [BookedControllerUser::class, 'show'])->name('user.booked');
+Route::get('/user/booked1', [BookedControllerUser::class, 'booked1'])->name('user.booked1');
+Route::get('/user/booked2', [BookedControllerUser::class, 'booked2'])->name('user.booked2');
+Route::get('/user/booked3', [BookedControllerUser::class, 'booked3'])->name('user.booked3');
+Route::get('/user/booked4', [BookedControllerUser::class, 'booked4'])->name('user.booked4');
+Route::get('/user/booked5', [BookedControllerUser::class, 'booked5'])->name('user.booked5');
+Route::get('/user/booked6', [BookedControllerUser::class, 'booked6'])->name('user.booked6');
 
 
 // Rute Autentikasi Owner
