@@ -9,8 +9,6 @@ class Coach extends Model
 {
     use HasFactory;
     protected $table = 'coaches';
-
-    protected $table = 'coaches';
     
     protected $fillable = [
         'name',
