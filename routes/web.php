@@ -37,21 +37,6 @@ Route::get('/trampoline', [ClassController::class, 'trampoline'])->name('trampol
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 
-// Lupa password
-// Route::get('/lupaPassword', [LupaPwController::class, 'showLinkRequestForm'])->name('password.request');
-// Route::post('/lupaPassword', [LupaPwController::class, 'sendResetLinkEmail'])->name('password.email');
-
-// Reset password
-// Route::get('/reset-password/{token}', [LupaPwController::class, 'showResetForm'])->name('password.reset');
-// Route::post('/reset-password', [LupaPwController::class, 'resetPassword'])->name('password.update');
-
-// Tes reset tanpa data dummy
-// Route::get('/test-reset', function () {
-//     return view('resetPw', [
-//         'token' => 'testtoken',
-//         'email' => 'dummy@example.com'
-//     ]);
-// });
 
 // Rute Registrasi
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
@@ -66,7 +51,12 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 // Route::get('/Stevi-Putri', [BookedController::class, 'booked6'])->name('booked6');
 
 Route::get('/{jenis}/{coach}', [BookedController::class, 'show'])->name('coach.booked');
-
+Route::get('/booked1', [BookedController::class, 'booked1'])->name('booked1');
+Route::get('/booked2', [BookedController::class, 'booked2'])->name('booked2');
+Route::get('/booked3', [BookedController::class, 'booked3'])->name('booked3');
+Route::get('/booked4', [BookedController::class, 'booked4'])->name('booked4');
+Route::get('/booked5', [BookedController::class, 'booked5'])->name('booked5');
+Route::get('/booked6', [BookedController::class, 'booked6'])->name('booked6');
 
 
 // Rute Autentikasi Owner
