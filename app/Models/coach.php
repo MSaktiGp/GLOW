@@ -10,6 +10,8 @@ class Coach extends Model
     use HasFactory;
     protected $table = 'coaches';
 
+    protected $table = 'coaches';
+    
     protected $fillable = [
         'name',
         'phone',
@@ -19,10 +21,6 @@ class Coach extends Model
 
     public function kelasOlahraga()
     {
-        return $this->hasMany(KelasOlahraga::class, 'coach_id');
-    }
-    public function jadwalKelas()
-    {
-        return $this->hasMany(JadwalKelas::class);
+        return $this->hasMany(KelasOlahraga::class, 'coaches_id');
     }
 }
