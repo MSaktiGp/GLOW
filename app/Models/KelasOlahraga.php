@@ -20,7 +20,7 @@ class KelasOlahraga extends Model
         'jam_mulai',
         'jam_selesai',
         'harga',
-        'Status',
+        'status',
     ];
 
     public function coach()

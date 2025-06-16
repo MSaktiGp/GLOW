@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Coach extends Model
 {
     use HasFactory;
-
+    protected $table = 'coaches';
+    
     protected $fillable = [
         'name',
         'phone',
@@ -18,6 +19,6 @@ class Coach extends Model
 
     public function kelasOlahraga()
     {
-        return $this->hasMany(KelasOlahraga::class, 'coach_id');
+        return $this->hasMany(KelasOlahraga::class, 'coaches_id');
     }
 }
