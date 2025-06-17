@@ -87,8 +87,8 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/payment-dana', [CustomerPaymentController::class, 'paymentmethod5'])->name('payment.dana');
     Route::get('/payment-ovo', [CustomerPaymentController::class, 'paymentmethod6'])->name('payment.ovo');
     Route::get('/paymentconfirm', [CustomerPaymentController::class, 'paymentconfirm'])->name('paymentconfirm');
+    Route::get('/invoice', [CustomerPaymentController::class, 'invoice'])->name('invoice');
 });
-
 // Rute Logout (dapat diakses oleh siapa saja yang terautentikasi)
 Route::post('/logout', function () {
     Auth::logout();

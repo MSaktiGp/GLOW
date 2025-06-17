@@ -45,4 +45,9 @@ class CustomerPaymentController extends Controller
     {
         return view('user.paymentconfirm');
     }
+
+    public function invoice()
+    {
+        return view('user.invoice');
+    }
 }
