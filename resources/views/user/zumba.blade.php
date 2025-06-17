@@ -1,4 +1,4 @@
-@extends('user.layouts.dashboard-user-layout')
+@extends('user.layouts.class-layout')
 @section('title','Zumba Class')
 @section('content')
 

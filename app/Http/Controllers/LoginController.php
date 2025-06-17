@@ -32,7 +32,7 @@ class LoginController extends Controller
             if (auth()->user()->role == 'owner') {
                 return redirect()->route('dashboard.owner');
             } else if (auth()->user()->role == 'user') {
-                return redirect()->route('dashboard');
+                return redirect()->route('dashboard.user');
             }
         }
 

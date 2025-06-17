@@ -49,7 +49,7 @@
             </div>
             <div>
                 <label class="block text-[#D63384] mb-1">Username</label>
-                <input type="text" name="username" value="{{ old('username') }}" placeholder="kila cape"
+                <input type="text" name="username" value="{{ old('username') }}" placeholder="kilacape"
                     class="w-full px-4 py-2.5 rounded-lg border border-pink-300 focus:ring-2 focus:ring-pink-400 focus:outline-none" required />
             </div>
         </div>

@@ -1,28 +1,28 @@
 <?php
 
-use App\Http\Controllers\ApiController;
-use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\OwnerController;
-use App\Http\Controllers\DashboardOwnerController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiController;
+use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OwnerController;
+use App\Http\Controllers\BookedController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\BookedController;
-use App\Http\Controllers\BookedControllerUser;
-use App\Http\Controllers\CustomerPaymentController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\BookedControllerUser;
+use App\Http\Middleware\OwnerRejectMiddleware;
+use App\Http\Controllers\DashboardOwnerController;
+use App\Http\Controllers\CustomerPaymentController;
 use App\Http\Controllers\MaintenanceJadwalController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\Auth\ResetPasswordController;
 
 // Rute untuk Pengguna (User)
 Route::get('/', function () {
     return redirect('/dashboard');
 });
-Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
 // Rute Kelas Olahraga
 Route::get('/yoga', [ClassController::class, 'yoga'])->name('yoga');
@@ -68,18 +68,20 @@ Route::middleware(['auth', 'role:owner'])->group(function () {
     Route::get('/kelas-olahraga/{id}/edit', [MaintenanceJadwalController::class, 'editKelasOlahraga'])->name('kelas_olahraga.edit');
     Route::post('/kelas-olahraga/{id}', [MaintenanceJadwalController::class, 'updateKelasOlahraga'])->name('kelas_olahraga.update');
     Route::delete('/kelas-olahraga/{id}', [MaintenanceJadwalController::class, 'destroyKelasOlahraga'])->name('kelas_olahraga.destroy');
+
 });
 
 Route::get('/edit-kelas', [ApiController::class, 'showModalBody']);
 Route::get('/coach', [ApiController::class, 'getCoachData']);
 Route::get('/jk', [ApiController::class, 'getJkData']);
 
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
 
 // Rute autentikasi role 'user'
 Route::middleware(['auth', 'role:user'])->group(function () {
     // Rute dashboard user
-    // Route::get('/dashboard-user', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.user');
+    Route::get('/dashboard-user', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.user');
     Route::get('/profil', [PelangganController::class, 'profile'])->name('profil');
 
     // Rute Customer Payment
@@ -90,9 +92,16 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/payment-bca', [CustomerPaymentController::class, 'paymentmethod4'])->name('payment.bca');
     Route::get('/payment-dana', [CustomerPaymentController::class, 'paymentmethod5'])->name('payment.dana');
     Route::get('/payment-ovo', [CustomerPaymentController::class, 'paymentmethod6'])->name('payment.ovo');
-    Route::get('/paymentconfirm', [CustomerPaymentController::class, 'paymentconfirm'])->name('paymentconfirm');
+    Route::get('/payment-confirm', [CustomerPaymentController::class, 'paymentconfirm'])->name('payment.confirm');
     Route::get('/invoice', [CustomerPaymentController::class, 'invoice'])->name('invoice');
-});
+
+
+    Route::get('/user-yoga', [ClassController::class, 'uYoga'])->name('uyoga');
+    Route::get('/user-pilates', [ClassController::class, 'uPilates'])->name('upilates');
+    Route::get('/user-poundfit', [ClassController::class, 'uPoundfit'])->name('upoundfit');
+    Route::get('/user-zumba', [ClassController::class, 'uZumba'])->name('uzumba');
+    Route::get('/user-tabata', [ClassController::class, 'uTabata'])->name('utabata');
+    Route::get('/user-trampoline', [ClassController::class, 'uTrampoline'])->name('utrampoline');});
 // Rute Logout (dapat diakses oleh siapa saja yang terautentikasi)
 Route::post('/logout', function () {
     Auth::logout();

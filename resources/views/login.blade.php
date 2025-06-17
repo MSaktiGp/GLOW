@@ -58,10 +58,10 @@
 
             <button type="submit"
                 class="w-full py-3 rounded-full bg-[#D63384] text-white font-semibold hover:bg-[#c12778] transition duration-200">
-                Lanjutkan
+                Login
             </button>
 
-            <!-- Garis OR -->
+            {{-- <!-- Garis OR -->
             <div class="flex items-center my-6">
                 <hr class="flex-grow border-gray-300">
                 <span class="px-3 text-gray-400 text-sm font-semibold">ATAU</span>
@@ -72,7 +72,7 @@
             <div class="flex items-center justify-center border border-gray-300 rounded-full py-2 px-4 bg-white cursor-pointer hover:shadow-md transition duration-200">
                  <img src="https://www.google.com/favicon.ico" alt="Google" class="w-5 mr-2">
                 <span class="text-sm font-medium text-gray-700">Lanjutkan dengan Google</span>
-            </div>
+            </div> --}}
         </form>
 
         <!-- Sign up link -->

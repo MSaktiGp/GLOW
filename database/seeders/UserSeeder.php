@@ -27,17 +27,24 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
         ]);
 
-        for ($i = 1; $i <= 20; $i++) {
+        $names = ['John', 'Emma', 'Michael', 'Sophia', 'William', 'Olivia', 'James', 'Ava', 'Alexander', 'Isabella'];
+        $streets = ['Maple', 'Oak', 'Pine', 'Cedar', 'Elm', 'Birch', 'Willow', 'Spruce', 'Cherry', 'Ash'];
+        
+        for ($i = 1; $i <= 40; $i++) {
+            $randomName = $names[array_rand($names)] . ' ' . chr(rand(65, 90));
+            $phoneNumber = '08' . rand(1000000000, 9999999999);
+            $streetNumber = rand(1, 999);
+            $randomStreet = $streets[array_rand($streets)];
+            
             DB::table('users')->insert([
-                'name' => 'UserA',
+                'name' => $randomName,
                 'username' => 'user' . $i,
                 'email' => 'user' . $i . '@gmail.com',
                 'password' => Hash::make('user1234'),
-                'phone' => '081234567890',
-                'address' => 'Jl. User No. 123',
+                'phone' => $phoneNumber,
+                'address' => 'Jl. ' . $randomStreet . ' No. ' . $streetNumber,
                 'role' => 'user',
                 'email_verified_at' => now(),
             ]);
-        }
-    }
+        }    }
 }

@@ -1,5 +1,5 @@
-{{-- @extends('user.layouts.dashboard-user-layout') --}}
-@extends ('guest.layouts.layout')
+@extends('user.layouts.dashboard-user-layout')
+{{-- @extends ('guest.layouts.layout') --}}
 @section('title', 'Girls Living on Wellness')
 
 @section('content')
@@ -36,7 +36,7 @@
                 <div class="row g-4">
                     {{-- yoga --}}
                     <div class="col-12 col-md-4">
-                        <a href="{{ route('yoga') }}" class="text-decoration-none">
+                        <a href="{{ route('uyoga') }}" class="text-decoration-none">
                             <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
                                 <div class="ratio ratio-4x3 bg-light">
                                     <img src="{{ asset('images/yoga.png') }}" class="w-100 h-100 object-fit-cover"
@@ -51,7 +51,7 @@
 
                     {{-- pilates --}}
                     <div class="col-12 col-md-4">
-                        <a href="{{ route('pilates') }}" class="text-decoration-none">
+                        <a href="{{ route('upilates') }}" class="text-decoration-none">
                             <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
                                 <div class="ratio ratio-4x3 bg-light">
                                     <img src="{{ asset('images/pilates.png') }}" class="w-100 h-100 object-fit-cover"
@@ -66,7 +66,7 @@
 
                     {{-- poundfit --}}
                     <div class="col-12 col-md-4">
-                        <a href="{{ route('poundfit') }}" class="text-decoration-none">
+                        <a href="{{ route('upoundfit') }}" class="text-decoration-none">
                             <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
                                 <div class="ratio ratio-4x3 bg-light">
                                     <img src="{{ asset('images/poundfit.png') }}" class="w-100 h-100 object-fit-cover"
@@ -81,7 +81,7 @@
 
                     <!-- Contoh lainnya: Zumba -->
                     <div class="col-12 col-md-4">
-                        <a href="{{ route('zumba') }}" class="text-decoration-none">
+                        <a href="{{ route('uzumba') }}" class="text-decoration-none">
                             <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
                                 <div class="ratio ratio-4x3 bg-light">
                                     <img src="{{ asset('images/zumba.png') }}" class="w-100 h-100 object-fit-cover"
@@ -96,7 +96,7 @@
 
 
                     <div class="col-12 col-md-4">
-                        <a href="{{ route('tabata') }}" class="text-decoration-none">
+                        <a href="{{ route('utabata') }}" class="text-decoration-none">
                             <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
                                 <div class="ratio ratio-4x3 bg-light">
                                     <img src="{{ asset('images/tabata.png') }}" class="w-100 h-100 object-fit-cover"
@@ -110,7 +110,7 @@
                     </div>
 
                     <div class="col-12 col-md-4">
-                        <a href="{{ route('trampoline') }}" class="text-decoration-none">
+                        <a href="{{ route('utrampoline') }}" class="text-decoration-none">
                             <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
                                 <div class="ratio ratio-4x3 bg-light">
                                     <img src="{{ asset('images/trampoline.png') }}" class="w-100 h-100 object-fit-cover"

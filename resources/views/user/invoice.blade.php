@@ -89,7 +89,7 @@
 </style>
 @endpush
 
-<div class="invoice-container">
+<div class="invoice-container mt-5">
     <div class="invoice-header">
         <span>GLOW</span>
         <span>INVOICE</span>
