@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
             'email_verified_at' => now(),
         ]);
 
-        for ($i = 1; $i <= 60; $i++) {
+        for ($i = 1; $i <= 20; $i++) {
             DB::table('users')->insert([
                 'name' => 'UserA',
                 'username' => 'user' . $i,

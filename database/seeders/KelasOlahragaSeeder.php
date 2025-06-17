@@ -17,10 +17,9 @@ class KelasOlahragaSeeder extends Seeder
             [
                 'id' => 1,
                 'coach_id' => 1,
-                'nama_kelas' => 'Yoga Pagi',
-                'jenis_kelas' => 'Yoga',
+                'nama_kelas' => 'Silence in the Heart',
+                'jenis_kelas_id' => 1,
                 'kapasitas' => 20,
-                'harga' => 150000,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -28,9 +27,8 @@ class KelasOlahragaSeeder extends Seeder
                 'id' => 2,
                 'coach_id' => 2,
                 'nama_kelas' => 'Zumba Dance',
-                'jenis_kelas' => 'Zumba',
+                'jenis_kelas_id' => 2,
                 'kapasitas' => 25,
-                'harga' => 120000,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -38,9 +36,8 @@ class KelasOlahragaSeeder extends Seeder
                 'id' => 3,
                 'coach_id' => 3,
                 'nama_kelas' => 'Pilates Basic',
-                'jenis_kelas' => 'Pilates',
+                'jenis_kelas_id' => 3,
                 'kapasitas' => 15,
-                'harga' => 180000,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -48,9 +45,8 @@ class KelasOlahragaSeeder extends Seeder
                 'id' => 4,
                 'coach_id' => 4,
                 'nama_kelas' => 'Trampoline Fitness',
-                'jenis_kelas' => 'Trampoline',
+                'jenis_kelas_id' => 4,
                 'kapasitas' => 15,
-                'harga' => 160000,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -58,9 +54,8 @@ class KelasOlahragaSeeder extends Seeder
                 'id' => 5,
                 'coach_id' => 5,
                 'nama_kelas' => 'PoundFit Workout',
-                'jenis_kelas' => 'poundfit',
+                'jenis_kelas_id' => 5,
                 'kapasitas' => 20,
-                'harga' => 140000,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -68,12 +63,18 @@ class KelasOlahragaSeeder extends Seeder
                 'id' => 6,
                 'coach_id' => 6,
                 'nama_kelas' => 'Tabata Training',
-                'jenis_kelas' => 'tabata',
+                'jenis_kelas_id' => 6,
                 'kapasitas' => 18,
-                'harga' => 170000,
                 'created_at' => now(),
-                'updated_at' => now()
+                'updated_at' => now()            
             ]
+
+            // $table->id();
+            // $table->foreignId('coach_id')->constrained('coaches')->onDelete('cascade');
+            // $table->foreignId('jenis_kelas_id')->constrained('jenis_kelas')->onDelete('cascade');
+            // $table->string('nama_kelas');
+            // $table->integer('kapasitas')->default(0);
+            // $table->timestamps();
 
         ];
         DB::table('kelas_olahragas')->insert($kelasOlahraga);

@@ -236,17 +236,18 @@
                                     <th>Status</th>
                                 </tr>
                             </thead>
+
                             <tbody class="table-glow-t">
                                 @forelse ($pendaftaranKelasList as $key => $pendaftaran)
                                     <tr>
-                                        <td>{{ $key + 1 }}</td>
-                                        <td>{{ $pendaftaran->user->name ?? '-' }}</td>
-                                        <td>{{ $pendaftaran->kelasOlahraga->jenis_kelas ?? '-' }}</td>
-                                        <td>{{ $pendaftaran->kelasOlahraga->jadwalKelas->first()->jam_mulai ?? '-' }}
+                                        <td>{{ $pendaftaranKelasList->firstItem() + $key }}</td>
+                                        <td>{{ $pendaftaran->name ?? '-' }}</td>
+                                        <td>{{ $pendaftaran->jenis_kelas ?? '-' }}</td>
+                                        <td>{{ date('H:i', strtotime($pendaftaran->jam_mulai)) ?? '-' }}
                                         </td>
-                                        <td>{{ $pendaftaran->kelasOlahraga->jadwalKelas->first()->jam_selesai ?? '-' }}
+                                        <td>{{ date('H:i', strtotime($pendaftaran->jam_selesai)) ?? '-' }}
                                         </td>
-                                        <td>{{ $pendaftaran->kelasOlahraga->jadwalKelas->first()->status ?? '-' }}</td>
+                                        <td>{{ $pendaftaran->status ?? '-' }}</td>
 
                                     </tr>
                                 @empty
@@ -258,6 +259,7 @@
 
                             </tbody>
                         </table>
+                        {{ $pendaftaranKelasList->links() }}
                     </div>
                 </div>
             </div>
@@ -316,8 +318,6 @@
             myChart.setOption(option);
         });
     </script>
-
-
 </body>
 
 </html>

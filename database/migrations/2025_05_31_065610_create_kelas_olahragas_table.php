@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('kelas_olahragas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('coach_id')->constrained('coaches')->onDelete('cascade');
+            $table->foreignId('jenis_kelas_id')->constrained('jenis_kelas')->onDelete('cascade');
             $table->string('nama_kelas');
-            $table->enum('jenis_kelas', ['Pilates', 'Zumba', 'Tabata', 'Trampoline', 'Poundfit', 'Yoga'])->nullable();
             $table->integer('kapasitas')->default(0);
-            $table->integer('harga')->default(0);
             $table->timestamps();
         });
     }

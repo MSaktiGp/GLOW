@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\OwnerController;
@@ -18,8 +19,10 @@ use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\Auth\ResetPasswordController;
 
 // Rute untuk Pengguna (User)
-Route::get('/', function(){return redirect('/dashboard');}); 
-Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard'); 
+Route::get('/', function () {
+    return redirect('/dashboard');
+});
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
 // Rute Kelas Olahraga
 Route::get('/yoga', [ClassController::class, 'yoga'])->name('yoga');
@@ -55,19 +58,24 @@ Route::middleware(['auth', 'role:owner'])->group(function () {
     // Rute untuk CRUD Jadwal Kelas
     Route::post('/jadwal-kelas', [MaintenanceJadwalController::class, 'storeJadwalKelas'])->name('jadwal_kelas.store');
     Route::get('/jadwal-kelas/{id}/edit', [MaintenanceJadwalController::class, 'editJadwalKelas'])->name('jadwal_kelas.edit');
+
+
     Route::put('/jadwal-kelas/{id}', [MaintenanceJadwalController::class, 'updateJadwalKelas'])->name('jadwal_kelas.update');
     Route::delete('/jadwal-kelas/{id}', [MaintenanceJadwalController::class, 'destroyJadwalKelas'])->name('jadwal_kelas.destroy');
 
     // Rute untuk CRUD Jadwal Coach (Kelas Olahraga)
     Route::post('/kelas-olahraga', [MaintenanceJadwalController::class, 'storeKelasOlahraga'])->name('kelas_olahraga.store');
     Route::get('/kelas-olahraga/{id}/edit', [MaintenanceJadwalController::class, 'editKelasOlahraga'])->name('kelas_olahraga.edit');
-    Route::put('/kelas-olahraga/{id}', [MaintenanceJadwalController::class, 'updateKelasOlahraga'])->name('kelas_olahraga.update');
-    Route::delete('/kelas-olahraga/{id}', [MaintenanceJadwalController::class, 'destroyKelasOlahraga'])->name('kelas_olahraga.destroy');});
+    Route::post('/kelas-olahraga/{id}', [MaintenanceJadwalController::class, 'updateKelasOlahraga'])->name('kelas_olahraga.update');
+    Route::delete('/kelas-olahraga/{id}', [MaintenanceJadwalController::class, 'destroyKelasOlahraga'])->name('kelas_olahraga.destroy');
+});
+
+Route::get('/edit-kelas', [ApiController::class, 'showModalBody']);
 
 // Rute autentikasi role 'user'
 Route::middleware(['auth', 'role:user'])->group(function () {
     // Rute dashboard user
-    Route::get('/dashboard-user', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.user');
+    // Route::get('/dashboard-user', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.user');
     Route::get('/profil', [PelangganController::class, 'profile'])->name('profil');
 
     // Rute Customer Payment
@@ -90,7 +98,9 @@ Route::post('/logout', function () {
 })->name('logout');
 
 //coba reset password
-Route::get('/forgot-password', function () {return view('auth.forgot-password');})->name('password.request');
+Route::get('/forgot-password', function () {
+    return view('auth.forgot-password');
+})->name('password.request');
 Route::post('/forgot-password', [ResetPasswordController::class, 'passwordEmail'])->middleware('guest')->name('password.email');
 Route::get('/reset-password/{token}', [ResetPasswordController::class, 'passwordReset'])->name('password.reset');
 Route::post('/reset-password', [ResetPasswordController::class, 'passwordUpdate'])->name('password.update');

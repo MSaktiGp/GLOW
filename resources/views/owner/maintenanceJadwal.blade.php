@@ -238,7 +238,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Peserta</th>
+                            <th>Nama Coach</th>
                             <th>Jenis Kelas</th>
                             <th>Nama Kelas</th>
                             <th>Jam Mulai</th>
@@ -251,9 +251,9 @@
                         @forelse ($jadwalKelas as $index => $jadwal)
                             <tr>
                                 <td>{{ $index + 1 }}</td>
-                                <td>{{ $jadwal->kelasOlahraga->coach->name ?? 'N/A' }}</td>
-                                <td>{{ $jadwal->kelasOlahraga->jenis_kelas ?? 'N/A' }}</td>
-                                <td>{{ $jadwal->kelasOlahraga->nama_kelas ?? 'N/A' }}</td>
+                                <td>{{ $jadwal->name ?? 'N/A' }}</td>
+                                <td>{{ $jadwal->jenis_kelas ?? 'N/A' }}</td>
+                                <td>{{ $jadwal->nama_kelas ?? 'N/A' }}</td>
                                 <td>{{ date('H:i', strtotime($jadwal->jam_mulai)) }}</td>
                                 <td>{{ date('H:i', strtotime($jadwal->jam_selesai)) }}</td>
                                 <td>{{ $jadwal->status ?? 'N/A' }}</td>
@@ -301,36 +301,30 @@
                             <th>Nama Coach</th>
                             <th>Nama Kelas</th>
                             <th>Jenis Kelas</th>
-                            <th>Jam Mulai</th>
-                            <th>Jam Selesai</th>
+                            {{-- <th>Jam Mulai</th>
+                            <th>Jam Selesai</th> --}}
+                            <th>Harga</th>
                             <th>Kapasitas</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
-                    <tbody class="table-glow-t">
+                    <tbody class="table-glow-t" id="table-body">
                         @forelse ($kelasOlahragaList as $index => $kelas)
                             <tr>
                                 <td>{{ $index + 1 }}</td>
-                                <td>{{ optional($kelas->jadwalKelas->first())->tanggal ? \Carbon\Carbon::parse($kelas->jadwalKelas->first()->tanggal)->format('d M Y') : '-' }}
+                                <td>{{ optional($kelas)->tanggal ? \Carbon\Carbon::parse($kelas->tanggal)->format('d M Y') : '-' }}
                                 </td>
-                                <td>{{ $kelas->coach->name ?? 'Tidak Ada Coach' }}</td>
+                                <td>{{ $kelas->name ?? 'Tidak Ada Coach' }}</td>
                                 <td>{{ $kelas->nama_kelas }}</td>
                                 <td>{{ $kelas->jenis_kelas }}</td>
-                                <td>{{ optional($kelas->jadwalKelas->first())->jam_mulai ?? '-' }}</td>
-                                <td>{{ optional($kelas->jadwalKelas->first())->jam_selesai ?? '-' }}</td>
+                                <td>{{ $kelas->harga }}</td>
                                 <td>{{ $kelas->kapasitas }}</td>
                                 <td>
-                                    <button class="btn-icon btn-edit-coach" title="Edit"
-                                        data-id="{{ $kelas->id }}"
-                                        data-tanggal="{{ optional($kelas->jadwalKelas->first())->tanggal ? \Carbon\Carbon::parse($kelas->jadwalKelas->first()->tanggal)->format('Y-m-d') : '-' }}"
-                                        data-coach-id="{{ $kelas->coach_id }}"
-                                        data-nama-kelas="{{ $kelas->nama_kelas }}"
-                                        data-jenis-kelas="{{ $kelas->jenis_kelas }}"
-                                        data-jam-mulai="{{ optional($kelas->jadwalKelas->first())->jam_mulai ?? '-' }}"
-                                        data-jam-selesai="{{ optional($kelas->jadwalKelas->first())->jam_selesai ?? '-' }}"
-                                        data-kapasitas="{{ $kelas->kapasitas }}" data-bs-toggle="modal"
-                                        data-harga="{{ $kelas->harga }}" data-bs-target="#jadwalCoachModal"
-                                        data-mode="edit"><i class="bi bi-pencil-square"></i></button>
+                                    <button class="btn-icon btn-edit-coach" title="Edit" data-id="{{ $kelas->id }}" 
+                                        data-bs-toggle="modal" data-bs-target="#jadwalCoachModal"
+                                        data-mode="edit">
+                                        <i class="bi bi-pencil-square icon-edit" data-id="{{ $kelas->id }}"></i>
+                                    </button>
                                     <form action="{{ route('kelas_olahraga.destroy', $kelas->id) }}" method="POST"
                                         style="display:inline;"
                                         onsubmit="return confirm('Yakin ingin menghapus jadwal ini?');">
@@ -354,8 +348,7 @@
         <div class="modal fade" id="jadwalCoachModal" tabindex="-1" aria-labelledby="jadwalCoachModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
-                <form id="jadwalCoachForm" class="modal-content" method="POST"
-                    action="{{ route('jadwal_kelas.store') }}">
+                <form id="jadwalCoachForm" class="modal-content" method="POST" action="">
                     @csrf
                     @method('POST') {{-- Default to POST for add, will be changed to PUT for edit --}}
 
@@ -364,134 +357,101 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        <input type="hidden" name="id" id="jadwal_coach_id">
-                        <div class="mb-3">
-                            <label for="coach_id_modal" class="form-label">Pilih Coach</label>
-                            <select name="coach_id" id="coach_id_modal" class="form-select" required>
-                                @foreach ($coachList as $coach)
-                                    <option value="{{ $coach->id }}">{{ $coach->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="nama_kelas_modal" class="form-label">Nama Kelas</label>
-                            <input type="text" class="form-control" id="nama_kelas_modal" name="nama_kelas"
-                                required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="jenis_kelas_modal" class="form-label">Jenis Kelas</label>
-                            <select name="jenis_kelas" class="form-select" id="jenis_kelas_modal" required>
-                                <option value="Pilates">Pilates</option>
-                                <option value="Zumba">Zumba</option>
-                                <option value="Tabata">Tabata</option>
-                                <option value="Trampoline">Trampoline</option>
-                                <option value="Yoga">Yoga</option>
-                                <option value="Poundfit">Poundfit</option>
-                            </select>
-                            <div class="mb-3">
-                                <label for="tanggal_modal" class="form-label">Tanggal</label>
-                                <input type="date" class="form-control" id="tanggal_modal" name="tanggal"
-                                    required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="jam_mulai_modal" class="form-label">Jam Mulai</label>
-                                <input type="time" class="form-control" id="jam_mulai_modal" name="jam_mulai"
-                                    required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="jam_selesai_modal" class="form-label">Jam Selesai</label>
-                                <input type="time" class="form-control" id="jam_selesai_modal" name="jam_selesai"
-                                    required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="kapasitas_modal" class="form-label">Kapasitas</label>
-                                <input type="number" class="form-control" id="kapasitas_modal" name="kapasitas"
-                                    required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="harga_modal" class="form-label">Harga</label>
-                                <input type="number" class="form-control" id="harga_modal" name="harga" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="status_modal" class="form-label">Status</label>
-                                <select name="status" class="form-select" id="status_modal" required>
-                                    <option value="Aktif">Aktif</option>
-                                    <option value="Tidak Aktif">Tidak Aktif</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
-                        </div>
+                    <div class="modal-body" id="modal-body">
+
                     </div>
-                </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
             </div>
+            </form>
         </div>
     </div>
-        <footer>
-            <p class="mb-0">&copy; 2025 glowithus.com</p>
-            <small>Designed by glowithus</small>
-        </footer>
+    </div>
+    <footer>
+        <p class="mb-0">&copy; 2025 glowithus.com</p>
+        <small>Designed by glowithus</small>
+    </footer>
 
-        <script src="{{ asset('bootstrap-5.3.6-dist/js/bootstrap.bundle.min.js') }}"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const jadwalCoachModal = document.getElementById('jadwalCoachModal');
-                const jadwalCoachForm = document.getElementById('jadwalCoachForm');
-                const modalTitle = document.getElementById('jadwalCoachModalLabel');
-                const jadwalCoachIdInput = document.getElementById('jadwal_coach_id');
-                const coachIdSelect = document.getElementById('coach_id_modal');
-                const namaKelasInput = document.getElementById('nama_kelas_modal');
-                const jenisKelasInput = document.getElementById('jenis_kelas_modal');
-                const tanggalInput = document.getElementById('tanggal_modal');
-                const jamMulaiInput = document.getElementById('jam_mulai_modal');
-                const jamSelesaiInput = document.getElementById('jam_selesai_modal');
-                const kapasitasInput = document.getElementById('kapasitas_modal');
-                const hargaInput = document.getElementById('harga_modal');
-                const methodInput = jadwalCoachForm.querySelector('input[name="_method"]');
+    <script src="{{ asset('bootstrap-5.3.6-dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script>
+        const bodyTable = document.getElementById('table-body');
+        const modalBody = document.getElementById('modal-body');
+        const form = document.getElementById('jadwalCoachForm');
 
-                // Handle "Tambah Jadwal Coach" button click
-                document.querySelector('.btn-tambah').addEventListener('click', function() {
-                    modalTitle.textContent = 'Tambah Jadwal Coach';
-                    jadwalCoachForm.action = "{{ route('kelas_olahraga.store') }}"; // Set action for store
-                    methodInput.value = 'POST'; // Set method for store
-                    jadwalCoachIdInput.value = ''; // Clear ID for new entry
-                    jadwalCoachForm.reset(); // Clear form fields
-                });
+        async function showModalBodyEdit(e) {
+            let btnEdit = e.target.classList.contains('btn-edit-coach') || e.target.classList.contains('icon-edit');
+            // console.log(e.target);
+            if (btnEdit) {
+                const id = e.target.dataset.id;
+                const response = await fetch('/edit-kelas?id=' + id);
+                const data = await response.text();
+                modalBody.innerHTML = data;
+                // const data = await response.json();
+                form.setAttribute("action", "/kelas-olahraga/" + id);
+                console.log(data);
+                e.stopPropagation();
+            }
+        }
+        bodyTable.addEventListener('click', showModalBodyEdit);
+    </script>
+    <script>
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     const jadwalCoachModal = document.getElementById('jadwalCoachModal');
+        //     const jadwalCoachForm = document.getElementById('jadwalCoachForm');
+        //     const modalTitle = document.getElementById('jadwalCoachModalLabel');
+        //     const jadwalCoachIdInput = document.getElementById('jadwal_coach_id');
+        //     const coachIdSelect = document.getElementById('coach_id_modal');
+        //     const namaKelasInput = document.getElementById('nama_kelas_modal');
+        //     const jenisKelasInput = document.getElementById('jenis_kelas_modal');
+        //     const tanggalInput = document.getElementById('tanggal_modal');
+        //     const jamMulaiInput = document.getElementById('jam_mulai_modal');
+        //     const jamSelesaiInput = document.getElementById('jam_selesai_modal');
+        //     const kapasitasInput = document.getElementById('kapasitas_modal');
+        //     const hargaInput = document.getElementById('harga_modal');
+        //     const methodInput = jadwalCoachForm.querySelector('input[name="_method"]');
 
-                // Handle "Edit" button click for Jadwal Coach
-                document.querySelectorAll('.btn-edit-coach').forEach(button => {
-                    button.addEventListener('click', function() {
-                        const id = this.dataset.id;
-                        const tanggal = this.dataset.tanggal;
-                        const coachId = this.dataset.coachId;
-                        const namaKelas = this.dataset.namaKelas;
-                        const jenisKelas = this.dataset.jenisKelas;
-                        const jamMulai = this.dataset.jamMulai;
-                        const jamSelesai = this.dataset.jamSelesai;
-                        const harga = this.dataset.harga;
-                        const kapasitas = this.dataset.kapasitas;
+        //     // Handle "Tambah Jadwal Coach" button click
+        //     document.querySelector('.btn-tambah').addEventListener('click', function() {
+        //         modalTitle.textContent = 'Tambah Jadwal Coach';
+        //         jadwalCoachForm.action = "{{ route('kelas_olahraga.store') }}"; // Set action for store
+        //         methodInput.value = 'POST'; // Set method for store
+        //         jadwalCoachIdInput.value = ''; // Clear ID for new entry
+        //         jadwalCoachForm.reset(); // Clear form fields
+        //     });
 
-                        modalTitle.textContent = 'Edit Jadwal Coach';
-                        jadwalCoachForm.action = '{{ route('kelas_olahraga.update', ':id') }}'.replace(
-                            ':id', id); // Set action for update
-                        methodInput.value = 'PUT'; // Change method to PUT for update
+        //     // Handle "Edit" button click for Jadwal Coach
+        //     document.querySelectorAll('.btn-edit-coach').forEach(button => {
+        //         button.addEventListener('click', function() {
+        //             const id = this.dataset.id;
+        //             const tanggal = this.dataset.tanggal;
+        //             const coachId = this.dataset.coachId;
+        //             const namaKelas = this.dataset.namaKelas;
+        //             const jenisKelas = this.dataset.jenisKelas;
+        //             const jamMulai = this.dataset.jamMulai;
+        //             const jamSelesai = this.dataset.jamSelesai;
+        //             const harga = this.dataset.harga;
+        //             const kapasitas = this.dataset.kapasitas;
 
-                        jadwalCoachIdInput.value = id;
-                        coachIdSelect.value = coachId;
-                        namaKelasInput.value = namaKelas;
-                        jenisKelasInput.value = jenisKelas;
-                        tanggalInput.value = tanggal;
-                        jamMulaiInput.value = jamMulai;
-                        jamSelesaiInput.value = jamSelesai;
-                        hargaInput.value = harga;
-                        kapasitasInput.value = kapasitas;
-                    });
-                });
-            });
-        </script>
+        //             modalTitle.textContent = 'Edit Jadwal Coach';
+        //             jadwalCoachForm.action = '{{ route('kelas_olahraga.update', ':id') }}'.replace(
+        //                 ':id', id); // Set action for update
+        //             methodInput.value = 'PUT'; // Change method to PUT for update
+
+        //             jadwalCoachIdInput.value = id;
+        //             coachIdSelect.value = coachId;
+        //             namaKelasInput.value = namaKelas;
+        //             jenisKelasInput.value = jenisKelas;
+        //             tanggalInput.value = tanggal;
+        //             jamMulaiInput.value = jamMulai;
+        //             jamSelesaiInput.value = jamSelesai;
+        //             hargaInput.value = harga;
+        //             kapasitasInput.value = kapasitas;
+        //         });
+        //     });
+        // });
+    </script>
 </body>
 
 </html>
