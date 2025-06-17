@@ -1,4 +1,5 @@
 <input type="hidden" name="id" id="jadwal_coach_id" value="{{ $kelas->id }}">
+<input type="hidden" name="kelas_olahraga_id" id="jadwal_coach_id" value="{{ $kelas->kelas_olahragas_id }}">
 <div class="mb-3">
     <label for="coach_id_modal" class="form-label">Pilih Coach</label>
     <select name="coach_id" class="form-select" id="coach_id_modal" required>
@@ -42,11 +43,6 @@
         <label for="kapasitas_modal" class="form-label">Kapasitas</label>
         <input type="number" class="form-control" id="kapasitas_modal" value="{{ $kelas->kapasitas }}"
             name="kapasitas" required>
-    </div>
-    <div class="mb-3">
-        <label for="harga_modal" class="form-label">Harga</label>
-        <input type="number" class="form-control" id="harga_modal" name="harga" value="{{ $kelas->harga }}"
-            required>
     </div>
     <div class="mb-3">
         <label for="status_modal" class="form-label">Status</label>

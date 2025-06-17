@@ -71,6 +71,10 @@ Route::middleware(['auth', 'role:owner'])->group(function () {
 });
 
 Route::get('/edit-kelas', [ApiController::class, 'showModalBody']);
+Route::get('/coach', [ApiController::class, 'getCoachData']);
+Route::get('/jk', [ApiController::class, 'getJkData']);
+
+
 
 // Rute autentikasi role 'user'
 Route::middleware(['auth', 'role:user'])->group(function () {

@@ -99,35 +99,36 @@ class MaintenanceJadwalController extends Controller
 
     public function storeKelasOlahraga(Request $request)
     {
+    
         $request->validate([
             'coach_id' => 'required|exists:coaches,id',
             'nama_kelas' => 'required|string|max:255',
-            'jenis_kelas' => 'required|string|max:255',
+            'jenis_kelas_id' => 'required|string|max:255',
             'tanggal' => 'required|date',
             'kapasitas' => 'required|integer|min:1',
-            'jam_mulai' => 'required|',
+            'jam_mulai' => 'required',
             'jam_selesai' => 'required|after:jam_mulai',
-            'harga' => 'required|integer|min:0',
-            'status' => 'required|in:Aktif,Tidak Aktif,Dibatalkan',
+            'status' => 'required|in:Aktif,Nonaktif',
         ]);
 
         // Simpan ke kelas_olahragas
-        $kelas = KelasOlahraga::create([
+        DB::table('kelas_olahragas')->insert([
             'coach_id' => $request->coach_id,
+            'jenis_kelas_id' => $request->jenis_kelas_id,
             'nama_kelas' => $request->nama_kelas,
-            'jenis_kelas' => $request->jenis_kelas,
             'kapasitas' => $request->kapasitas,
-            'harga' => $request->harga,
         ]);
+        $idOlahraga=DB::getPdo()->lastInsertId();
 
         // Simpan ke jadwal_kelas
-        JadwalKelas::create([
-            'kelas_olahraga_id' => $kelas->id,
+        DB::table('jadwal_kelas')->insert([
+            'kelas_olahraga_id' => $idOlahraga,
             'tanggal' => $request->tanggal,
             'jam_mulai' => $request->jam_mulai,
             'jam_selesai' => $request->jam_selesai,
             'status' => $request->status,
         ]);
+
 
         return redirect()->route('maintenance.jadwal')
             ->with('success', 'Kelas dan Jadwal berhasil ditambahkan!');
@@ -153,65 +154,45 @@ class MaintenanceJadwalController extends Controller
             'coach_id' => 'required|exists:coaches,id',
             'nama_kelas' => 'required|string|max:255',
             'jenis_kelas_id' => 'required|string|max:255',
+            'kelas_olahraga_id'=> 'required|exists:kelas_olahragas,id',
             'tanggal' => 'required|date',
             'kapasitas' => 'required|integer|min:1',
             'jam_mulai' => 'required',
             'jam_selesai' => 'required|after:jam_mulai',
-            'harga' => 'required|integer|min:0',
             'status' => 'required|in:Aktif,Nonaktif',
         ]);
 
         // Update kelas
-        $kelasOlahraga->update([
+        $kelasOlahraga = KelasOlahraga::find($request->kelas_olahraga_id)->update([
             'coach_id' => $request->coach_id,
+            'jenis_kelas_id' => $request->jenis_kelas_id,
             'nama_kelas' => $request->nama_kelas,
-            'jenis_kelas' => $request->jenis_kelas,
             'kapasitas' => $request->kapasitas,
-            'harga' => $request->harga,
+        ]);
+
+        $kelasOlahraga = JadwalKelas::find($request->id)->update([
             'tanggal' => $request->tanggal,
             'jam_mulai' => $request->jam_mulai,
             'jam_selesai' => $request->jam_selesai,
             'status' => $request->status,
         ]);
-        
-        // // Update atau buat jadwal
-        // $jadwal = $kelasOlahraga->jadwalKelas()->first();
-        // if ($jadwal) {
-        //     $jadwal->update([
-        //         'tanggal' => $request->tanggal,
-        //         'jam_mulai' => $request->jam_mulai,
-        //         'jam_selesai' => $request->jam_selesai,
-        //         'status' => $request->status,
-        //     ]);
-        // } else {
-        //     $kelasOlahraga->jadwalKelas()->update([
-        //         'tanggal' => $request->tanggal,
-        //         'jam_mulai' => $request->jam_mulai,
-        //         'jam_selesai' => $request->jam_selesai,
-        //         'status' => $request->status,
-        //     ]);
-        // }
 
         return redirect()->route('maintenance.jadwal')
             ->with('success', 'Kelas dan Jadwal berhasil diperbarui!');
     }
 
 
-    public function destroyKelasOlahraga(KelasOlahraga $kelasOlahraga)
+    public function destroyKelasOlahraga(Request $request, JadwalKelas $jadwalKelas)
     {
+        // dd($request->id);
+        DB::beginTransaction();
         try {
-            // Jalankan dalam transaksi agar aman
-            \DB::transaction(function () use ($kelasOlahraga) {
-                // Hapus jadwal terkait
-                $kelasOlahraga->jadwalKelas()->delete();
-
-                // Hapus kelas olahraga
-                $kelasOlahraga->delete();
-            });
-
+            $jadwalKelas = JadwalKelas::where('id' , $request->id);
+            $jadwalKelas->delete();
+            DB::commit();
             return redirect()->route('maintenance.jadwal')
-                ->with('success', 'Kelas dan semua jadwal terkait berhasil dihapus!');
-        } catch (\Exception $e) {
+                ->with('success', 'Kelas dan Jadwal berhasil dihapus!');
+        }catch (\Exception $e) {
             return redirect()->route('maintenance.jadwal')
                 ->with('error', 'Terjadi kesalahan saat menghapus: ' . $e->getMessage());
         }

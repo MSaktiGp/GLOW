@@ -48,4 +48,20 @@ class ApiController extends Controller
         // return response()->json($data);
         return view('partial.modal-edit', $data)->render();
     }
+
+    public function getCoachData(){
+        $coach = Coach::all();
+        $data = [
+            'coach' => $coach,
+        ];
+        return response()->json($data);
+    }
+
+    public function getJkData(){
+        $jenisKelas = JenisKelas::all();
+        $data = [
+            'jenisKelas' => $jenisKelas,
+        ];
+        return response()->json($data);
+    }
 }

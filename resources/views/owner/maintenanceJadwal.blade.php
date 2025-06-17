@@ -127,6 +127,26 @@
             box-shadow: 0 0 10px rgba(219, 61, 145, 0.6);
         }
 
+        .btn-outline-secondary {
+            border: none;
+            background: linear-gradient(45deg, #6c757d, #8c98a4);
+            color: white;
+            font-weight: 600;
+            border-radius: 50px;
+            padding: 0.5rem 1.5rem;
+            transition: background 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .btn-outline-secondary:hover {
+            background: linear-gradient(45deg, #8c98a4, #6c757d);
+            color: white;
+            box-shadow: 0 0 10px rgba(108, 117, 125, 0.6);
+        }
+
         /* Tombol icon edit & delete */
         .btn-icon {
             border: none;
@@ -287,9 +307,9 @@
         <div class="card p-4 my-4">
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h5 class="section-title fs-5 text-start mb-0">Jadwal Coach</h5>
-                <button class="btn btn-outline-pink btn-tambah" data-bs-toggle="modal"
+                <button class="btn btn-outline-pink btn-tambah" data-bs-toggle="modal" id="btn-tambah"
                     data-bs-target="#jadwalCoachModal" data-mode="add">
-                    <i class="bi bi-plus-lg"></i> Tambah Jadwal Coach
+                    <i class="bi bi-plus-lg icon-tambah"></i> Tambah Jadwal Coach
                 </button>
             </div>
             <div class="table-responsive">
@@ -320,9 +340,9 @@
                                 <td>{{ $kelas->harga }}</td>
                                 <td>{{ $kelas->kapasitas }}</td>
                                 <td>
-                                    <button class="btn-icon btn-edit-coach" title="Edit" data-id="{{ $kelas->id }}" 
-                                        data-bs-toggle="modal" data-bs-target="#jadwalCoachModal"
-                                        data-mode="edit">
+                                    <button class="btn-icon btn-edit-coach" title="Edit"
+                                        data-id="{{ $kelas->id }}" data-bs-toggle="modal"
+                                        data-bs-target="#jadwalCoachModal" data-mode="edit">
                                         <i class="bi bi-pencil-square icon-edit" data-id="{{ $kelas->id }}"></i>
                                     </button>
                                     <form action="{{ route('kelas_olahraga.destroy', $kelas->id) }}" method="POST"
@@ -350,7 +370,7 @@
             <div class="modal-dialog">
                 <form id="jadwalCoachForm" class="modal-content" method="POST" action="">
                     @csrf
-                    @method('POST') {{-- Default to POST for add, will be changed to PUT for edit --}}
+                    @method('POST')
 
                     <div class="modal-header">
                         <h5 class="modal-title" id="jadwalCoachModalLabel">Tambah Jadwal Coach</h5>
@@ -361,8 +381,9 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="button" class="btn btn-outline-secondary"
+                            data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-outline-pink" style="">Simpan</button>
                     </div>
             </div>
             </form>
@@ -379,23 +400,103 @@
         const bodyTable = document.getElementById('table-body');
         const modalBody = document.getElementById('modal-body');
         const form = document.getElementById('jadwalCoachForm');
+        const editJudul = document.getElementById('jadwalCoachModalLabel');
+        const tambahJadwal = document.getElementById('btn-tambah');
 
+        //Fungsi Tambah
+        tambahJadwal.addEventListener('click', tambahData)
+
+        async function getCoach() {
+            let response = await fetch('/coach');
+            let data = await response.json();
+            // console.log(data);
+            return data.coach;
+        }
+
+        async function getJenisKelas() {
+            let response = await fetch('/jk')
+            let data = await response.json()
+            // console.log(data)
+            return data.jenisKelas;
+        }
+
+        async function tambahData() {
+            editJudul.innerText = 'Tambah Jadwal';
+            let coach = await getCoach();
+            let jenisKelas = await getJenisKelas();
+            console.log(coach);
+            form.setAttribute("action", "/kelas-olahraga");
+            modalBody.innerHTML =
+                `
+            <input type="hidden" name="id" id="jadwal_coach_id">
+            <input type="hidden" name="kelas_olahraga_id" id="jadwal_coach_id" >` + `
+            <div class="mb-3">
+                <label for="coach_id_modal" class="form-label">Pilih Coach</label>
+                <select name="coach_id" class="form-select" id="coach_id_modal" required>
+                    ` + coach.map(coach => `<option value="${coach.id}">${coach.name}</option>`).join('') + `
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="nama_kelas_modal" class="form-label">Nama Kelas</label>
+                <input type="text" class="form-control" id="nama_kelas_modal" name="nama_kelas"
+                    required>
+            </div>
+            <div class="mb-3">
+                <label for="jenis_kelas_modal" class="form-label">Jenis Kelas</label>
+                <select name="jenis_kelas_id" class="form-select" id="jenis_kelas_modal" required>
+                    ` + jenisKelas.map(jenisKelas =>
+                    `<option value="${jenisKelas.id}">${jenisKelas.jenis_kelas}</option>`).join('') + `
+                </select>
+                <div class="mb-3">
+                    <label for="tanggal_modal" class="form-label">Tanggal</label>
+                    <input type="date" class="form-control" id="tanggal_modal" name="tanggal" "
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label for="jam_mulai_modal" class="form-label">Jam Mulai</label>
+                    <input type="time" class="form-control" id="jam_mulai_modal" name="jam_mulai" "
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label for="jam_selesai_modal" class="form-label">Jam Selesai</label>
+                    <input type="time" class="form-control" id="jam_selesai_modal" name="jam_selesai"
+                        " required>
+                </div>
+                <div class="mb-3">
+                    <label for="kapasitas_modal" class="form-label">Kapasitas</label>
+                    <input type="number" class="form-control" id="kapasitas_modal" 
+                        name="kapasitas" required>
+                </div>
+                <div class="mb-3">
+                    <label for="status_modal" class="form-label">Status</label>
+                    <select name="status" class="form-select" id="status_modal" required>
+                        <option value="Aktif">Aktif</option>
+                        <option value="Nonaktif">Nonaktif</option>
+                    </select>
+                </div>
+            `;
+
+        }
+
+        //Fungsi Edit
         async function showModalBodyEdit(e) {
             let btnEdit = e.target.classList.contains('btn-edit-coach') || e.target.classList.contains('icon-edit');
             // console.log(e.target);
             if (btnEdit) {
+                editJudul.innerText = 'Edit Jadwal';
                 const id = e.target.dataset.id;
                 const response = await fetch('/edit-kelas?id=' + id);
                 const data = await response.text();
                 modalBody.innerHTML = data;
                 // const data = await response.json();
+                // console.log(data);
                 form.setAttribute("action", "/kelas-olahraga/" + id);
-                console.log(data);
                 e.stopPropagation();
             }
         }
         bodyTable.addEventListener('click', showModalBodyEdit);
     </script>
+
     <script>
         // document.addEventListener('DOMContentLoaded', function() {
         //     const jadwalCoachModal = document.getElementById('jadwalCoachModal');
