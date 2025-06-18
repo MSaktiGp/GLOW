@@ -44,12 +44,12 @@
         <div class="grid grid-cols-2 gap-4">
             <div>
                 <label class="block text-[#D63384] mb-1">Nama Lengkap</label>
-                <input type="text" name="name" value="{{ old('name') }}" placeholder="Contoh:kila cape"
+                <input type="text" name="name" value="{{ old('name') }}" placeholder="Kami Cape"
                     class="w-full px-4 py-2.5 rounded-lg border border-pink-300 focus:ring-2 focus:ring-pink-400 focus:outline-none" required />
             </div>
             <div>
                 <label class="block text-[#D63384] mb-1">Username</label>
-                <input type="text" name="username" value="{{ old('username') }}" placeholder="kilacape"
+                <input type="text" name="username" value="{{ old('username') }}" placeholder="minusjamtidur"
                     class="w-full px-4 py-2.5 rounded-lg border border-pink-300 focus:ring-2 focus:ring-pink-400 focus:outline-none" required />
             </div>
         </div>

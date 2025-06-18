@@ -67,7 +67,7 @@
         <p class="confirmation-message mb-4">
             Terima kasih! Pesanan Anda telah berhasil dikonfirmasi dan sedang diproses.
         </p>
-        <a class="btn btn-selesai">Selesai</a>
+        <a class="btn btn-selesai" href="{{ route('invoice') }}" >Selesai</a>
     </div>
 </div>
 

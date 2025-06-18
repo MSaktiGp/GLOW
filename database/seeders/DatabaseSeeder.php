@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CoachSeeder::class,
             JenisKelasSeeder::class,
-            PendaftaranKelasSeeder::class,
+            // PendaftaranKelasSeeder::class,
             KelasOlahragaSeeder::class,
             JadwalKelasSeeder::class,
         ]);

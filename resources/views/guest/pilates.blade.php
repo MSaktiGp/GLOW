@@ -29,7 +29,6 @@
                 ['id' => 2, 'name' => 'Alisyah Aurel', 'slug' => 'alisyah-aurel', 'rating' => '4.5/5', 'img' => '../images/Instruktur5.jpg'],
                 ['id' => 3, 'name' => 'Rebeca Laura', 'slug' => 'rebeca-laura', 'rating' => '4/5', 'img' => '../images/Instruktur6.jpg']
                 ] as $coach)
-
                  <div class="bg-white rounded-lg shadow p-4 text-center">
                 <img src="{{ asset($coach['img']) }}" alt="{{ $coach['name'] }}" class="w-full h-80 object-cover rounded-md mb-4">
                 <h3 class="font-semibold text-lg">{{ $coach['name'] }}</h3>

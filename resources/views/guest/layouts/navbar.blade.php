@@ -1,12 +1,12 @@
   <nav class="navbar fixed-top text-white navbar-expand-sm navbar-dark py-2" style="background-color: #F189B8;">
         <div class="container-fluid my-2 mx-3">
-            <a class="navbar-brand fw-bold" href="#">GLOW</a>
+            <a class="navbar-brand fw-bold" href="/">GLOW</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about-us">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#classes">Classes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact-us">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/dashboard#about-us">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/dashboard#classes">Classes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/dashboard#contact-us">Contact Us</a></li>
                 </ul>
             </div>
             @unless (!auth()->check())

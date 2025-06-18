@@ -17,6 +17,8 @@
 
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    
 
     <script>
         tailwind.config = {
@@ -56,17 +58,17 @@
                     Us</a>
             </div>
 
-            <div class="relative" x-data="{ isOpen: false }">
+            <div class="flex me-4 relative" x-data="{ isOpen: false }">
                 <button @click="isOpen = !isOpen"
-                    class="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-primary-pink text-primary-pink hover:bg-pink-50 transition-colors"
+                    class="flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-primary-pink text-primary-pink hover:bg-pink-50 transition-colors"
                     type="button">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
                             clip-rule="evenodd" />
                     </svg>
                 </button>
-                <ul x-show="isOpen" @click.away="isOpen = false" 
-                    class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg">
+                <ul x-show="isOpen" @click.away="isOpen = false"
+                    class="absolute right-3 mt-12 w-48 bg-white rounded-lg shadow-lg">
                     <li><a class="block px-4 py-2 text-gray-800 hover:bg-pink-50"
                             href="{{ route('profil') }}">Profile</a></li>
                     <li>

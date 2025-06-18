@@ -152,6 +152,25 @@
                 margin-top: 1rem;
             }
         }
+
+        .pagination-custom .page-link {
+            color: #F189B8;
+            border: 1px solid #F189B8;
+            border-radius: 8px;
+            margin: 0 3px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .pagination-custom .page-link:hover {
+            background-color: #F189B8;
+            color: white;
+        }
+
+        .pagination-custom .page-item.active .page-link {
+            background-color: #F189B8;
+            border-color: #F189B8;
+            color: white;
+        }
     </style>
 </head>
 
@@ -259,6 +278,8 @@
 
                             </tbody>
                         </table>
+                    </div>
+                    <div class="d-flex justify-content-end mt-3 pagination-custom">
                         {{ $pendaftaranKelasList->links() }}
                     </div>
                 </div>

@@ -200,7 +200,7 @@
 
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid px-4">
-            <a class="navbar-brand" href="#">GLOW</a>
+            <a class="navbar-brand" href="{{route('dashboard.owner')}}" style="color: #fff">GLOW</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -278,6 +278,9 @@
                                 <td>{{ date('H:i', strtotime($jadwal->jam_selesai)) }}</td>
                                 <td>{{ $jadwal->status ?? 'N/A' }}</td>
                                 <td>
+                                    
+                                    </div>
+                                    
                                     {{-- Tombol edit dan hapus untuk Jadwal Kelas (yang diisi peserta) ini tidak relevan jika owner hanya bisa memanage jadwal coach --}}
                                     {{-- Disarankan untuk menghapus aksi edit/delete di bagian ini jika ini memang jadwal kelas yang diisi oleh peserta --}}
                                     {{-- Untuk tujuan contoh ini, saya akan biarkan tombol edit/delete tapi tanpa fungsi di JS karena fokusnya jadwal coach --}}

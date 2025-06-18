@@ -50,7 +50,7 @@ class DashboardOwnerController extends Controller
             'jadwal_kelas.status'
         )
         ->orderBy('jadwal_kelas.tanggal', 'asc')
-        ->paginate(25);
+        ->paginate(10);
 
         return view('owner.dashboard-owner', [
             'jadwalKelas' => $jadwalKelas,
